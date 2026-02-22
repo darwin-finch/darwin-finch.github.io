@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Finch — Local AI Coding Assistant</title>
-  <meta name="description" content="Open-source AI coding assistant that runs on your machine. Works offline. Learns your codebase via LoRA fine-tuning. Built in Rust.">
+  <meta name="description" content="Open-source AI coding assistant that runs entirely on your machine. Offline. Private. 6 model families. Apple Neural Engine acceleration. Built in Rust.">
   <meta property="og:title" content="Finch — Local AI Coding Assistant">
-  <meta property="og:description" content="Offline. Private. Learns your coding style via LoRA fine-tuning. Built in Rust.">
+  <meta property="og:description" content="Offline. Private. 6 model families. ANE acceleration on Apple Silicon. Built in Rust.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://darwin-finch.github.io">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Finch — Local AI Coding Assistant">
-  <meta name="twitter:description" content="Offline. Private. Learns your coding style. Built in Rust.">
+  <meta name="twitter:description" content="Offline. Private. 6 model families. ANE acceleration on Apple Silicon. Built in Rust.">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap">
@@ -103,7 +103,7 @@
         <li>Fully offline after first model download</li>
         <li>Zero marginal cost per query</li>
         <li>Code stays on your machine</li>
-        <li>LoRA fine-tuning adapts to your style</li>
+        <li>6 model families, pick what fits your hardware</li>
         <li>Useful from day one (pre-trained models)</li>
       </ul>
     </div>
@@ -120,13 +120,13 @@
     <div class="card">
       <div class="card-glyph">▣</div>
       <h3>WORKS OFFLINE</h3>
-      <p>Runs Qwen 2.5 locally with ONNX Runtime + Metal acceleration on Apple Silicon. Zero latency. No subscriptions or rate limits.</p>
+      <p>6 model families via ONNX Runtime — Qwen, Llama, Gemma, Mistral, Phi, DeepSeek. Zero latency. No subscriptions or rate limits.</p>
     </div>
 
     <div class="card">
       <div class="card-glyph">◈</div>
-      <h3>LEARNS YOUR STYLE</h3>
-      <p>Weighted LoRA fine-tuning adapts the model to your patterns. Mark critical feedback <strong>10×</strong> — the model strongly learns to avoid those mistakes.</p>
+      <h3>ANE ACCELERATION</h3>
+      <p>Apple Neural Engine acceleration via CoreML on Apple Silicon (M1–M4). Linux x86_64 uses CPU. Auto-selected based on your hardware.</p>
     </div>
 
     <div class="card">
@@ -138,7 +138,7 @@
     <div class="card">
       <div class="card-glyph">▶</div>
       <h3>INSTANT STARTUP</h3>
-      <p>REPL appears in under 100ms. Model loads in background. Falls back to Claude/GPT-4 while loading — then seamlessly transitions to local.</p>
+      <p>REPL appears in under 100ms. Model loads in the background. While it's loading on first run, optionally falls back to a cloud provider.</p>
     </div>
 
     <div class="card">
@@ -149,8 +149,8 @@
 
     <div class="card">
       <div class="card-glyph">◇</div>
-      <h3>TEACHER FALLBACK</h3>
-      <p>Claude, GPT-4, Gemini, Grok, Mistral, or Groq as backends. Switch mid-session with <code>/teacher</code>. Collect training data automatically.</p>
+      <h3>LORA FINE-TUNING</h3>
+      <p>Weighted feedback collection infrastructure is in place. LoRA adapter training and loading is the next major milestone — contributions welcome.</p>
     </div>
 
   </div>
@@ -174,28 +174,17 @@
                  NO                YES
                   │                 │
                   ▼                 ▼
-        ┌──────────────┐  ┌──────────────────────────┐
-        │  TEACHER API  │  │   LOCAL MODEL + LoRA     │
-        │ Claude/GPT-4  │  │  Qwen 2.5 · ONNX·Metal   │
-        │  Gemini/Grok  │  │  &lt;100ms first token      │
-        └──────────────┘  └────────────┬─────────────┘
-                                        │
+        ┌──────────────┐  ┌──────────────────────────────┐
+        │ TEACHER API   │  │   LOCAL MODEL (ONNX)          │
+        │ Claude/GPT-4  │  │  Qwen · Llama · Gemma · Phi   │
+        │ Gemini/Grok   │  │  Mistral · DeepSeek           │
+        │ (while loading│  │  ANE via CoreML · &lt;100ms      │
+        │  first time)  │  └────────────┬─────────────────┘
+        └──────────────┘               │
                                         ▼
                               ┌──────────────────┐
                               │     RESPONSE      │
-                              └────────┬─────────┘
-                                       │
-                            FEEDBACK?  (ctrl+g / ctrl+b)
-                              ┌────────┴────────┐
-                          🔴 HIGH           🟢 NORMAL
-                          (10× weight)     (1× weight)
-                              └────────┬────────┘
-                                       ▼
-                     ┌─────────────────────────────────┐
-                     │   BACKGROUND LoRA FINE-TUNING    │
-                     │  collect → train → save adapter  │
-                     │  ~/.finch/adapters/  (~5MB each) │
-                     └─────────────────────────────────┘
+                              └──────────────────┘
 </pre>
   </div>
 
@@ -211,21 +200,21 @@
       <span class="step-n">02</span>
       <div>
         <h3>QUERY LOCALLY</h3>
-        <p>All queries run on your local Qwen 2.5 model. Apple Silicon gets Metal acceleration via CoreML. Linux x86_64 uses CPU. No internet required after the model is cached.</p>
+        <p>Queries run on your local ONNX model. Apple Silicon uses the Apple Neural Engine via CoreML automatically. Linux x86_64 uses CPU. No internet required after the model is cached.</p>
       </div>
     </div>
     <div class="step">
       <span class="step-n">03</span>
       <div>
-        <h3>GIVE FEEDBACK</h3>
-        <p>Press <code>Ctrl+G</code> (good) or <code>Ctrl+B</code> (bad) on any response. Mark truly critical feedback as high-weight (10×). Medium feedback is 3×. Normal is 1×.</p>
+        <h3>USE AGENTIC TOOLS</h3>
+        <p>Finch can read files, search your codebase, run shell commands, and fetch web pages — all with your approval. Full multi-turn agentic loop, just like Claude Code.</p>
       </div>
     </div>
     <div class="step">
       <span class="step-n">04</span>
       <div>
-        <h3>MODEL ADAPTS</h3>
-        <p>In the background, Finch fine-tunes LoRA adapters on your feedback. The model gradually specializes to your codebase, patterns, and preferences. Adapters are ~5MB each.</p>
+        <h3>LORA COMING SOON</h3>
+        <p>Feedback collection infrastructure is ready (<code>Ctrl+G</code> / <code>Ctrl+B</code>). LoRA fine-tuning to adapt the model to your codebase is the next major milestone.</p>
       </div>
     </div>
   </div>
@@ -235,51 +224,58 @@
      SYSTEM REQUIREMENTS
 ═══════════════════════════════════════════ -->
 <section id="models">
-  <h2 class="sec-title">// SYSTEM REQUIREMENTS</h2>
+  <h2 class="sec-title">// SUPPORTED MODELS</h2>
   <div class="table-wrap">
     <table class="model-table">
       <thead>
         <tr>
-          <th>RAM</th>
-          <th>MODEL</th>
-          <th>DISK</th>
-          <th>QUALITY</th>
-          <th>SPEED</th>
+          <th>FAMILY</th>
+          <th>SIZES</th>
+          <th>FORMAT</th>
+          <th>NOTES</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>8 GB</td>
-          <td>Qwen-2.5-1.5B</td>
-          <td>~1.5 GB</td>
-          <td class="bar">████░░░░░░</td>
-          <td class="bar fast">██████████</td>
+          <td>Qwen 2.5</td>
+          <td>1.5B · 3B · 7B · 14B</td>
+          <td>ONNX</td>
+          <td class="bar">Recommended · auto-selected by RAM</td>
         </tr>
         <tr>
-          <td>16 GB</td>
-          <td>Qwen-2.5-3B</td>
-          <td>~3 GB</td>
-          <td class="bar">██████░░░░</td>
-          <td class="bar fast">████████░░</td>
+          <td>Llama 3</td>
+          <td>3B · 8B · 70B</td>
+          <td>ONNX</td>
+          <td class="bar">Meta · general purpose</td>
         </tr>
         <tr>
-          <td>32 GB</td>
-          <td>Qwen-2.5-7B</td>
-          <td>~7 GB</td>
-          <td class="bar">████████░░</td>
-          <td class="bar fast">██████░░░░</td>
+          <td>Gemma 2</td>
+          <td>2B · 9B · 27B</td>
+          <td>ONNX</td>
+          <td class="bar">Google · strong reasoning</td>
         </tr>
         <tr>
-          <td>64+ GB</td>
-          <td>Qwen-2.5-14B</td>
-          <td>~14 GB</td>
-          <td class="bar">██████████</td>
-          <td class="bar fast">████░░░░░░</td>
+          <td>Mistral</td>
+          <td>7B · 22B</td>
+          <td>ONNX</td>
+          <td class="bar">Mistral AI · efficient</td>
+        </tr>
+        <tr>
+          <td>Phi</td>
+          <td>2B · 3.8B · 14B</td>
+          <td>ONNX</td>
+          <td class="bar">Microsoft · small + capable</td>
+        </tr>
+        <tr>
+          <td>DeepSeek Coder</td>
+          <td>1.3B · 6.7B · 16B · 33B</td>
+          <td>ONNX</td>
+          <td class="bar">Optimised for code</td>
         </tr>
       </tbody>
     </table>
   </div>
-  <p class="table-note">Metal acceleration on Apple Silicon (M1–M4) · CPU fallback on Linux x86_64 · Model auto-selected based on available RAM</p>
+  <p class="table-note">Apple Neural Engine (ANE) via CoreML on Apple Silicon (M1–M4) · CPU on Linux x86_64 · Qwen auto-selected based on available RAM by default</p>
 </section>
 
 <!-- ═══════════════════════════════════════════
@@ -315,7 +311,7 @@
     </li>
     <li>
       <span class="step-n">04</span>
-      <div>On first run, Finch downloads a Qwen model in the background — start querying immediately</div>
+      <div>On first run, Finch downloads a local model in the background — start querying immediately</div>
     </li>
   </ol>
 
@@ -336,20 +332,20 @@
   <p class="contrib-intro">Finch is early-stage and actively looking for contributors. All issues are tracked on GitHub.</p>
 
   <div class="contrib-cards">
-    <a class="contrib-card" href="https://github.com/darwin-finch/finch/issues/6" target="_blank" rel="noopener">
+    <a class="contrib-card" href="https://github.com/darwin-finch/finch/issues?q=label%3A%22good+first+issue%22" target="_blank" rel="noopener">
       <span class="issue-tag good-first">good first issue</span>
-      <h3>#6 — Remove unused Candle imports</h3>
-      <p>Straightforward cleanup in <code>src/models/loaders/candle.rs</code>. Great way to get familiar with the codebase.</p>
+      <h3>Good First Issues</h3>
+      <p>Browse issues tagged as good first issues — a quick way to get familiar with a Rust codebase that covers ONNX, TUI, async, and tool execution.</p>
     </a>
-    <a class="contrib-card" href="https://github.com/darwin-finch/finch/issues/5" target="_blank" rel="noopener">
+    <a class="contrib-card" href="https://github.com/darwin-finch/finch/issues?q=label%3A%22help+wanted%22" target="_blank" rel="noopener">
       <span class="issue-tag help-wanted">help wanted</span>
-      <h3>#5 — Integration tests</h3>
-      <p>Daemon, LoRA pipeline, multi-provider routing, and tool pass-through end-to-end tests.</p>
+      <h3>Help Wanted</h3>
+      <p>Integration tests, model adapter improvements, multi-provider routing, and more. Check GitHub Issues for the current list.</p>
     </a>
-    <a class="contrib-card" href="https://github.com/darwin-finch/finch/issues/1" target="_blank" rel="noopener">
-      <span class="issue-tag complex">complex</span>
-      <h3>#1 — LoRA adapter loading</h3>
-      <p>Load fine-tuned LoRA adapters into ONNX Runtime at inference time. The biggest open item.</p>
+    <a class="contrib-card" href="https://github.com/darwin-finch/finch/issues" target="_blank" rel="noopener">
+      <span class="issue-tag complex">big ticket</span>
+      <h3>LoRA Adapter Loading</h3>
+      <p>Load fine-tuned LoRA adapters into ONNX Runtime at inference time. The largest open milestone — would unlock continuous local learning.</p>
     </a>
   </div>
 

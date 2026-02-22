@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Finch — Local AI Coding Assistant</title>
+  <meta name="description" content="Open-source AI coding assistant that runs on your machine. Works offline. Learns your codebase via LoRA fine-tuning. Built in Rust.">
+  <meta property="og:title" content="Finch — Local AI Coding Assistant">
+  <meta property="og:description" content="Offline. Private. Learns your coding style via LoRA fine-tuning. Built in Rust.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://darwin-finch.github.io">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Finch — Local AI Coding Assistant">
+  <meta name="twitter:description" content="Offline. Private. Learns your coding style. Built in Rust.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- CRT scanline overlay -->
+<div class="crt" aria-hidden="true"></div>
+
+<!-- ═══════════════════════════════════════════
+     NAV
+═══════════════════════════════════════════ -->
+<nav id="nav">
+  <a href="/" class="nav-logo">FINCH</a>
+  <button class="nav-toggle" onclick="toggleNav()" aria-label="Menu">☰</button>
+  <div class="nav-links" id="nav-links">
+    <a href="#features">FEATURES</a>
+    <a href="#how-it-works">HOW&nbsp;IT&nbsp;WORKS</a>
+    <a href="#install">INSTALL</a>
+    <a href="docs.html">DOCS</a>
+    <a href="https://github.com/darwin-finch/finch" target="_blank" rel="noopener">GITHUB</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-inner">
+
+    <pre class="logo-art" aria-label="FINCH">██████╗ ██╗███╗   ██╗ ██████╗██╗  ██╗
+██╔════╝██║████╗  ██║██╔════╝██║  ██║
+█████╗  ██║██╔██╗ ██║██║     ███████║
+██╔══╝  ██║██║╚██╗██║██║     ██╔══██║
+██║     ██║██║ ╚████║╚██████╗██║  ██║
+╚═╝     ╚═╝╚═╝  ╚═══╝ ╚═════╝╚═╝  ╚═╝</pre>
+
+    <p class="hero-sub">AI coding assistant · runs on your machine · works offline · learns your style</p>
+
+    <div class="badges">
+      <span>WRITTEN IN RUST</span>
+      <span>WORKS OFFLINE</span>
+      <span>PRIVATE BY DEFAULT</span>
+      <span>OPEN SOURCE</span>
+    </div>
+
+    <!-- Animated terminal -->
+    <div class="terminal" id="terminal">
+      <div class="term-bar">
+        <span class="dot dot-r"></span>
+        <span class="dot dot-y"></span>
+        <span class="dot dot-g"></span>
+        <span class="term-title">zsh — finch — 80×24</span>
+      </div>
+      <div class="term-body">
+        <div id="term-out"></div>
+        <span class="term-cursor">▋</span>
+      </div>
+    </div>
+
+    <div class="hero-ctas">
+      <a href="#install" class="btn-primary">INSTALL NOW</a>
+      <a href="https://github.com/darwin-finch/finch" class="btn-ghost" target="_blank" rel="noopener">★ VIEW ON GITHUB</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     THE PITCH
+═══════════════════════════════════════════ -->
+<section id="pitch">
+  <div class="pitch-inner">
+    <div class="pitch-col">
+      <h2 class="pitch-label">// THE PROBLEM</h2>
+      <ul class="pitch-list bad">
+        <li>Constant internet connection required</li>
+        <li>Every query costs API money</li>
+        <li>Your code goes to the cloud</li>
+        <li>No learning from your patterns</li>
+        <li>Months before it's useful to you</li>
+      </ul>
+    </div>
+    <div class="pitch-divider">VS</div>
+    <div class="pitch-col">
+      <h2 class="pitch-label">// WITH FINCH</h2>
+      <ul class="pitch-list good">
+        <li>Fully offline after first model download</li>
+        <li>Zero marginal cost per query</li>
+        <li>Code stays on your machine</li>
+        <li>LoRA fine-tuning adapts to your style</li>
+        <li>Useful from day one (pre-trained models)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FEATURES
+═══════════════════════════════════════════ -->
+<section id="features">
+  <h2 class="sec-title">// FEATURES</h2>
+  <div class="cards">
+
+    <div class="card">
+      <div class="card-glyph">▣</div>
+      <h3>WORKS OFFLINE</h3>
+      <p>Runs Qwen 2.5 locally with ONNX Runtime + Metal acceleration on Apple Silicon. Zero latency. No subscriptions or rate limits.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-glyph">◈</div>
+      <h3>LEARNS YOUR STYLE</h3>
+      <p>Weighted LoRA fine-tuning adapts the model to your patterns. Mark critical feedback <strong>10×</strong> — the model strongly learns to avoid those mistakes.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-glyph">◉</div>
+      <h3>PRIVACY FIRST</h3>
+      <p>Your code never leaves your machine. No telemetry. Everything runs locally — your proprietary code stays yours.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-glyph">▶</div>
+      <h3>INSTANT STARTUP</h3>
+      <p>REPL appears in under 100ms. Model loads in background. Falls back to Claude/GPT-4 while loading — then seamlessly transitions to local.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-glyph">◆</div>
+      <h3>AGENTIC TOOLS</h3>
+      <p>Read, Glob, Grep, Bash, WebFetch. Full multi-turn agentic loop with permission system. Like Claude Code, but entirely local.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-glyph">◇</div>
+      <h3>TEACHER FALLBACK</h3>
+      <p>Claude, GPT-4, Gemini, Grok, Mistral, or Groq as backends. Switch mid-session with <code>/teacher</code>. Collect training data automatically.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     HOW IT WORKS
+═══════════════════════════════════════════ -->
+<section id="how-it-works">
+  <h2 class="sec-title">// HOW IT WORKS</h2>
+  <div class="flow-wrap">
+<pre class="flow-art">
+  ┌──────────────────────────────────────────────────────┐
+  │                     YOUR REQUEST                      │
+  └──────────────────────┬───────────────────────────────┘
+                         │
+                         ▼
+               ┌──────────────────┐
+               │   MODEL READY?   │
+               └──┬───────────────┘
+                 NO                YES
+                  │                 │
+                  ▼                 ▼
+        ┌──────────────┐  ┌──────────────────────────┐
+        │  TEACHER API  │  │   LOCAL MODEL + LoRA     │
+        │ Claude/GPT-4  │  │  Qwen 2.5 · ONNX·Metal   │
+        │  Gemini/Grok  │  │  &lt;100ms first token      │
+        └──────────────┘  └────────────┬─────────────┘
+                                        │
+                                        ▼
+                              ┌──────────────────┐
+                              │     RESPONSE      │
+                              └────────┬─────────┘
+                                       │
+                            FEEDBACK?  (ctrl+g / ctrl+b)
+                              ┌────────┴────────┐
+                          🔴 HIGH           🟢 NORMAL
+                          (10× weight)     (1× weight)
+                              └────────┬────────┘
+                                       ▼
+                     ┌─────────────────────────────────┐
+                     │   BACKGROUND LoRA FINE-TUNING    │
+                     │  collect → train → save adapter  │
+                     │  ~/.finch/adapters/  (~5MB each) │
+                     └─────────────────────────────────┘
+</pre>
+  </div>
+
+  <div class="steps-grid">
+    <div class="step">
+      <span class="step-n">01</span>
+      <div>
+        <h3>INSTALL &amp; RUN</h3>
+        <p>One curl command installs the binary. The REPL starts in under 100ms. On first run, Finch downloads a Qwen model in the background — you can start asking questions immediately.</p>
+      </div>
+    </div>
+    <div class="step">
+      <span class="step-n">02</span>
+      <div>
+        <h3>QUERY LOCALLY</h3>
+        <p>All queries run on your local Qwen 2.5 model. Apple Silicon gets Metal acceleration via CoreML. Linux x86_64 uses CPU. No internet required after the model is cached.</p>
+      </div>
+    </div>
+    <div class="step">
+      <span class="step-n">03</span>
+      <div>
+        <h3>GIVE FEEDBACK</h3>
+        <p>Press <code>Ctrl+G</code> (good) or <code>Ctrl+B</code> (bad) on any response. Mark truly critical feedback as high-weight (10×). Medium feedback is 3×. Normal is 1×.</p>
+      </div>
+    </div>
+    <div class="step">
+      <span class="step-n">04</span>
+      <div>
+        <h3>MODEL ADAPTS</h3>
+        <p>In the background, Finch fine-tunes LoRA adapters on your feedback. The model gradually specializes to your codebase, patterns, and preferences. Adapters are ~5MB each.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SYSTEM REQUIREMENTS
+═══════════════════════════════════════════ -->
+<section id="models">
+  <h2 class="sec-title">// SYSTEM REQUIREMENTS</h2>
+  <div class="table-wrap">
+    <table class="model-table">
+      <thead>
+        <tr>
+          <th>RAM</th>
+          <th>MODEL</th>
+          <th>DISK</th>
+          <th>QUALITY</th>
+          <th>SPEED</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>8 GB</td>
+          <td>Qwen-2.5-1.5B</td>
+          <td>~1.5 GB</td>
+          <td class="bar">████░░░░░░</td>
+          <td class="bar fast">██████████</td>
+        </tr>
+        <tr>
+          <td>16 GB</td>
+          <td>Qwen-2.5-3B</td>
+          <td>~3 GB</td>
+          <td class="bar">██████░░░░</td>
+          <td class="bar fast">████████░░</td>
+        </tr>
+        <tr>
+          <td>32 GB</td>
+          <td>Qwen-2.5-7B</td>
+          <td>~7 GB</td>
+          <td class="bar">████████░░</td>
+          <td class="bar fast">██████░░░░</td>
+        </tr>
+        <tr>
+          <td>64+ GB</td>
+          <td>Qwen-2.5-14B</td>
+          <td>~14 GB</td>
+          <td class="bar">██████████</td>
+          <td class="bar fast">████░░░░░░</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="table-note">Metal acceleration on Apple Silicon (M1–M4) · CPU fallback on Linux x86_64 · Model auto-selected based on available RAM</p>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     INSTALL
+═══════════════════════════════════════════ -->
+<section id="install">
+  <h2 class="sec-title">// INSTALL</h2>
+
+  <div class="install-box">
+    <div class="install-cmd">
+      <span class="prompt">$</span>
+      <code id="install-text">curl -sSL https://raw.githubusercontent.com/darwin-finch/finch/main/install.sh | sh</code>
+      <button class="copy-btn" id="copy-btn" onclick="copyInstall()">COPY</button>
+    </div>
+    <p class="install-meta">
+      macOS Apple Silicon · Linux x86_64 · MIT License ·
+      <a href="https://github.com/darwin-finch/finch/blob/main/install.sh" target="_blank" rel="noopener">view script ↗</a>
+    </p>
+  </div>
+
+  <ol class="install-steps">
+    <li>
+      <span class="step-n">01</span>
+      <div><strong>Installs the binary</strong> to <code>~/.local/bin/finch</code> and adds it to your PATH</div>
+    </li>
+    <li>
+      <span class="step-n">02</span>
+      <div>Run <code>finch</code> — the REPL starts in under 100ms</div>
+    </li>
+    <li>
+      <span class="step-n">03</span>
+      <div>Run <code>finch setup</code> to configure an optional teacher API key (Claude, GPT-4, etc.)</div>
+    </li>
+    <li>
+      <span class="step-n">04</span>
+      <div>On first run, Finch downloads a Qwen model in the background — start querying immediately</div>
+    </li>
+  </ol>
+
+  <div class="build-from-source">
+    <span class="dim">// or build from source</span>
+    <div class="install-cmd secondary">
+      <span class="prompt">$</span>
+      <code>git clone https://github.com/darwin-finch/finch &amp;&amp; cd finch &amp;&amp; cargo build --release</code>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CONTRIBUTE
+═══════════════════════════════════════════ -->
+<section id="contribute">
+  <h2 class="sec-title">// CONTRIBUTE</h2>
+  <p class="contrib-intro">Finch is early-stage and actively looking for contributors. All issues are tracked on GitHub.</p>
+
+  <div class="contrib-cards">
+    <a class="contrib-card" href="https://github.com/darwin-finch/finch/issues/6" target="_blank" rel="noopener">
+      <span class="issue-tag good-first">good first issue</span>
+      <h3>#6 — Remove unused Candle imports</h3>
+      <p>Straightforward cleanup in <code>src/models/loaders/candle.rs</code>. Great way to get familiar with the codebase.</p>
+    </a>
+    <a class="contrib-card" href="https://github.com/darwin-finch/finch/issues/5" target="_blank" rel="noopener">
+      <span class="issue-tag help-wanted">help wanted</span>
+      <h3>#5 — Integration tests</h3>
+      <p>Daemon, LoRA pipeline, multi-provider routing, and tool pass-through end-to-end tests.</p>
+    </a>
+    <a class="contrib-card" href="https://github.com/darwin-finch/finch/issues/1" target="_blank" rel="noopener">
+      <span class="issue-tag complex">complex</span>
+      <h3>#1 — LoRA adapter loading</h3>
+      <p>Load fine-tuned LoRA adapters into ONNX Runtime at inference time. The biggest open item.</p>
+    </a>
+  </div>
+
+  <p class="contrib-footer">
+    Built with Rust · PRs welcome ·
+    <a href="https://github.com/darwin-finch/finch">github.com/darwin-finch/finch</a>
+  </p>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════ -->
+<footer id="footer">
+  <pre class="footer-bird">      ▄▄▄▄▄▄
+    ▗▟█●██▙►  finch — local AI coding assistant
+  ▐████████▌  MIT License
+  ▝▜██████▛▘  darwin-finch/finch
+     ╥  ╥
+    ╱    ╲</pre>
+
+  <nav class="footer-links">
+    <a href="https://github.com/darwin-finch/finch">GitHub</a>
+    <a href="https://github.com/darwin-finch/finch/releases">Releases</a>
+    <a href="https://github.com/darwin-finch/finch/issues">Issues</a>
+    <a href="docs.html">Docs</a>
+    <a href="https://github.com/darwin-finch/finch/blob/main/CHANGELOG.md">Changelog</a>
+    <a href="https://github.com/darwin-finch/finch/blob/main/README.md">README</a>
+  </nav>
+  <p class="footer-copy">Runs locally. No cloud. No telemetry. Just code.</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

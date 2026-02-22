@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Finch — Documentation</title>
+  <meta name="description" content="Documentation for Finch, the local-first AI coding assistant.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="crt" aria-hidden="true"></div>
+
+<nav id="nav">
+  <a href="/" class="nav-logo">FINCH</a>
+  <button class="nav-toggle" onclick="toggleNav()" aria-label="Menu">☰</button>
+  <div class="nav-links" id="nav-links">
+    <a href="/#features">FEATURES</a>
+    <a href="/#how-it-works">HOW&nbsp;IT&nbsp;WORKS</a>
+    <a href="/#install">INSTALL</a>
+    <a href="docs.html" style="color: var(--green)">DOCS</a>
+    <a href="https://github.com/darwin-finch/finch" target="_blank" rel="noopener">GITHUB</a>
+  </div>
+</nav>
+
+<div class="docs-header">
+  <h1>// DOCUMENTATION</h1>
+  <p>All documentation is hosted on GitHub alongside the source code.</p>
+</div>
+
+<div class="docs-body">
+
+  <!-- ── Getting Started ───────────────────────────── -->
+  <div class="docs-group">
+    <h2 class="docs-group-title">// GETTING STARTED</h2>
+
+    <a class="doc-link" href="https://github.com/darwin-finch/finch/blob/main/README.md" target="_blank" rel="noopener">
+      <span class="doc-name">README</span>
+      <span class="doc-desc">Project overview, quick start, and installation instructions</span>
+      <span class="doc-arrow">↗</span>
+    </a>
+
+    <a class="doc-link" href="https://github.com/darwin-finch/finch/blob/main/docs/USER_GUIDE.md" target="_blank" rel="noopener">
+      <span class="doc-name">User Guide</span>
+      <span class="doc-desc">Setup, configuration, and day-to-day usage</span>
+      <span class="doc-arrow">↗</span>
+    </a>
+
+    <a class="doc-link" href="https://github.com/darwin-finch/finch/blob/main/docs/CONFIGURATION.md" target="_blank" rel="noopener">
+      <span class="doc-name">Configuration</span>
+      <span class="doc-desc">~/.finch/config.toml reference — providers, LoRA, model settings</span>
+      <span class="doc-arrow">↗</span>
+    </a>
+
+    <a class="doc-link" href="https://github.com/darwin-finch/finch/blob/main/CHANGELOG.md" target="_blank" rel="noopener">
+      <span class="doc-name">Changelog</span>
+      <span class="doc-desc">Version history and release notes</span>
+      <span class="doc-arrow">↗</span>
+    </a>
+  </div>
+
+  <!-- ── Architecture ──────────────────────────────── -->
+  <div class="docs-group">
+    <h2 class="docs-group-title">// ARCHITECTURE</h2>
+
+    <a class="doc-link" href="https://github.com/darwin-finch/finch/blob/main/CLAUDE.md" target="_blank" rel="noopener">
+      <span class="doc-name">CLAUDE.md</span>
+      <span class="doc-desc">Complete system architecture — models, TUI, tools, LoRA, providers</span>
+      <span class="doc-arrow">↗</span>
+    </a>
+
+    <a class="doc-link" href="https://github.com/darwin-finch/finch/blob/main/docs/ARCHITECTURE.md" target="_blank" rel="noopener">
+      <span class="doc-name">Architecture</span>
+      <span class="doc-desc">System design overview and component diagram</span>
+      <span class="doc-arrow">↗</span>
+    </a>
+
+    <a class="doc-link" href="https://github.com/darwin-finch/finch/blob/main/docs/TUI_ARCHITECTURE.md" target="_blank" rel="noopener">
+      <span class="doc-name">TUI Architecture</span>
+      <span class="doc-desc">Terminal UI rendering — scrollback, shadow buffer, diff-based blitting</span>
+      <span class="doc-arrow">↗</span>
+    </a>
+
+    <a class="doc-link" href="https://github.com/darwin-finch/finch/blob/main/docs/DAEMON_MODE.md" target="_blank" rel="noopener">
+      <span class="doc-name">Daemon Mode</span>
+      <span class="doc-desc">HTTP server mode, OpenAI-compatible API, session management</span>
+      <span class="doc-arrow">↗</span>
+    </a>
+
+    <a class="doc-link" href="https://github.com/darwin-finch/finch/blob/main/docs/MODEL_BACKEND_STATUS.md" target="_blank" rel="noopener">
+      <span class="doc-name">Model Backends</span>
+      <span class="doc-desc">ONNX vs Candle comparison, supported model families</span>
+      <span class="doc-arrow">↗</span>
+    </a>
+  </div>
+
+  <!-- ── Features ──────────────────────────────────── -->
+  <div class="docs-group">
+    <h2 class="docs-group-title">// FEATURES</h2>
+
+    <a class="doc-link" href="https://github.com/darwin-finch/finch/blob/main/docs/TOOL_CONFIRMATION.md" target="_blank" rel="noopener">
+      <span class="doc-name">Tool System</span>
+      <span class="doc-desc">Agentic tools, permission system, approved patterns</span>
+      <span class="doc-arrow">↗</span>
+    </a>
+
+    <a class="doc-link" href="https://github.com/darwin-finch/finch/blob/main/docs/AUTOMATIC_TRAINING.md" target="_blank" rel="noopener">
+      <span class="doc-name">LoRA Training</span>
+      <span class="doc-desc">Weighted feedback collection and background fine-tuning</span>
+      <span class="doc-arrow">↗</span>
+    </a>
+
+    <a class="doc-link" href="https://github.com/darwin-finch/finch/blob/main/docs/MCP_ARCHITECTURE.md" target="_blank" rel="noopener">
+      <span class="doc-name">MCP</span>
+      <span class="doc-desc">Model Context Protocol support — connecting external tools</span>
+      <span class="doc-arrow">↗</span>
+    </a>
+
+    <a class="doc-link" href="https://github.com/darwin-finch/finch/blob/main/docs/MULTI_PROVIDER_CONFIG.md" target="_blank" rel="noopener">
+      <span class="doc-name">Multi-Provider</span>
+      <span class="doc-desc">Configuring Claude, GPT-4, Gemini, Grok, Mistral, Groq, and local</span>
+      <span class="doc-arrow">↗</span>
+    </a>
+  </div>
+
+  <!-- ── Development ───────────────────────────────── -->
+  <div class="docs-group">
+    <h2 class="docs-group-title">// DEVELOPMENT</h2>
+
+    <a class="doc-link" href="https://github.com/darwin-finch/finch/blob/main/docs/DEVELOPMENT.md" target="_blank" rel="noopener">
+      <span class="doc-name">Development Guide</span>
+      <span class="doc-desc">Building from source, running tests, contributing</span>
+      <span class="doc-arrow">↗</span>
+    </a>
+
+    <a class="doc-link" href="https://github.com/darwin-finch/finch/blob/main/docs/ROADMAP.md" target="_blank" rel="noopener">
+      <span class="doc-name">Roadmap</span>
+      <span class="doc-desc">Planned features, open issues, and future direction</span>
+      <span class="doc-arrow">↗</span>
+    </a>
+
+    <a class="doc-link" href="https://github.com/darwin-finch/finch/issues" target="_blank" rel="noopener">
+      <span class="doc-name">GitHub Issues</span>
+      <span class="doc-desc">Bug reports, feature requests, and open contributor tasks</span>
+      <span class="doc-arrow">↗</span>
+    </a>
+
+    <a class="doc-link" href="https://github.com/darwin-finch/finch/pulls" target="_blank" rel="noopener">
+      <span class="doc-name">Pull Requests</span>
+      <span class="doc-desc">Open and merged contributions</span>
+      <span class="doc-arrow">↗</span>
+    </a>
+  </div>
+
+</div>
+
+<footer id="footer">
+  <nav class="footer-links">
+    <a href="/">Home</a>
+    <a href="https://github.com/darwin-finch/finch">GitHub</a>
+    <a href="https://github.com/darwin-finch/finch/releases">Releases</a>
+    <a href="https://github.com/darwin-finch/finch/issues">Issues</a>
+    <a href="https://github.com/darwin-finch/finch/blob/main/CHANGELOG.md">Changelog</a>
+  </nav>
+  <p class="footer-copy">Runs locally. No cloud. No telemetry. Just code.</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

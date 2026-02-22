@@ -399,6 +399,121 @@ section {
   color: var(--green);
 }
 
+/* ── Open Agent Section ─────────────────────────────── */
+#open-agent {
+  border-top: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(0,255,65,0.02) 0%, transparent 100%);
+}
+
+.agent-headline {
+  margin-bottom: 2.5rem;
+}
+
+.agent-lede {
+  font-size: 1rem;
+  color: var(--text-dim);
+  line-height: 1.75;
+  margin-bottom: 1.25rem;
+  max-width: 620px;
+}
+
+.agent-lede strong { color: var(--green); }
+
+.provider-row {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.provider-row span {
+  border: 1px solid var(--border-mid);
+  padding: 0.2rem 0.65rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  color: var(--text-dim);
+  border-radius: var(--radius);
+}
+
+.agent-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.agent-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.agent-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--green), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.agent-card:hover {
+  border-color: var(--border-mid);
+  box-shadow: 0 0 20px rgba(0,255,65,0.06);
+}
+.agent-card:hover::after { opacity: 1; }
+
+.agent-wide {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.agent-icon {
+  font-size: 1.4rem;
+  color: var(--green);
+  text-shadow: 0 0 10px var(--green);
+  flex-shrink: 0;
+  margin-bottom: 0.75rem;
+}
+
+.agent-wide .agent-icon { margin-bottom: 0; margin-top: 0.1rem; }
+
+.agent-card h3 {
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  color: var(--green);
+  margin-bottom: 0.65rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.tag-macos {
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  border: 1px solid var(--border-mid);
+  padding: 0.1rem 0.4rem;
+  color: var(--text-muted);
+  border-radius: 2px;
+  font-weight: 400;
+}
+
+.agent-card p {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  line-height: 1.7;
+}
+
+@media (max-width: 680px) {
+  .agent-grid { grid-template-columns: 1fr; }
+  .agent-wide { flex-direction: column; }
+}
+
 /* ── Feature Cards ──────────────────────────────────── */
 #features { border-top: 1px solid var(--border); }
 

@@ -263,7 +263,7 @@ strong { color: var(--green); font-weight: 700; }
 
 #term-out .line { display: block; }
 #term-out .cmd      { color: var(--green); }
-#term-out .bird     { color: #cc8800; text-shadow: 0 0 6px rgba(200,130,0,0.4); }
+#term-out .bird     { color: #cc8800; text-shadow: 0 0 6px rgba(200,130,0,0.4); line-height: 1.1; }
 #term-out .response { color: #aaffcc; }
 #term-out .dim      { color: #444; }
 #term-out .muted    { color: #555; }
@@ -706,7 +706,7 @@ section {
   font-size: 0.82rem;
   color: #cc8800;
   text-shadow: 0 0 8px rgba(200,130,0,0.35);
-  line-height: 1.45;
+  line-height: 1.1;
   margin-bottom: 1.75rem;
   display: inline-block;
   text-align: left;

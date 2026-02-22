@@ -399,6 +399,75 @@ section {
   color: var(--green);
 }
 
+/* ── Use It Your Way ────────────────────────────────── */
+#usage { border-top: 1px solid var(--border); }
+
+.use-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.use-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+}
+
+.use-full { grid-column: 1 / -1; }
+
+.use-num {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--green);
+  opacity: 0.2;
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+.use-card h3 {
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  color: var(--green);
+  margin-bottom: 0.65rem;
+}
+
+.use-card p {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.use-code {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 0.9rem 1rem;
+  font-size: 0.74rem;
+  color: var(--green);
+  line-height: 1.55;
+  border-radius: var(--radius);
+  overflow-x: auto;
+  white-space: pre;
+}
+
+.uc-prompt { color: var(--green-dim); }
+.uc-dim    { color: var(--text-muted); }
+.uc-str    { color: #aaffcc; }
+.uc-cursor { animation: blink 1s step-end infinite; }
+
+.use-code-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 680px) {
+  .use-grid      { grid-template-columns: 1fr; }
+  .use-code-row  { grid-template-columns: 1fr; }
+}
+
 /* ── Open Agent Section ─────────────────────────────── */
 #open-agent {
   border-top: 1px solid var(--border);

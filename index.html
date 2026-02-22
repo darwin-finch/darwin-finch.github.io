@@ -30,6 +30,7 @@
   <button class="nav-toggle" onclick="toggleNav()" aria-label="Menu">☰</button>
   <div class="nav-links" id="nav-links">
     <a href="#open-agent">WHY&nbsp;FINCH</a>
+    <a href="#usage">USAGE</a>
     <a href="#features">FEATURES</a>
     <a href="#how-it-works">HOW&nbsp;IT&nbsp;WORKS</a>
     <a href="#install">INSTALL</a>
@@ -157,6 +158,76 @@
       <div class="agent-icon">▶</div>
       <h3>AUTONOMOUS MODE <span class="tag-macos">macOS</span></h3>
       <p>macOS Accessibility API + auto-accept edits = unsupervised agent mode. Finch can navigate apps, apply diffs, and execute multi-step workflows without a confirmation prompt at every step.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     USE IT YOUR WAY
+═══════════════════════════════════════════ -->
+<section id="usage">
+  <h2 class="sec-title">// USE IT YOUR WAY</h2>
+
+  <div class="use-grid">
+
+    <div class="use-card">
+      <div class="use-num">01</div>
+      <h3>INTERACTIVE REPL</h3>
+      <p>Full TUI with scrollback, streaming, plan mode, and agentic tool use. Ghost text autocomplete. Session history.</p>
+      <pre class="use-code"><span class="uc-prompt">$</span> finch
+
+      ▄▄▄▄▄▄
+    ▗▟█●██▙►  finch v0.5.2
+  ▐████████▌  Qwen-2.5-7B · ready
+  ▝▜██████▛▘  ~/repos/myproject
+     ╥  ╥
+    ╱    ╲
+
+<span class="uc-dim">&gt;</span> How do I use lifetimes in Rust?<span class="uc-cursor">▋</span></pre>
+    </div>
+
+    <div class="use-card">
+      <div class="use-num">02</div>
+      <h3>SINGLE QUERY + PIPE</h3>
+      <p>Scriptable one-shot queries. Pipe stdin directly into finch. Works great in shell scripts, CI, and editor integrations.</p>
+      <pre class="use-code"><span class="uc-prompt">$</span> finch query <span class="uc-str">"What is a Rust lifetime?"</span>
+
+<span class="uc-prompt">$</span> echo <span class="uc-str">"Explain this error"</span> | finch
+
+<span class="uc-prompt">$</span> cat error.log | finch <span class="uc-str">"what went wrong?"</span>
+
+<span class="uc-prompt">$</span> git diff | finch <span class="uc-str">"write a commit message"</span></pre>
+    </div>
+
+    <div class="use-card use-full">
+      <div class="use-num">03</div>
+      <h3>BACKGROUND DAEMON — LOCAL MODEL AS A SERVICE</h3>
+      <p>Finch spawns a background daemon automatically. It exposes an <strong>OpenAI-compatible API</strong> on port 11435 — so VS Code extensions, scripts, and any tool that speaks the OpenAI protocol can use your local model with zero cloud costs.</p>
+      <p>Enable <strong>mDNS/Bonjour</strong> advertising and every machine on your local network can discover and use the model running on your desktop — no manual IP configuration, no cloud, no API keys.</p>
+      <div class="use-code-row">
+        <pre class="use-code"><span class="uc-dim"># Start daemon with network sharing</span>
+<span class="uc-prompt">$</span> finch daemon --bind 0.0.0.0:11435 --mdns
+
+  Listening on  0.0.0.0:11435
+  mDNS name     finch.local
+  Model         Qwen-2.5-7B [ANE]
+  API           OpenAI-compatible
+
+<span class="uc-dim"># Other machines on LAN connect to:</span>
+<span class="uc-dim"># http://finch.local:11435</span></pre>
+        <pre class="use-code"><span class="uc-dim">// VS Code — Continue.dev config</span>
+{
+  <span class="uc-str">"models"</span>: [{
+    <span class="uc-str">"title"</span>: <span class="uc-str">"Finch (local)"</span>,
+    <span class="uc-str">"provider"</span>: <span class="uc-str">"openai"</span>,
+    <span class="uc-str">"model"</span>: <span class="uc-str">"local"</span>,
+    <span class="uc-str">"apiBase"</span>:
+      <span class="uc-str">"http://localhost:11435"</span>,
+    <span class="uc-str">"apiKey"</span>: <span class="uc-str">"none"</span>
+  }]
+}</pre>
+      </div>
     </div>
 
   </div>

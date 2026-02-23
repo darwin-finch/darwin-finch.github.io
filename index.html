@@ -134,7 +134,7 @@
       <div class="agent-icon">⬡</div>
       <div>
         <h3>FULL TOOL USE ON ANY LLM</h3>
-        <p>Read, Glob, Grep, Bash, WebFetch — the complete agentic tool loop works with every supported provider. Grok users, GPT-4 users, Mistral users all get the same multi-turn, permission-gated, streaming agent. Switch mid-session with <code>/teacher grok</code>.</p>
+        <p>Read, Glob, Grep, Bash, WebFetch — the complete agentic tool loop works with every supported provider. Grok users, GPT-4 users, Mistral users all get the same multi-turn, permission-gated, streaming agent. Switch mid-session with <code>/provider grok</code>.</p>
       </div>
     </div>
 
@@ -356,6 +356,8 @@
 ═══════════════════════════════════════════ -->
 <section id="models">
   <h2 class="sec-title">// SUPPORTED MODELS</h2>
+
+  <h3 class="subsec-title">Local (ONNX Runtime — runs on your hardware)</h3>
   <div class="table-wrap">
     <table class="model-table">
       <thead>
@@ -375,38 +377,91 @@
         </tr>
         <tr>
           <td>Llama 3</td>
-          <td>3B · 8B · 70B</td>
+          <td>1B · 3B · 8B</td>
           <td>ONNX</td>
           <td class="bar">Meta · general purpose</td>
         </tr>
         <tr>
-          <td>Gemma 2</td>
-          <td>2B · 9B · 27B</td>
+          <td>Gemma 2/3</td>
+          <td>1B · 2B · 9B</td>
           <td>ONNX</td>
           <td class="bar">Google · strong reasoning</td>
         </tr>
         <tr>
           <td>Mistral</td>
-          <td>7B · 22B</td>
+          <td>7B</td>
           <td>ONNX</td>
-          <td class="bar">Mistral AI · efficient</td>
+          <td class="bar">Mistral AI · efficient · models via microsoft/</td>
         </tr>
         <tr>
-          <td>Phi</td>
-          <td>2B · 3.8B · 14B</td>
+          <td>Phi-3/4</td>
+          <td>3.8B · 14B</td>
           <td>ONNX</td>
           <td class="bar">Microsoft · small + capable</td>
         </tr>
         <tr>
           <td>DeepSeek Coder</td>
-          <td>1.3B · 6.7B · 16B · 33B</td>
+          <td>1.3B · 6.7B</td>
           <td>ONNX</td>
-          <td class="bar">Optimised for code</td>
+          <td class="bar">Optimised for code generation</td>
         </tr>
       </tbody>
     </table>
   </div>
   <p class="table-note">CoreML execution provider on Apple Silicon (M1–M4) · CUDA/ROCm/CPU on Linux via ONNX Runtime · Qwen auto-selected by RAM by default</p>
+
+  <h3 class="subsec-title">Cloud providers (bring your own API key)</h3>
+  <div class="table-wrap">
+    <table class="model-table">
+      <thead>
+        <tr>
+          <th>PROVIDER</th>
+          <th>COST TIER</th>
+          <th>BEST FOR</th>
+          <th>NOTES</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Grok (xAI)</td>
+          <td class="bar-free">Free with X Premium+</td>
+          <td>Daily use · coding · tool calls</td>
+          <td class="bar">Only frontier model free via consumer sub · <a href="https://console.x.ai" target="_blank" rel="noopener">console.x.ai</a></td>
+        </tr>
+        <tr>
+          <td>Groq</td>
+          <td class="bar-cheap">$</td>
+          <td>Speed · batch processing</td>
+          <td class="bar">Fastest inference of any provider · runs open models on custom hardware</td>
+        </tr>
+        <tr>
+          <td>Gemini (Google)</td>
+          <td class="bar-cheap">$ (Flash) · $$ (Pro)</td>
+          <td>Long context · multimodal</td>
+          <td class="bar">Gemini Flash is extremely cost-effective · 1M token context window</td>
+        </tr>
+        <tr>
+          <td>Mistral</td>
+          <td class="bar-cheap">$–$$</td>
+          <td>European data residency · open weights</td>
+          <td class="bar">Mistral Large for serious work · Codestral for code</td>
+        </tr>
+        <tr>
+          <td>Claude (Anthropic)</td>
+          <td class="bar-mid">$$–$$$</td>
+          <td>Complex reasoning · long tasks · plan mode</td>
+          <td class="bar">Haiku is budget · Sonnet is the sweet spot · best tool use quality</td>
+        </tr>
+        <tr>
+          <td>GPT-4o (OpenAI)</td>
+          <td class="bar-mid">$$–$$$</td>
+          <td>General purpose · ecosystem</td>
+          <td class="bar">GPT-4o mini for budget · full GPT-4o for quality</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="table-note">Switch any time with <code>/provider grok</code>, <code>/provider claude</code>, etc. · Conversation history preserved across switches · All providers support full tool use</p>
 </section>
 
 <!-- ═══════════════════════════════════════════
@@ -439,7 +494,7 @@
     </li>
     <li>
       <span class="step-n">03</span>
-      <div>Run <code>finch setup</code> to configure an optional teacher API key (Claude, GPT-4, etc.)</div>
+      <div>Run <code>finch setup</code> to configure an optional provider API key (Claude, GPT-4, Grok, etc.)</div>
     </li>
     <li>
       <span class="step-n">04</span>

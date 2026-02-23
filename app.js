@@ -64,7 +64,7 @@ const DEMO = [
   { type: 'nl',                                                                              delay: 150 },
   { type: 'raw',    text: '      \u2584\u2584\u2584\u2584\u2584\u2584',     cls: 'bird',     delay: 80 },
   { type: 'raw',    text: '    \u2597\u259f\u2588\u25cf\u2588\u2588\u2599\u25ba  finch v0.5.2', cls: 'bird', delay: 40 },
-  { type: 'raw',    text: '  \u2590\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258c  Qwen-2.5-7B \u00b7 Metal \u00b7 ready', cls: 'bird', delay: 40 },
+  { type: 'raw',    text: '  \u2590\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258c  Qwen-2.5-7B \u00b7 CoreML \u00b7 ready', cls: 'bird', delay: 40 },
   { type: 'raw',    text: '  \u259d\u259c\u2588\u2588\u2588\u2588\u2588\u2588\u259b\u2598  ~/repos/myproject',                    cls: 'bird', delay: 40 },
   { type: 'raw',    text: '     \u2565  \u2565',                            cls: 'bird',     delay: 40 },
   { type: 'raw',    text: '    \u2572    \u2571',                           cls: 'bird',     delay: 200 },

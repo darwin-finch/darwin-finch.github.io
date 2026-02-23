@@ -147,7 +147,7 @@
     <div class="agent-card">
       <div class="agent-icon">◫</div>
       <h3>MEMTREE MEMORY</h3>
-      <p>Persistent hierarchical memory tree, not RAG. Structured context accumulates across sessions and is injected into every conversation. No embedding models. No vector databases. No chunking artefacts.</p>
+      <p>Hierarchical memory tree, not RAG. Related conversations cluster semantically; parent nodes aggregate their children for efficient retrieval. The data structure and REPL wiring are in place — SQLite persistence and the TUI tree view are next on the roadmap.</p>
     </div>
 
     <div class="agent-card">
@@ -158,8 +158,8 @@
 
     <div class="agent-card">
       <div class="agent-icon">▶</div>
-      <h3>AUTONOMOUS MODE <span class="tag-macos">macOS</span></h3>
-      <p>macOS Accessibility API + auto-accept edits = unsupervised agent mode. Finch can navigate apps, apply diffs, and execute multi-step workflows without a confirmation prompt at every step.</p>
+      <h3>AUTONOMOUS MODE</h3>
+      <p>Run headlessly on a task backlog — a named agent identity commits its own work, logs everything to JSONL, and can reflect on completed work to update its own system prompt. Data structures and CLI command are in place; end-to-end testing in progress.</p>
     </div>
 
   </div>
@@ -213,7 +213,7 @@
 
   Listening on  0.0.0.0:11435
   mDNS name     finch.local
-  Model         Qwen-2.5-7B [ANE]
+  Model         Qwen-2.5-7B [CoreML]
   API           OpenAI-compatible
 
 <span class="uc-dim"># Other machines on LAN connect to:</span>
@@ -250,8 +250,8 @@
 
     <div class="card">
       <div class="card-glyph">◈</div>
-      <h3>ANE ACCELERATION</h3>
-      <p>Apple Neural Engine via CoreML on Apple Silicon (M1–M4). Linux supports CUDA, ROCm, CPU via ONNX, or the Candle backend. ONNX is primary; Candle + Metal on macOS is unreliable so ONNX + CoreML is used there instead.</p>
+      <h3>NATIVE ACCELERATION</h3>
+      <p>ONNX Runtime's CoreML execution provider on Apple Silicon (M1–M4) — dispatches ops to ANE or GPU where CoreML's op set allows. Linux uses CUDA, ROCm, or CPU. Candle (Metal/CPU) is available as an alternative backend on Linux; Metal is not viable on macOS for current model families.</p>
     </div>
 
     <div class="card">
@@ -309,7 +309,7 @@
         │ TEACHER API   │  │   LOCAL MODEL (ONNX)          │
         │ Claude/GPT-4  │  │  Qwen · Llama · Gemma · Phi   │
         │ Gemini/Grok   │  │  Mistral · DeepSeek           │
-        │ (while loading│  │  ANE via CoreML · &lt;100ms      │
+        │ (while loading│  │  CoreML EP / CUDA / CPU        │
         │  first time)  │  └────────────┬─────────────────┘
         └──────────────┘               │
                                         ▼
@@ -331,7 +331,7 @@
       <span class="step-n">02</span>
       <div>
         <h3>QUERY LOCALLY</h3>
-        <p>Queries run on your local ONNX model. Apple Silicon uses the ANE via CoreML automatically. Linux supports CUDA and other ONNX Runtime execution providers. No internet required after the model is cached.</p>
+        <p>Queries run on your local ONNX model. On Apple Silicon, ONNX Runtime's CoreML execution provider dispatches ops to ANE or GPU where supported. Linux supports CUDA and other ONNX Runtime execution providers. No internet required after the model is cached.</p>
       </div>
     </div>
     <div class="step">
@@ -406,7 +406,7 @@
       </tbody>
     </table>
   </div>
-  <p class="table-note">ANE via CoreML on Apple Silicon (M1–M4) · CUDA/ROCm/CPU on Linux via ONNX Runtime execution providers · Qwen auto-selected by RAM by default</p>
+  <p class="table-note">CoreML execution provider on Apple Silicon (M1–M4) · CUDA/ROCm/CPU on Linux via ONNX Runtime · Qwen auto-selected by RAM by default</p>
 </section>
 
 <!-- ═══════════════════════════════════════════

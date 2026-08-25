@@ -7,7 +7,7 @@
   <meta name="description" content="Documentation for Finch, the local-first AI coding assistant.">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&amp;display=swap">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -58,6 +58,35 @@
     <a class="doc-link" href="https://github.com/darwin-finch/finch/blob/main/CHANGELOG.md" target="_blank" rel="noopener">
       <span class="doc-name">Changelog</span>
       <span class="doc-desc">Version history and release notes</span>
+      <span class="doc-arrow">↗</span>
+    </a>
+  </div>
+
+  <!-- ── Program Runtime ───────────────────────────── -->
+  <div class="docs-group">
+    <h2 class="docs-group-title">// PROGRAM RUNTIME</h2>
+
+    <a class="doc-link" href="https://github.com/darwin-finch/finch/blob/main/vocabulary/language/FINCH_VM.md" target="_blank" rel="noopener">
+      <span class="doc-name">Finch VM Contract</span>
+      <span class="doc-desc">Shared typed runtime, effects, capabilities, and provider wire contract</span>
+      <span class="doc-arrow">↗</span>
+    </a>
+
+    <a class="doc-link" href="https://github.com/darwin-finch/finch/blob/main/vocabulary/language/FINCH_FORTH.md" target="_blank" rel="noopener">
+      <span class="doc-name">Co-Forth</span>
+      <span class="doc-desc">Canonical concatenative syntax, definitions, stack effects, and examples</span>
+      <span class="doc-arrow">↗</span>
+    </a>
+
+    <a class="doc-link" href="https://github.com/darwin-finch/finch/blob/main/vocabulary/language/FINCH_LISP.md" target="_blank" rel="noopener">
+      <span class="doc-name">Finch Lisp</span>
+      <span class="doc-desc">Readable prefix syntax that lowers to the same typed IR as Co-Forth</span>
+      <span class="doc-arrow">↗</span>
+    </a>
+
+    <a class="doc-link" href="https://github.com/darwin-finch/finch/blob/main/docs/SHARED_PROGRAM_RUNTIME_PLAN.md" target="_blank" rel="noopener">
+      <span class="doc-name">Shared Program Runtime</span>
+      <span class="doc-desc">Architecture, durable vocabulary, and remaining runtime roadmap</span>
       <span class="doc-arrow">↗</span>
     </a>
   </div>
@@ -165,7 +194,7 @@
     <a href="https://github.com/darwin-finch/finch/issues">Issues</a>
     <a href="https://github.com/darwin-finch/finch/blob/main/CHANGELOG.md">Changelog</a>
   </nav>
-  <p class="footer-copy">Runs locally. No cloud. No telemetry. Just code.</p>
+  <p class="footer-copy">Local-first. No telemetry. Your model, your choice.</p>
 </footer>
 
 <script src="app.js"></script>

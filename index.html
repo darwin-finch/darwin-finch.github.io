@@ -4,17 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Finch — Local AI Coding Assistant</title>
-  <meta name="description" content="Open-source AI coding assistant that runs entirely on your machine. Offline. Private. 6 model families. Apple Neural Engine acceleration. Built in Rust.">
+  <meta name="description" content="Local-first AI coding assistant with persistent MemTree memory, a shared typed Lisp/Co-Forth runtime, agentic tools, and optional offline models. Built in Rust.">
   <meta property="og:title" content="Finch — Local AI Coding Assistant">
-  <meta property="og:description" content="Offline. Private. 6 model families. ANE acceleration on Apple Silicon. Built in Rust.">
+  <meta property="og:description" content="Persistent memory, verified Lisp/Co-Forth programs, agentic tools, and optional offline models. Built in Rust.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://darwin-finch.github.io">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Finch — Local AI Coding Assistant">
-  <meta name="twitter:description" content="Offline. Private. 6 model families. ANE acceleration on Apple Silicon. Built in Rust.">
+  <meta name="twitter:description" content="Persistent memory, verified Lisp/Co-Forth programs, agentic tools, and optional offline models. Built in Rust.">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&amp;display=swap">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -53,14 +53,15 @@
 ██║     ██║██║ ╚████║╚██████╗██║  ██║
 ╚═╝     ╚═╝╚═╝  ╚═══╝ ╚═════╝╚═╝  ╚═╝</pre>
 
-    <p class="hero-sub">AI coding assistant · runs on your machine · works offline · learns your style</p>
+    <p class="hero-sub">AI coding assistant · Co-Forth vocabulary · MemTree memory · runs locally</p>
 
     <div class="badges">
       <span>WRITTEN IN RUST</span>
       <span>SINGLE BINARY</span>
+      <span>TYPED CO-FORTH</span>
+      <span>MEMTREE MEMORY</span>
       <span>WORKS OFFLINE</span>
       <span>PRIVATE BY DEFAULT</span>
-      <span>OPEN SOURCE</span>
     </div>
 
     <!-- Animated terminal -->
@@ -106,11 +107,53 @@
       <ul class="pitch-list good">
         <li>Fully offline after first model download</li>
         <li>Zero marginal cost per query</li>
-        <li>Code stays on your machine</li>
-        <li>6 model families, pick what fits your hardware</li>
-        <li>Useful from day one (pre-trained models)</li>
+        <li>Local models keep code on your machine</li>
+        <li>Build reusable typed Lisp/Co-Forth vocabulary</li>
+        <li>Recall past context with MemTree semantic search</li>
       </ul>
     </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     VERIFIED PROGRAMS
+═══════════════════════════════════════════ -->
+<section id="co-forth">
+  <h2 class="sec-title">// PROGRAMS, NOT PROMISES</h2>
+
+  <div class="agent-headline">
+    <p class="agent-lede">Finch and its models share an executable vocabulary.<br>
+    Responses can be <strong>typed, verified programs</strong> instead of prose that merely describes an action.</p>
+  </div>
+
+  <div class="agent-grid">
+
+    <div class="agent-card agent-wide">
+      <div class="agent-icon">◉</div>
+      <div>
+        <h3>ONE SHARED PROGRAM RUNTIME</h3>
+        <p>Readable Lisp and concatenative Co-Forth lower into the same typed IR, verifier, and runtime. Finch checks stack shapes, types, and declared effects before execution, then records program output and diagnostics in the conversation.</p>
+      </div>
+    </div>
+
+    <div class="agent-card">
+      <div class="agent-icon">▤</div>
+      <h3>VOCABULARY THAT PERSISTS</h3>
+      <p>Define and inspect typed words, then reuse them in later programs. Named Brains can preserve committed definitions and restore reducible VM checkpoints across daemon restarts.</p>
+    </div>
+
+    <div class="agent-card">
+      <div class="agent-icon">◈</div>
+      <h3>CAPABILITIES, NOT AMBIENT ACCESS</h3>
+      <p>File, process, network, MCP, and agent operations cross explicit typed host boundaries. The runtime infers capability requirements and preserves approval and effect identity through suspend and resume.</p>
+    </div>
+
+    <div class="agent-card">
+      <div class="agent-icon">⬡</div>
+      <h3>MODEL-FACING DISCOVERY</h3>
+      <p>Models can search the compact vocabulary and inspect exact signatures, documentation, effects, and source before composing a program. A bounded repair turn can correct rejected source without hiding the original diagnostic.</p>
+    </div>
+
   </div>
 </section>
 
@@ -122,7 +165,7 @@
 
   <div class="agent-headline">
     <p class="agent-lede">Claude Code is great — if you're on Claude.<br>
-    Finch brings the same agentic experience to <strong>any</strong> provider.</p>
+    Finch gives configured cloud and local models one <strong>consistent terminal workflow</strong>.</p>
     <div class="provider-row">
       <span>Grok</span><span>GPT-4o</span><span>Gemini</span><span>Mistral</span><span>Groq</span><span>Claude</span><span>Local&nbsp;ONNX</span>
     </div>
@@ -133,8 +176,8 @@
     <div class="agent-card agent-wide">
       <div class="agent-icon">⬡</div>
       <div>
-        <h3>FULL TOOL USE ON ANY LLM</h3>
-        <p>Read, Glob, Grep, Bash, WebFetch — the complete agentic tool loop works with every supported provider. Grok users, GPT-4 users, Mistral users all get the same multi-turn, permission-gated, streaming agent. Switch mid-session with <code>/provider grok</code>.</p>
+        <h3>COMMON CONVERSATION INTERFACE</h3>
+        <p>Configured provider profiles use the same multi-turn conversation interface. Streaming and tool support vary by provider, model, and adapter, and cross-provider conformance coverage is still expanding. Switch profiles with <code>/model &lt;name&gt;</code>.</p>
       </div>
     </div>
 
@@ -147,13 +190,13 @@
     <div class="agent-card">
       <div class="agent-icon">◫</div>
       <h3>MEMTREE MEMORY</h3>
-      <p>Hierarchical memory tree, not RAG. Related conversations cluster semantically; parent nodes aggregate their children for efficient retrieval. The data structure and REPL wiring are in place — SQLite persistence and the TUI tree view are next on the roadmap.</p>
+      <p>Persistent hierarchical memory with local neural semantic search. A compact embedding model finds relevant past context even when the wording changes, and stable recall provenance shows where remembered context came from.</p>
     </div>
 
     <div class="agent-card">
       <div class="agent-icon">⬡</div>
-      <h3>MCP PLUGINS</h3>
-      <p>Extend with any Model Context Protocol server — the same ecosystem as Claude Desktop and VS Code. Connect databases, IDEs, APIs, or custom internal tools with a single config entry.</p>
+      <h3>MCP TOOLS</h3>
+      <p>Finch is an MCP client: configure stdio servers for databases, APIs, or internal tools. Discovered operations become typed, namespaced vocabulary with schema validation and capability checks.</p>
     </div>
 
     <div class="agent-card">
@@ -180,7 +223,7 @@
       <pre class="use-code"><span class="uc-prompt">$</span> finch
 
       ▄▄▄▄▄▄
-    ▗▟█●██▙►  finch v0.7.4
+    ▗▟█●██▙►  finch v0.7.30
   ▐████████▌  Qwen-2.5-7B · ready
   ▝▜██████▛▘  ~/repos/myproject
      ╥  ╥
@@ -205,8 +248,8 @@
     <div class="use-card use-full">
       <div class="use-num">03</div>
       <h3>BACKGROUND DAEMON — LOCAL MODEL AS A SERVICE</h3>
-      <p>Finch spawns a background daemon automatically. It exposes an <strong>OpenAI-compatible API</strong> on port 11435 — so VS Code extensions, scripts, and any tool that speaks the OpenAI protocol can use your local model with zero cloud costs.</p>
-      <p>Enable <strong>mDNS/Bonjour</strong> advertising and every machine on your local network can discover and use the model running on your desktop — no manual IP configuration, no cloud, no API keys.</p>
+      <p>Finch spawns a background daemon automatically. It exposes an <strong>OpenAI-compatible API</strong> on port 11435, so compatible VS Code extensions and scripts can use a local model without cloud inference costs.</p>
+      <p>Enable <strong>mDNS/Bonjour</strong> advertising so machines on your local network can discover the model running on your desktop without a cloud relay or manual IP configuration.</p>
       <div class="use-code-row">
         <pre class="use-code"><span class="uc-dim"># Start daemon with network sharing</span>
 <span class="uc-prompt">$</span> finch daemon --bind 0.0.0.0:11435 --mdns
@@ -245,7 +288,7 @@
     <div class="card">
       <div class="card-glyph">▣</div>
       <h3>WORKS OFFLINE</h3>
-      <p>6 model families via ONNX Runtime — Qwen, Llama, Gemma, Mistral, Phi, DeepSeek. Candle backend available on Linux. Zero latency. No subscriptions or rate limits.</p>
+      <p>6 model families via ONNX Runtime — Qwen, Llama, Gemma, Mistral, Phi, DeepSeek. Candle backend available on Linux. No network round trip, subscriptions, or provider rate limits.</p>
     </div>
 
     <div class="card">
@@ -257,7 +300,7 @@
     <div class="card">
       <div class="card-glyph">◉</div>
       <h3>PRIVACY FIRST</h3>
-      <p>Your code never leaves your machine. No telemetry. Everything runs locally — your proprietary code stays yours.</p>
+      <p>No telemetry or cloud sync. Use a local model to keep code on your machine, or explicitly configure a cloud provider when you want one.</p>
     </div>
 
     <div class="card">
@@ -269,7 +312,7 @@
     <div class="card">
       <div class="card-glyph">◆</div>
       <h3>AGENTIC TOOLS</h3>
-      <p>Read, Glob, Grep, Bash, WebFetch. Full multi-turn agentic loop with permission system. Like Claude Code, but entirely local.</p>
+      <p>Read, Glob, Grep, Bash, WebFetch. A multi-turn agentic loop with permission checks; use local or explicitly configured cloud models.</p>
     </div>
 
     <div class="card">
@@ -281,7 +324,7 @@
     <div class="card">
       <div class="card-glyph">⬡</div>
       <h3>ITERATIVE PLANNING</h3>
-      <p><code>/plan &lt;task&gt;</code> runs an adversarial multi-persona critique loop. Seven roles review each draft; must-address issues block convergence. Swap providers freely — the alignment system normalises JSON output across all six.</p>
+      <p><code>/plan &lt;task&gt;</code> runs an adversarial multi-persona critique loop. Seven roles review each draft; must-address issues block convergence. Compatible configured profiles can participate through normalised structured critique output.</p>
     </div>
 
   </div>
@@ -432,7 +475,7 @@
           <td>Groq</td>
           <td class="bar-cheap">$</td>
           <td>Speed · batch processing</td>
-          <td class="bar">Fastest inference of any provider · runs open models on custom hardware</td>
+          <td class="bar">Low-latency inference · runs open models on custom hardware</td>
         </tr>
         <tr>
           <td>Gemini (Google)</td>
@@ -461,7 +504,7 @@
       </tbody>
     </table>
   </div>
-  <p class="table-note">Switch any time with <code>/provider grok</code>, <code>/provider claude</code>, etc. · Conversation history preserved across switches · All providers support full tool use</p>
+  <p class="table-note">Switch between configured profiles with <code>/model &lt;name&gt;</code> (<code>/provider</code> remains a compatibility alias) · Conversation history is preserved · Streaming and tool support vary by provider and model · Conformance coverage is ongoing</p>
 </section>
 
 <!-- ═══════════════════════════════════════════
@@ -473,12 +516,12 @@
   <div class="install-box">
     <div class="install-cmd">
       <span class="prompt">$</span>
-      <code id="install-text">curl -sSL https://raw.githubusercontent.com/darwin-finch/finch/main/install.sh | sh</code>
+      <code id="install-text">curl -fsSL https://raw.githubusercontent.com/darwin-finch/finch/main/scripts/install.sh | bash</code>
       <button class="copy-btn" id="copy-btn" onclick="copyInstall()">COPY</button>
     </div>
     <p class="install-meta">
       macOS Apple Silicon · Linux x86_64 · PolyForm Noncommercial ·
-      <a href="https://github.com/darwin-finch/finch/blob/main/install.sh" target="_blank" rel="noopener">view script ↗</a>
+      <a href="https://github.com/darwin-finch/finch/blob/main/scripts/install.sh" target="_blank" rel="noopener">view script ↗</a>
     </p>
     <p class="install-note">One self-contained binary — no Node, no Python, no Docker, no runtime dependencies.</p>
   </div>
@@ -547,7 +590,7 @@
 ═══════════════════════════════════════════ -->
 <section id="sponsor">
   <h2 class="sec-title">// SUPPORT THE PROJECT</h2>
-  <p class="sponsor-lede">Finch is free and open-source. Sponsorships help cover API costs and fund the big open milestones.</p>
+  <p class="sponsor-lede">Finch is source-available and free for noncommercial use. Sponsorships help cover API costs and fund the big open milestones.</p>
 
   <div class="sponsor-tiers">
 
@@ -615,7 +658,7 @@
       <a href="https://github.com/darwin-finch/finch/issues" target="_blank" rel="noopener">open an issue</a> or reach out via GitHub
     </span>
   </div>
-  <p class="footer-copy">Runs locally. No cloud. No telemetry. Just code.</p>
+  <p class="footer-copy">Local-first. No telemetry. Your model, your choice.</p>
 </footer>
 
 <script src="app.js"></script>

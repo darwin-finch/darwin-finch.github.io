@@ -53,12 +53,12 @@
 ██║     ██║██║ ╚████║╚██████╗██║  ██║
 ╚═╝     ╚═╝╚═╝  ╚═══╝ ╚═════╝╚═╝  ╚═╝</pre>
 
-    <p class="hero-sub">AI coding assistant · Co-Forth vocabulary · MemTree memory · runs locally</p>
+    <p class="hero-sub">AI coding assistant · Co-Lisp + Co-Forth vocabulary · MemTree memory · runs locally</p>
 
     <div class="badges">
       <span>WRITTEN IN RUST</span>
       <span>SINGLE BINARY</span>
-      <span>TYPED CO-FORTH</span>
+      <span>CO-LISP + CO-FORTH</span>
       <span>MEMTREE MEMORY</span>
       <span>WORKS OFFLINE</span>
       <span>PRIVATE BY DEFAULT</span>
@@ -108,7 +108,7 @@
         <li>Fully offline after first model download</li>
         <li>Zero marginal cost per query</li>
         <li>Local models keep code on your machine</li>
-        <li>Build reusable typed Lisp/Co-Forth vocabulary</li>
+        <li>Build reusable typed Co-Lisp/Co-Forth vocabulary</li>
         <li>Recall past context with MemTree semantic search</li>
       </ul>
     </div>
@@ -123,7 +123,7 @@
 
   <div class="agent-headline">
     <p class="agent-lede">Finch and its models share an executable vocabulary.<br>
-    Responses can be <strong>typed, verified programs</strong> instead of prose that merely describes an action.</p>
+    Co-Lisp and Co-Forth turn an agent's intent into <strong>typed, verified programs</strong> instead of prose that merely describes an action.</p>
   </div>
 
   <div class="agent-grid">
@@ -132,7 +132,15 @@
       <div class="agent-icon">◉</div>
       <div>
         <h3>ONE SHARED PROGRAM RUNTIME</h3>
-        <p>Readable Lisp and concatenative Co-Forth lower into the same typed IR, verifier, and runtime. Finch checks stack shapes, types, and declared effects before execution, then records program output and diagnostics in the conversation.</p>
+        <p>Readable Co-Lisp and compact, concatenative Co-Forth lower into the same typed IR, verifier, and runtime. Finch checks stack shapes, types, and declared effects before execution, then records program output and diagnostics in the conversation.</p>
+      </div>
+    </div>
+
+    <div class="agent-card agent-wide">
+      <div class="agent-icon">◆</div>
+      <div>
+        <h3>WHY THIS HELPS AGENTS</h3>
+        <p>Exact signatures and a searchable vocabulary give a model concrete operations to compose. Invalid programs fail before host effects run, with structured compiler diagnostics the same model can use for one bounded repair. That makes mistakes visible and reviewable without pretending every provider is equally conformant.</p>
       </div>
     </div>
 
@@ -167,7 +175,7 @@
     <p class="agent-lede">Claude Code is great — if you're on Claude.<br>
     Finch gives configured cloud and local models one <strong>consistent terminal workflow</strong>.</p>
     <div class="provider-row">
-      <span>Grok</span><span>GPT-4o</span><span>Gemini</span><span>Mistral</span><span>Groq</span><span>Claude</span><span>Local&nbsp;ONNX</span>
+      <span>Grok</span><span>OpenAI&nbsp;API</span><span>Gemini</span><span>Mistral</span><span>Groq</span><span>Claude</span><span>Local&nbsp;ONNX</span>
     </div>
   </div>
 
@@ -496,15 +504,15 @@
           <td class="bar">Haiku is budget · Sonnet is the sweet spot · best tool use quality</td>
         </tr>
         <tr>
-          <td>GPT-4o (OpenAI)</td>
-          <td class="bar-mid">$$–$$$</td>
-          <td>General purpose · ecosystem</td>
-          <td class="bar">GPT-4o mini for budget · full GPT-4o for quality</td>
+          <td>OpenAI API</td>
+          <td class="bar-mid">Varies by model</td>
+          <td>Configurable model ID · reasoning profiles</td>
+          <td class="bar">Set an explicit model ID supported by OpenAI Chat Completions and your Platform account · <code>gpt-4o</code> is only the fallback for older configs</td>
         </tr>
       </tbody>
     </table>
   </div>
-  <p class="table-note">Switch between configured profiles with <code>/model &lt;name&gt;</code> (<code>/provider</code> remains a compatibility alias) · Conversation history is preserved · Streaming and tool support vary by provider and model · Conformance coverage is ongoing</p>
+  <p class="table-note">Switch between configured profiles with <code>/model &lt;name&gt;</code> (<code>/provider</code> remains a compatibility alias) · Conversation history is preserved · Streaming and tool support vary by provider and model · Conformance coverage is ongoing · OpenAI Platform API keys are supported; ChatGPT subscription login is not yet shipped</p>
 </section>
 
 <!-- ═══════════════════════════════════════════

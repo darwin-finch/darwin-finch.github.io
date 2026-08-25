@@ -53,14 +53,15 @@
 ██║     ██║██║ ╚████║╚██████╗██║  ██║
 ╚═╝     ╚═╝╚═╝  ╚═══╝ ╚═════╝╚═╝  ╚═╝</pre>
 
-    <p class="hero-sub">AI coding assistant · runs on your machine · works offline · learns your style</p>
+    <p class="hero-sub">AI coding assistant · Co-Forth vocabulary · MemTree memory · runs locally · learns your patterns</p>
 
     <div class="badges">
       <span>WRITTEN IN RUST</span>
       <span>SINGLE BINARY</span>
+      <span>CO-FORTH VOCABULARY</span>
+      <span>MEMTREE MEMORY</span>
       <span>WORKS OFFLINE</span>
       <span>PRIVATE BY DEFAULT</span>
-      <span>OPEN SOURCE</span>
     </div>
 
     <!-- Animated terminal -->
@@ -107,10 +108,52 @@
         <li>Fully offline after first model download</li>
         <li>Zero marginal cost per query</li>
         <li>Code stays on your machine</li>
-        <li>6 model families, pick what fits your hardware</li>
-        <li>Useful from day one (pre-trained models)</li>
+        <li>Co-Forth vocabulary building for complex tasks</li>
+        <li>MemTree persistent memory with neural search</li>
       </ul>
     </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CO-FORTH VOCABULARY
+═══════════════════════════════════════════ -->
+<section id="co-forth">
+  <h2 class="sec-title">// CO-FORTH VOCABULARY</h2>
+
+  <div class="agent-headline">
+    <p class="agent-lede">Build complex tasks incrementally with <strong>Co-Forth</strong> — a shared vocabulary between you and the AI.<br>
+    Push observations, constraints, and sub-questions onto a stack, then execute the full program.</p>
+  </div>
+
+  <div class="agent-grid">
+
+    <div class="agent-card agent-wide">
+      <div class="agent-icon">◉</div>
+      <div>
+        <h3>COLLABORATIVE VOCABULARY BUILDING</h3>
+        <p>Both you and the AI can push items onto a shared stack. Each push is immediately visible in the TUI. When the vocabulary feels complete, either party can execute with <code>/run</code> or the AI calls <code>Run()</code>. The program executes nodes in order, with full tool access where specified.</p>
+      </div>
+    </div>
+
+    <div class="agent-card">
+      <div class="agent-icon">▤</div>
+      <h3>STACK-BASED EXECUTION</h3>
+      <p>Push tasks, constraints, questions, observations. Each node can optionally specify tools it needs (Bash, Read, Glob). The stack executes top-to-bottom, accumulating context and results.</p>
+    </div>
+
+    <div class="agent-card">
+      <div class="agent-icon">◈</div>
+      <h3>ITERATIVE REFINEMENT</h3>
+      <p>Add more context mid-conversation. Push new constraints or observations. Clear the stack and start fresh if the direction changes. The vocabulary evolves as you work together.</p>
+    </div>
+
+    <div class="agent-card">
+      <div class="agent-icon">⬡</div>
+      <h3>TOOL INTEGRATION</h3>
+      <p>Stack nodes can specify which tools they need. When executed, they have access to Read, Bash, WebFetch, or any other tool in the system. Full agentic capabilities within the vocabulary framework.</p>
+    </div>
+
   </div>
 </section>
 

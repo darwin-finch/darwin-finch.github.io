@@ -33,6 +33,7 @@
     <a href="#usage">USAGE</a>
     <a href="#features">FEATURES</a>
     <a href="#how-it-works">HOW&nbsp;IT&nbsp;WORKS</a>
+    <a href="#setup">SETUP</a>
     <a href="#install">INSTALL</a>
     <a href="docs.html">DOCS</a>
     <a href="#sponsor">SPONSOR</a>
@@ -516,6 +517,46 @@
 </section>
 
 <!-- ═══════════════════════════════════════════
+     SETUP WIZARD
+═══════════════════════════════════════════ -->
+<section id="setup">
+  <h2 class="sec-title">// CONFIGURE WITH <code>finch setup</code></h2>
+
+  <div class="agent-headline">
+    <p class="agent-lede">When Finch needs configuration and cannot detect provider credentials, it opens the terminal setup wizard automatically.<br>
+    Run <code>finch setup</code> later—or <code>/setup</code> inside the REPL—to review and change the saved configuration.</p>
+  </div>
+
+  <div class="agent-grid">
+    <div class="agent-card">
+      <div class="agent-icon">01</div>
+      <h3>LOOK &amp; FEEL</h3>
+      <p>Choose the terminal theme and preview Finch's presentation before saving.</p>
+    </div>
+
+    <div class="agent-card">
+      <div class="agent-icon">02</div>
+      <h3>MODEL SETUP</h3>
+      <p>Configure a primary profile plus optional tool profiles across cloud APIs, discovered remote Finch daemons, and local inference. Enter an explicit model ID or refresh a provider's authenticated catalogue where supported; existing Ollama profiles are preserved when setup is reopened.</p>
+    </div>
+
+    <div class="agent-card">
+      <div class="agent-icon">03</div>
+      <h3>STYLE &amp; SETTINGS</h3>
+      <p>Select a persona and review tool approval, streaming, local-model, daemon, discovery, API-access, and memory display settings in one place.</p>
+    </div>
+
+    <div class="agent-card agent-wide">
+      <div class="agent-icon">✓</div>
+      <div>
+        <h3>SAVE WITHOUT LOSING YOUR WORK</h3>
+        <p>After closing any nested editor or overlay, press <code>Ctrl+S</code> to save from any top-level wizard tab. <code>Escape</code> closes the current interaction or moves back first; leaving the wizard asks before discarding unsaved changes. Finch writes the result to <code>~/.finch/config.toml</code>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
      INSTALL
 ═══════════════════════════════════════════ -->
 <section id="install">
@@ -545,7 +586,7 @@
     </li>
     <li>
       <span class="step-n">03</span>
-      <div>Run <code>finch setup</code> to configure an optional provider API key (Claude, GPT-4, Grok, etc.)</div>
+      <div>Run <code>finch setup</code> to choose model profiles, theme, persona, and runtime settings</div>
     </li>
     <li>
       <span class="step-n">04</span>

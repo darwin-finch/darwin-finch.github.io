@@ -12,6 +12,8 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Finch — Local AI Coding Assistant">
   <meta name="twitter:description" content="Persistent memory, verified Lisp/Co-Forth programs, agentic tools, and optional offline models. Built in Rust.">
+  <meta name="theme-color" content="#080808">
+  <link rel="canonical" href="https://darwin-finch.github.io/">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&amp;display=swap">
@@ -19,15 +21,17 @@
 </head>
 <body>
 
+<a class="skip-link" href="#main-content">SKIP TO CONTENT</a>
+
 <!-- CRT scanline overlay -->
 <div class="crt" aria-hidden="true"></div>
 
 <!-- ═══════════════════════════════════════════
      NAV
 ═══════════════════════════════════════════ -->
-<nav id="nav">
+<nav id="nav" aria-label="Primary">
   <a href="/" class="nav-logo">FINCH</a>
-  <button class="nav-toggle" onclick="toggleNav()" aria-label="Menu">☰</button>
+  <button class="nav-toggle" type="button" onclick="toggleNav()" aria-label="Toggle navigation" aria-controls="nav-links" aria-expanded="false">☰</button>
   <div class="nav-links" id="nav-links">
     <a href="#open-agent">WHY&nbsp;FINCH</a>
     <a href="#brains">BRAINS</a>
@@ -42,20 +46,23 @@
   </div>
 </nav>
 
+<main id="main-content">
+
 <!-- ═══════════════════════════════════════════
      HERO
 ═══════════════════════════════════════════ -->
 <section id="hero">
   <div class="hero-inner">
 
-    <pre class="logo-art" aria-label="FINCH">██████╗ ██╗███╗   ██╗ ██████╗██╗  ██╗
+    <h1 class="sr-only">Finch — local-first AI coding assistant</h1>
+    <pre class="logo-art" role="img" aria-label="FINCH">██████╗ ██╗███╗   ██╗ ██████╗██╗  ██╗
 ██╔════╝██║████╗  ██║██╔════╝██║  ██║
 █████╗  ██║██╔██╗ ██║██║     ███████║
 ██╔══╝  ██║██║╚██╗██║██║     ██╔══██║
 ██║     ██║██║ ╚████║╚██████╗██║  ██║
 ╚═╝     ╚═╝╚═╝  ╚═══╝ ╚═════╝╚═╝  ╚═╝</pre>
 
-    <p class="hero-sub">AI coding assistant · Co-Lisp + Co-Forth vocabulary · MemTree memory · runs locally</p>
+    <p class="hero-sub">Local-first AI coding assistant · Co-Lisp + Co-Forth vocabulary · MemTree memory</p>
 
     <div class="badges">
       <span>WRITTEN IN RUST</span>
@@ -229,7 +236,7 @@
     <p>Think of it as a durable room for a piece of work. Close Finch, restart the daemon, or attach from another permitted console: the Brain keeps its identity and resumes from its recorded state instead of asking the model to reconstruct everything from a summary.</p>
   </div>
 
-  <div class="brain-compare" aria-label="Named session and Finch Brain comparison">
+  <div class="brain-compare" role="group" aria-label="Named session and Finch Brain comparison">
     <div class="brain-compare-card brain-session-card">
       <span class="brain-kicker">NAMED SESSION</span>
       <h3>A LABEL FOR A CONVERSATION</h3>
@@ -312,8 +319,8 @@
     ▗▟█●██▙►  finch v0.7.30
   ▐████████▌  Qwen-2.5-7B · ready
   ▝▜██████▛▘  ~/repos/myproject
-     ╥  ╥
-    ╱    ╲
+      ╥  ╥
+     ╱    ╲
 
 <span class="uc-dim">&gt;</span> How do I use lifetimes in Rust?<span class="uc-cursor">▋</span></pre>
     </div>
@@ -333,32 +340,30 @@
 
     <div class="use-card use-full">
       <div class="use-num">03</div>
-      <h3>BACKGROUND DAEMON — LOCAL MODEL AS A SERVICE</h3>
-      <p>Finch spawns a background daemon automatically. It exposes an <strong>OpenAI-compatible API</strong> on port 11435, so compatible VS Code extensions and scripts can use a local model without cloud inference costs.</p>
-      <p>Enable <strong>mDNS/Bonjour</strong> advertising so machines on your local network can discover the model running on your desktop without a cloud relay or manual IP configuration.</p>
+      <h3>BACKGROUND DAEMON — OPENAI-COMPATIBLE ENDPOINT</h3>
+      <p>Finch starts a loopback-only daemon at <code>127.0.0.1:11435</code>. VS Code and other OpenAI-compatible clients send requests to Finch first; Finch then routes them through the configured local or cloud-backed profile.</p>
+      <p>In VS Code, open <strong>Chat: Manage Language Models</strong>, choose <strong>Add Models → Custom Endpoint</strong>, select <strong>Chat Completions</strong>, and use the Finch URL and client key shown below. Let the endpoint discover model IDs instead of hardcoding one.</p>
       <div class="use-code-row">
-        <pre class="use-code"><span class="uc-dim"># Start daemon with network sharing</span>
-<span class="uc-prompt">$</span> finch daemon --bind 0.0.0.0:11435 --mdns
+        <pre class="use-code"><span class="uc-dim"># Finch's managed local endpoint</span>
+URL=http://127.0.0.1:11435/v1
 
-  Listening on  0.0.0.0:11435
-  mDNS name     finch.local
-  Model         Qwen-2.5-7B [CoreML]
-  API           OpenAI-compatible
+<span class="uc-dim"># Find the client key in `finch setup` → Settings.</span>
+<span class="uc-dim"># Then verify Finch and discover configured profiles:</span>
+<span class="uc-prompt">$</span> curl -sS -H <span class="uc-str">"Authorization: Bearer $FINCH_CLIENT_KEY"</span> \
+    <span class="uc-str">"$URL/models"</span></pre>
+        <pre class="use-code"><span class="uc-dim">VS CODE CUSTOM ENDPOINT</span>
 
-<span class="uc-dim"># Other machines on LAN connect to:</span>
-<span class="uc-dim"># http://finch.local:11435</span></pre>
-        <pre class="use-code"><span class="uc-dim">// VS Code — Continue.dev config</span>
-{
-  <span class="uc-str">"models"</span>: [{
-    <span class="uc-str">"title"</span>: <span class="uc-str">"Finch (local)"</span>,
-    <span class="uc-str">"provider"</span>: <span class="uc-str">"openai"</span>,
-    <span class="uc-str">"model"</span>: <span class="uc-str">"local"</span>,
-    <span class="uc-str">"apiBase"</span>:
-      <span class="uc-str">"http://localhost:11435"</span>,
-    <span class="uc-str">"apiKey"</span>: <span class="uc-str">"none"</span>
-  }]
-}</pre>
+API type    Chat Completions
+URL         http://127.0.0.1:11435/v1
+API key     Finch client key
+Models      discovered from /v1/models
+
+<span class="uc-dim">Request path:</span>
+VS Code → local Finch daemon
+        → selected Finch profile
+        → local model or cloud provider</pre>
       </div>
+      <p class="use-footnote">The API stays on loopback by default. Finch's mDNS feature advertises restricted Brain collaboration—not this model endpoint—and does not expose secrets.</p>
     </div>
 
   </div>
@@ -392,7 +397,7 @@
     <div class="card">
       <div class="card-glyph">▶</div>
       <h3>INSTANT STARTUP</h3>
-      <p>REPL appears in under 100ms. Model loads in the background. While it's loading on first run, optionally falls back to a cloud provider.</p>
+      <p>The REPL appears in under 100ms. When local inference is enabled, the model loads in the background; a configured cloud profile can remain available while it starts.</p>
     </div>
 
     <div class="card">
@@ -424,27 +429,28 @@
   <div class="flow-wrap">
 <pre class="flow-art">
   ┌──────────────────────────────────────────────────────┐
-  │                     YOUR REQUEST                      │
-  └──────────────────────┬───────────────────────────────┘
-                         │
-                         ▼
-               ┌──────────────────┐
-               │   MODEL READY?   │
-               └──┬───────────────┘
-                 NO                YES
-                  │                 │
-                  ▼                 ▼
-        ┌──────────────┐  ┌──────────────────────────────┐
-        │ TEACHER API   │  │   LOCAL MODEL (ONNX)          │
-        │ Claude/GPT-4  │  │  Qwen · Llama · Gemma · Phi   │
-        │ Gemini/Grok   │  │  Mistral · DeepSeek           │
-        │ (while loading│  │  CoreML EP / CUDA / CPU        │
-        │  first time)  │  └────────────┬─────────────────┘
-        └──────────────┘               │
-                                        ▼
-                              ┌──────────────────┐
-                              │     RESPONSE      │
-                              └──────────────────┘
+  │                     YOUR REQUEST                     │
+  └───────────────────────────┬──────────────────────────┘
+                              │
+                              ▼
+                    ┌──────────────────┐
+                    │   FINCH ROUTER   │
+                    └─────────┬────────┘
+              CLOUD           │               LOCAL
+                 ┌────────────┴─────────────────┐
+                 ▼                              ▼
+        ┌────────────────┐    ┌──────────────────────────────────┐
+        │ CLOUD PROFILE  │    │       LOCAL MODEL PROFILE        │
+        │Claude · OpenAI │    │    Qwen · Llama · Gemma · Phi    │
+        │ Gemini · Grok  │    │        Mistral · DeepSeek        │
+        │ Mistral · Groq │    │   ONNX Runtime / Candle backend  │
+        └───────┬────────┘    └─────────────────┬────────────────┘
+                │                               │
+                └───────────────┬───────────────┘
+                                ▼
+                      ┌──────────────────┐
+                      │     RESPONSE     │
+                      └──────────────────┘
 </pre>
   </div>
 
@@ -453,14 +459,14 @@
       <span class="step-n">01</span>
       <div>
         <h3>INSTALL &amp; RUN</h3>
-        <p>One curl command installs the binary. The REPL starts in under 100ms. On first run, Finch downloads a Qwen model in the background — you can start asking questions immediately.</p>
+        <p>One curl command installs the binary. The REPL starts in under 100ms. Configure a provider profile or choose local inference in <code>finch setup</code>.</p>
       </div>
     </div>
     <div class="step">
       <span class="step-n">02</span>
       <div>
         <h3>QUERY LOCALLY</h3>
-        <p>Queries run on your local ONNX model. On Apple Silicon, ONNX Runtime's CoreML execution provider dispatches ops to ANE or GPU where supported. Linux supports CUDA and other ONNX Runtime execution providers. No internet required after the model is cached.</p>
+        <p>Choose a local profile to keep inference on your machine. On Apple Silicon, ONNX Runtime's CoreML execution provider dispatches supported ops to ANE or GPU. Linux supports CUDA and other execution providers. Cached local models work offline.</p>
       </div>
     </div>
     <div class="step">
@@ -553,9 +559,9 @@
       <tbody>
         <tr>
           <td>Grok (xAI)</td>
-          <td class="bar-free">Free with X Premium+</td>
+          <td class="bar-mid">Usage-based API</td>
           <td>Daily use · coding · tool calls</td>
-          <td class="bar">Only frontier model free via consumer sub · <a href="https://console.x.ai" target="_blank" rel="noopener">console.x.ai</a></td>
+          <td class="bar">API billing is separate from Grok/X subscriptions · <a href="https://console.x.ai" target="_blank" rel="noopener">console.x.ai</a></td>
         </tr>
         <tr>
           <td>Groq</td>
@@ -643,7 +649,7 @@
     <div class="install-cmd">
       <span class="prompt">$</span>
       <code id="install-text">curl -fsSL https://raw.githubusercontent.com/darwin-finch/finch/main/scripts/install.sh | bash</code>
-      <button class="copy-btn" id="copy-btn" onclick="copyInstall()">COPY</button>
+      <button class="copy-btn" id="copy-btn" type="button" onclick="copyInstall()" aria-live="polite">COPY</button>
     </div>
     <p class="install-meta">
       macOS Apple Silicon · Linux x86_64 · PolyForm Noncommercial ·
@@ -655,7 +661,7 @@
   <ol class="install-steps">
     <li>
       <span class="step-n">01</span>
-      <div><strong>Installs the binary</strong> to <code>~/.local/bin/finch</code> and adds it to your PATH</div>
+      <div><strong>Installs the binary</strong> to <code>/usr/local/bin/finch</code> by default; set <code>FINCH_INSTALL_DIR</code> to choose another directory</div>
     </li>
     <li>
       <span class="step-n">02</span>
@@ -667,7 +673,7 @@
     </li>
     <li>
       <span class="step-n">04</span>
-      <div>On first run, Finch downloads a local model in the background — start querying immediately</div>
+      <div>If you enable local inference, Finch downloads the selected model in the background on first run</div>
     </li>
   </ol>
 
@@ -755,6 +761,8 @@
   <a href="https://github.com/sponsors/darwin-finch" class="btn-sponsor" target="_blank" rel="noopener">♥ SPONSOR ON GITHUB</a>
 </section>
 
+</main>
+
 <!-- ═══════════════════════════════════════════
      FOOTER
 ═══════════════════════════════════════════ -->
@@ -763,10 +771,10 @@
     ▗▟█●██▙►  finch — local AI coding assistant
   ▐████████▌  PolyForm Noncommercial
   ▝▜██████▛▘  darwin-finch/finch
-     ╥  ╥
-    ╱    ╲</pre>
+      ╥  ╥
+     ╱    ╲</pre>
 
-  <nav class="footer-links">
+  <nav class="footer-links" aria-label="Footer">
     <a href="https://github.com/darwin-finch/finch">GitHub</a>
     <a href="https://github.com/darwin-finch/finch/releases">Releases</a>
     <a href="https://github.com/darwin-finch/finch/issues">Issues</a>

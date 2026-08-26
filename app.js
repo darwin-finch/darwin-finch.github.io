@@ -5,7 +5,10 @@
 
 // ── Mobile nav toggle ────────────────────────────────
 function toggleNav() {
-  document.getElementById('nav-links').classList.toggle('open');
+  const links = document.getElementById('nav-links');
+  const button = document.querySelector('.nav-toggle');
+  const isOpen = links.classList.toggle('open');
+  button.setAttribute('aria-expanded', String(isOpen));
 }
 
 // Close nav when a link is clicked
@@ -13,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('#nav-links a').forEach(a => {
     a.addEventListener('click', () => {
       document.getElementById('nav-links').classList.remove('open');
+      document.querySelector('.nav-toggle').setAttribute('aria-expanded', 'false');
     });
   });
 });
@@ -66,8 +70,8 @@ const DEMO = [
   { type: 'raw',    text: '    \u2597\u259f\u2588\u25cf\u2588\u2588\u2599\u25ba  finch v0.7.30', cls: 'bird', delay: 40 },
   { type: 'raw',    text: '  \u2590\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258c  Qwen-2.5-7B \u00b7 CoreML \u00b7 ready', cls: 'bird', delay: 40 },
   { type: 'raw',    text: '  \u259d\u259c\u2588\u2588\u2588\u2588\u2588\u2588\u259b\u2598  ~/repos/myproject',                    cls: 'bird', delay: 40 },
-  { type: 'raw',    text: '     \u2565  \u2565',                            cls: 'bird',     delay: 40 },
-  { type: 'raw',    text: '    \u2572    \u2571',                           cls: 'bird',     delay: 200 },
+  { type: 'raw',    text: '      \u2565  \u2565',                           cls: 'bird',     delay: 40 },
+  { type: 'raw',    text: '     \u2572    \u2571',                          cls: 'bird',     delay: 200 },
   { type: 'nl',                                                                              delay: 300 },
   { type: 'type',   text: '> How do I handle errors in async Rust?',        cls: 'cmd',      delay: 700, speed: 32 },
   { type: 'nl',                                                                              delay: 350 },
@@ -156,7 +160,7 @@ function runDemo() {
 
 // Start after a short pause
 window.addEventListener('DOMContentLoaded', () => {
-  setTimeout(runDemo, 900);
+  if (outEl) setTimeout(runDemo, 900);
 });
 
 // ── Intersection Observer — animate cards on scroll ──

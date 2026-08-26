@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Finch — Documentation</title>
   <meta name="description" content="Documentation for Finch, the local-first AI coding assistant.">
+  <meta name="theme-color" content="#080808">
+  <link rel="canonical" href="https://darwin-finch.github.io/docs.html">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&amp;display=swap">
@@ -12,19 +14,23 @@
 </head>
 <body>
 
+<a class="skip-link" href="#main-content">SKIP TO CONTENT</a>
+
 <div class="crt" aria-hidden="true"></div>
 
-<nav id="nav">
+<nav id="nav" aria-label="Primary">
   <a href="/" class="nav-logo">FINCH</a>
-  <button class="nav-toggle" onclick="toggleNav()" aria-label="Menu">☰</button>
+  <button class="nav-toggle" type="button" onclick="toggleNav()" aria-label="Toggle navigation" aria-controls="nav-links" aria-expanded="false">☰</button>
   <div class="nav-links" id="nav-links">
     <a href="/#features">FEATURES</a>
     <a href="/#how-it-works">HOW&nbsp;IT&nbsp;WORKS</a>
     <a href="/#install">INSTALL</a>
-    <a href="docs.html" style="color: var(--green)">DOCS</a>
+    <a href="docs.html" aria-current="page">DOCS</a>
     <a href="https://github.com/darwin-finch/finch" target="_blank" rel="noopener">GITHUB</a>
   </div>
 </nav>
+
+<main id="main-content">
 
 <div class="docs-header">
   <h1>// DOCUMENTATION</h1>
@@ -186,8 +192,10 @@
 
 </div>
 
+</main>
+
 <footer id="footer">
-  <nav class="footer-links">
+  <nav class="footer-links" aria-label="Footer">
     <a href="/">Home</a>
     <a href="https://github.com/darwin-finch/finch">GitHub</a>
     <a href="https://github.com/darwin-finch/finch/releases">Releases</a>

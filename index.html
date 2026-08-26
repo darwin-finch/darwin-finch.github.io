@@ -30,6 +30,7 @@
   <button class="nav-toggle" onclick="toggleNav()" aria-label="Menu">☰</button>
   <div class="nav-links" id="nav-links">
     <a href="#open-agent">WHY&nbsp;FINCH</a>
+    <a href="#brains">BRAINS</a>
     <a href="#usage">USAGE</a>
     <a href="#features">FEATURES</a>
     <a href="#how-it-works">HOW&nbsp;IT&nbsp;WORKS</a>
@@ -215,6 +216,82 @@
     </div>
 
   </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     BRAINS
+═══════════════════════════════════════════ -->
+<section id="brains">
+  <h2 class="sec-title">// BRAINS: MORE THAN A NAMED SESSION</h2>
+
+  <div class="brain-intro">
+    <p class="agent-lede">A named session gives a conversation a name so you can find it again. A Finch <strong>Brain keeps the working state behind that conversation</strong>, too.</p>
+    <p>Think of it as a durable room for a piece of work. Close Finch, restart the daemon, or attach from another permitted console: the Brain keeps its identity and resumes from its recorded state instead of asking the model to reconstruct everything from a summary.</p>
+  </div>
+
+  <div class="brain-compare" aria-label="Named session and Finch Brain comparison">
+    <div class="brain-compare-card brain-session-card">
+      <span class="brain-kicker">NAMED SESSION</span>
+      <h3>A LABEL FOR A CONVERSATION</h3>
+      <ul>
+        <li>A recognizable name</li>
+        <li>Conversation history you can reopen</li>
+        <li>Continuity for your next chat</li>
+      </ul>
+    </div>
+
+    <div class="brain-plus" aria-hidden="true">+</div>
+
+    <div class="brain-compare-card brain-more-card">
+      <span class="brain-kicker">A FINCH BRAIN ADDS</span>
+      <h3>THE STATE NEEDED TO KEEP WORKING</h3>
+      <ul>
+        <li>An ordered, durable event log</li>
+        <li>Committed Co-Lisp/Co-Forth definitions and VM checkpoints</li>
+        <li>Queued, active, completed, and interrupted runs</li>
+        <li>A binding to the machine and workspace that own its tools</li>
+        <li>Role-based attachments for collaborators</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="brain-details">
+    <div class="brain-detail">
+      <div class="agent-icon">↻</div>
+      <h3>RESUME, DON'T RECREATE</h3>
+      <p>A Brain survives client exits and daemon restarts. Reattach to recover its visible history, committed runtime state, and any work that needs attention.</p>
+    </div>
+    <div class="brain-detail">
+      <div class="agent-icon">⌘</div>
+      <h3>ONE WORKSPACE, CLEAR AUTHORITY</h3>
+      <p>The Brain remembers which environment owns the workspace. If that runner is offline, work waits visibly instead of running on the wrong machine or inventing a result.</p>
+    </div>
+    <div class="brain-detail">
+      <div class="agent-icon">◎</div>
+      <h3>SHARE THE SAME CONTEXT</h3>
+      <p>Drivers, consultants, and observers can attach with distinct roles. Everyone sees the same ordered record, while workspace access and approvals remain explicit.</p>
+    </div>
+  </div>
+
+  <div class="brain-quickstart">
+    <div>
+      <span class="brain-kicker">THE BASIC FLOW</span>
+      <h3>CREATE IT ONCE. ATTACH WHEN YOU NEED IT.</h3>
+      <p>Your normal console already has a home Brain. Create another when you want a durable context for a project, investigation, or long-running task.</p>
+    </div>
+    <pre class="use-code"><span class="uc-dim"># Create a Brain in the current environment</span>
+<span class="uc-prompt">&gt;</span> /brain create parser-refactor
+
+<span class="uc-dim"># Work in it, inspect its runs, or return later</span>
+<span class="uc-prompt">&gt;</span> /brain attach parser-refactor
+<span class="uc-prompt">&gt;</span> /brain runs
+<span class="uc-prompt">&gt;</span> /brain detach
+
+<span class="uc-dim"># See every named Brain</span>
+<span class="uc-prompt">&gt;</span> /brains</pre>
+  </div>
+
+  <p class="brain-memory-note"><strong>Brains and MemTree solve different problems:</strong> a Brain preserves the exact state of one continuing body of work. MemTree searches across past conversations to recall relevant knowledge, even when you use different words.</p>
 </section>
 
 <!-- ═══════════════════════════════════════════

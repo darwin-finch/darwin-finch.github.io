@@ -97,7 +97,7 @@ strong { color: var(--green); font-weight: 700; }
 
 .nav-links {
   display: flex;
-  gap: 1.75rem;
+  gap: clamp(0.75rem, 1.35vw, 1.75rem);
 }
 
 .nav-links a {
@@ -581,6 +581,138 @@ section {
 @media (max-width: 680px) {
   .agent-grid { grid-template-columns: 1fr; }
   .agent-wide { flex-direction: column; }
+}
+
+/* ── Brains ─────────────────────────────────────────── */
+#brains {
+  border-top: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(0,255,65,0.025) 0%, transparent 55%);
+}
+
+.brain-intro {
+  max-width: 780px;
+  margin-bottom: 2rem;
+}
+
+.brain-intro .agent-lede { margin-bottom: 0.75rem; }
+
+.brain-intro > p:last-child,
+.brain-quickstart p,
+.brain-memory-note {
+  color: var(--text-dim);
+  font-size: 0.8rem;
+  line-height: 1.75;
+}
+
+.brain-compare {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) auto minmax(0, 1.2fr);
+  gap: 1rem;
+  align-items: stretch;
+  margin-bottom: 1.25rem;
+}
+
+.brain-compare-card,
+.brain-detail,
+.brain-quickstart,
+.brain-memory-note {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.brain-compare-card { padding: 1.5rem; }
+
+.brain-session-card { opacity: 0.72; }
+
+.brain-more-card {
+  border-color: var(--border-mid);
+  box-shadow: inset 3px 0 0 var(--green-faint);
+}
+
+.brain-kicker {
+  display: block;
+  color: var(--text-muted);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  margin-bottom: 0.45rem;
+}
+
+.brain-compare h3,
+.brain-detail h3,
+.brain-quickstart h3 {
+  color: var(--green);
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  margin-bottom: 0.8rem;
+}
+
+.brain-compare ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.brain-compare li {
+  color: var(--text-dim);
+  font-size: 0.76rem;
+  line-height: 1.55;
+  padding-left: 1.1rem;
+  position: relative;
+}
+
+.brain-compare li::before {
+  content: '›';
+  color: var(--green);
+  left: 0;
+  position: absolute;
+}
+
+.brain-plus {
+  align-self: center;
+  color: var(--green);
+  font-size: 1.6rem;
+  opacity: 0.45;
+}
+
+.brain-details {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.brain-detail { padding: 1.35rem; }
+
+.brain-detail p {
+  color: var(--text-dim);
+  font-size: 0.76rem;
+  line-height: 1.7;
+}
+
+.brain-quickstart {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.8fr) minmax(0, 1.2fr);
+  gap: 1.5rem;
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+  align-items: start;
+}
+
+.brain-quickstart .use-code { margin: 0; }
+
+.brain-memory-note {
+  padding: 1rem 1.25rem;
+  border-left: 3px solid var(--green-faint);
+}
+
+@media (max-width: 680px) {
+  .brain-compare,
+  .brain-details,
+  .brain-quickstart { grid-template-columns: 1fr; }
+
+  .brain-plus { justify-self: center; }
 }
 
 /* ── Feature Cards ──────────────────────────────────── */

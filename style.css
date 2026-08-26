@@ -369,7 +369,10 @@ section {
   padding: 5rem 1.5rem;
   max-width: 960px;
   margin: 0 auto;
+  scroll-margin-top: 4.5rem;
 }
+
+#main-content { scroll-margin-top: 4.5rem; }
 
 .sec-title {
   font-size: 0.85rem;
@@ -460,6 +463,27 @@ section {
   margin-bottom: 0 !important;
   font-size: 0.72rem !important;
   color: var(--text-muted) !important;
+}
+
+.compat-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0 0 1rem;
+}
+
+.compat-chip {
+  padding: 0.25rem 0.6rem;
+  border: 1px solid var(--border-mid);
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+}
+
+.compat-chip.verified {
+  border-color: var(--green-dim);
+  color: var(--green);
+  box-shadow: 0 0 8px rgba(0,255,65,0.08);
 }
 
 .use-num {

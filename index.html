@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Finch — Local AI Coding Assistant</title>
-  <meta name="description" content="Local-first AI coding assistant with persistent MemTree memory, a shared typed Lisp/Co-Forth runtime, agentic tools, and optional offline models. Built in Rust.">
+  <meta name="description" content="Local-first AI coding assistant with durable memory, typed Co-Lisp/Co-Forth programs, agentic tools, optional offline models, and a VS Code-ready OpenAI-compatible API.">
   <meta property="og:title" content="Finch — Local AI Coding Assistant">
-  <meta property="og:description" content="Persistent memory, verified Lisp/Co-Forth programs, agentic tools, and optional offline models. Built in Rust.">
+  <meta property="og:description" content="Durable memory, typed Co-Lisp/Co-Forth programs, agentic tools, optional offline models, and a VS Code-ready OpenAI-compatible API.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://darwin-finch.github.io">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Finch — Local AI Coding Assistant">
-  <meta name="twitter:description" content="Persistent memory, verified Lisp/Co-Forth programs, agentic tools, and optional offline models. Built in Rust.">
+  <meta name="twitter:description" content="Durable memory, typed Co-Lisp/Co-Forth programs, agentic tools, optional offline models, and a VS Code-ready OpenAI-compatible API.">
   <meta name="theme-color" content="#080808">
   <link rel="canonical" href="https://darwin-finch.github.io/">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -71,6 +71,8 @@
       <span>MEMTREE MEMORY</span>
       <span>WORKS OFFLINE</span>
       <span>PRIVATE BY DEFAULT</span>
+      <span>OPENAI-COMPATIBLE API</span>
+      <span>VS CODE VERIFIED</span>
     </div>
 
     <!-- Animated terminal -->
@@ -340,9 +342,15 @@
 
     <div class="use-card use-full">
       <div class="use-num">03</div>
-      <h3>BACKGROUND DAEMON — OPENAI-COMPATIBLE ENDPOINT</h3>
-      <p>Finch starts a loopback-only daemon at <code>127.0.0.1:11435</code>. VS Code and other OpenAI-compatible clients send requests to Finch first; Finch then routes them through the configured local or cloud-backed profile.</p>
-      <p>In VS Code, open <strong>Chat: Manage Language Models</strong>, choose <strong>Add Models → Custom Endpoint</strong>, select <strong>Chat Completions</strong>, and use the Finch URL and client key shown below. Let the endpoint discover model IDs instead of hardcoding one.</p>
+      <h3>OPENAI-COMPATIBLE API — VS CODE VERIFIED</h3>
+      <p>Finch starts a loopback-only daemon at <code>127.0.0.1:11435</code> with <code>GET /v1/models</code> and <code>POST /v1/chat/completions</code>. OpenAI-compatible clients send requests to Finch first; Finch then routes them through the selected local or cloud-backed profile.</p>
+      <div class="compat-row" role="group" aria-label="Client compatibility">
+        <span class="compat-chip verified">VS CODE · VERIFIED</span>
+        <span class="compat-chip verified">CURL · VERIFIED</span>
+        <span class="compat-chip">OPENAI SDKs · API-COMPATIBLE</span>
+        <span class="compat-chip">OTHER CLIENTS · API-COMPATIBLE</span>
+      </div>
+      <p><strong>VS Code setup:</strong> run <strong>Chat: Manage Language Models</strong>, choose <strong>Add Models → Custom Endpoint</strong>, name the group <strong>Finch</strong>, enter the client key from <code>finch setup</code> → <strong>Settings</strong>, and select <strong>Chat Completions</strong>. Use the provider configuration below so VS Code discovers your Finch profile IDs automatically.</p>
       <div class="use-code-row">
         <pre class="use-code"><span class="uc-dim"># Finch's managed local endpoint</span>
 URL=http://127.0.0.1:11435/v1
@@ -351,19 +359,18 @@ URL=http://127.0.0.1:11435/v1
 <span class="uc-dim"># Then verify Finch and discover configured profiles:</span>
 <span class="uc-prompt">$</span> curl -sS -H <span class="uc-str">"Authorization: Bearer $FINCH_CLIENT_KEY"</span> \
     <span class="uc-str">"$URL/models"</span></pre>
-        <pre class="use-code"><span class="uc-dim">VS CODE CUSTOM ENDPOINT</span>
-
-API type    Chat Completions
-URL         http://127.0.0.1:11435/v1
-API key     Finch client key
-Models      discovered from /v1/models
-
-<span class="uc-dim">Request path:</span>
-VS Code → local Finch daemon
-        → selected Finch profile
-        → local model or cloud provider</pre>
+        <pre class="use-code"><span class="uc-dim">// VS Code: chatLanguageModels.json</span>
+[
+  {
+    <span class="uc-str">"name"</span>: <span class="uc-str">"Finch"</span>,
+    <span class="uc-str">"vendor"</span>: <span class="uc-str">"customendpoint"</span>,
+    <span class="uc-str">"apiKey"</span>: <span class="uc-str">"${input:finchClientKey}"</span>,
+    <span class="uc-str">"apiType"</span>: <span class="uc-str">"chat-completions"</span>,
+    <span class="uc-str">"url"</span>: <span class="uc-str">"http://127.0.0.1:11435/v1"</span>
+  }
+]</pre>
       </div>
-      <p class="use-footnote">The API stays on loopback by default. Finch's mDNS feature advertises restricted Brain collaboration—not this model endpoint—and does not expose secrets.</p>
+      <p class="use-footnote"><strong>Request path:</strong> VS Code → local Finch daemon → selected Finch profile → local model or cloud provider. “Custom Endpoint” is VS Code's name for this setup; Finch exposes the OpenAI-compatible API. VS Code's BYOK chat does not require a Copilot plan, but some separate VS Code features still do. The API stays on loopback by default, and Finch's mDNS feature advertises restricted Brain collaboration—not this model endpoint. <a href="https://code.visualstudio.com/docs/agent-customization/language-models" target="_blank" rel="noopener">VS Code language model documentation ↗</a></p>
     </div>
 
   </div>

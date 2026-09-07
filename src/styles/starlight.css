@@ -1,0 +1,22 @@
+:root {
+  --sl-font: 'IBM Plex Mono', 'Courier New', monospace;
+  --sl-color-accent-low: #00320f;
+  --sl-color-accent: #00c936;
+  --sl-color-accent-high: #aaffcc;
+}
+
+:root[data-theme='dark'] {
+  --sl-color-bg: #080808;
+  --sl-color-bg-nav: #080808;
+  --sl-color-bg-sidebar: #0b0b0b;
+}
+
+body {
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0, 255, 65, 0.012) 3px,
+    rgba(0, 255, 65, 0.012) 4px
+  );
+}

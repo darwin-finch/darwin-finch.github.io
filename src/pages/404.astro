@@ -1,0 +1,22 @@
+---
+import SiteFooter from '../components/SiteFooter.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+---
+
+<SiteLayout
+  title="Page not found — Finch"
+  description="The requested Finch page does not exist or has moved."
+  canonicalPath="/404.html"
+>
+  <SiteHeader />
+  <main id="main-content">
+    <section class="not-found">
+      <h1>404 // PAGE NOT FOUND</h1>
+      <p>The requested Finch page does not exist or has moved.</p>
+      <a href="/" class="btn-primary section-cta">RETURN HOME</a>
+      <a href="/docs/" class="btn-ghost section-cta">BROWSE DOCUMENTATION</a>
+    </section>
+  </main>
+  <SiteFooter />
+</SiteLayout>

@@ -41,7 +41,9 @@ function copyInstall() {
     ta.style.opacity = '0';
     document.body.appendChild(ta);
     ta.select();
-    document.execCommand('copy');
+    // The legacy command remains the only synchronous fallback for older
+    // browsers; the local type avoids surfacing its deprecation as a check hint.
+    /** @type {{ execCommand: (commandId: string) => boolean }} */ (document).execCommand('copy');
     document.body.removeChild(ta);
     btn.textContent = 'COPIED!';
     btn.classList.add('copied');

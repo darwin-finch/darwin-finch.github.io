@@ -1,0 +1,129 @@
+---
+import SiteFooter from '../components/SiteFooter.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+---
+
+<SiteLayout
+  title="Finch Models and Providers"
+  description="Current Finch cloud-provider, subscription, remote-daemon, and experimental local-model support."
+  canonicalPath="/models/"
+>
+  <SiteHeader current="models" />
+  <main id="main-content">
+    <section id="models">
+  <h2 class="sec-title">// SUPPORTED MODELS</h2>
+
+  <h3 class="subsec-title">Local (ONNX Runtime) — profiles exist; routing is experimental</h3>
+  <p class="table-note">These families have local profiles and loader support in the source. That is a configuration surface, not a conformance claim: local bootstrap, selection, and provider parity are unfinished, so a configured local profile does not yet guarantee your query ran locally. Artifacts are large and may require Hugging Face access.</p>
+  <div class="table-wrap">
+    <table class="model-table">
+      <thead>
+        <tr>
+          <th>FAMILY</th>
+          <th>SIZES</th>
+          <th>FORMAT</th>
+          <th>NOTES</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Qwen 2.5</td>
+          <td>1.5B · 3B · 7B · 14B</td>
+          <td>ONNX</td>
+          <td class="bar">Default local family · size chosen by detected RAM</td>
+        </tr>
+        <tr>
+          <td>Llama 3</td>
+          <td>1B · 3B · 8B</td>
+          <td>ONNX</td>
+          <td class="bar">Meta · general purpose</td>
+        </tr>
+        <tr>
+          <td>Gemma 2/3</td>
+          <td>1B · 2B · 9B</td>
+          <td>ONNX</td>
+          <td class="bar">Google · strong reasoning</td>
+        </tr>
+        <tr>
+          <td>Mistral</td>
+          <td>7B</td>
+          <td>ONNX</td>
+          <td class="bar">Mistral AI · efficient · models via microsoft/</td>
+        </tr>
+        <tr>
+          <td>Phi-3/4</td>
+          <td>3.8B · 14B</td>
+          <td>ONNX</td>
+          <td class="bar">Microsoft · small + capable</td>
+        </tr>
+        <tr>
+          <td>DeepSeek Coder</td>
+          <td>1.3B · 6.7B</td>
+          <td>ONNX</td>
+          <td class="bar">Optimised for code generation</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="table-note">CoreML execution provider on Apple Silicon · CUDA/ROCm/CPU on Linux via ONNX Runtime · Candle is an alternative backend · see <a href="https://github.com/darwin-finch/finch/blob/main/docs/MODEL_BACKEND_STATUS.md" target="_blank" rel="noopener">MODEL_BACKEND_STATUS.md</a>, a dated backend investigation rather than routing evidence</p>
+
+  <h3 class="subsec-title">Cloud providers — profiles offered by <code>finch setup</code></h3>
+  <div class="table-wrap">
+    <table class="model-table">
+      <thead>
+        <tr>
+          <th>PROVIDER</th>
+          <th>AUTHENTICATION</th>
+          <th>NOTES</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Claude (Anthropic)</td>
+          <td>API key</td>
+          <td class="bar">Enter an explicit model ID, or refresh the authenticated catalogue</td>
+        </tr>
+        <tr>
+          <td>OpenAI Platform</td>
+          <td>API key</td>
+          <td class="bar">A model ID your Platform account can reach on Chat Completions</td>
+        </tr>
+        <tr>
+          <td>ChatGPT subscription</td>
+          <td>Device login — <code>finch auth login</code></td>
+          <td class="bar">Finch-owned transport, pinned to a recorded Codex compatibility commit; drift fails closed. Experimental. Subscription credentials are not API keys and never cross-bind with Platform ones</td>
+        </tr>
+        <tr>
+          <td>Grok (xAI)</td>
+          <td>API key</td>
+          <td class="bar">API billing is separate from Grok/X subscriptions · <a href="https://console.x.ai" target="_blank" rel="noopener">console.x.ai</a></td>
+        </tr>
+        <tr>
+          <td>Gemini (Google)</td>
+          <td>API key</td>
+          <td class="bar">AI Studio transport; custom endpoints and paths are rejected</td>
+        </tr>
+        <tr>
+          <td>Mistral</td>
+          <td>API key</td>
+          <td class="bar">European provider with open-weight model families</td>
+        </tr>
+        <tr>
+          <td>Groq</td>
+          <td>API key</td>
+          <td class="bar">Runs open models on the provider's own hardware</td>
+        </tr>
+        <tr>
+          <td>Ollama · remote Finch daemon</td>
+          <td>Profile types in source</td>
+          <td class="bar">Configurable; not covered by conformance evidence</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="table-note">Switch between configured profiles with <code>/model &lt;name&gt;</code> (<code>/provider</code> and <code>/teacher</code> remain compatibility aliases) · Conversation history is preserved across a switch · Streaming and tool support vary by provider and model, and cross-provider conformance coverage is still being published · Model availability changes independently of Finch, so pricing and model rankings are deliberately not listed here</p>
+</section>
+  </main>
+  <SiteFooter />
+</SiteLayout>

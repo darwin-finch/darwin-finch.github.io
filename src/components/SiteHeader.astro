@@ -1,0 +1,26 @@
+---
+interface Props {
+  current?: 'home' | 'compare' | 'models';
+}
+
+const { current = 'home' } = Astro.props;
+---
+
+<nav id="nav" aria-label="Primary">
+  <a href="/" class="nav-logo">FINCH</a>
+  <button class="nav-toggle" type="button" onclick="toggleNav()" aria-label="Toggle navigation" aria-controls="nav-links" aria-expanded="false">☰</button>
+  <div class="nav-links" id="nav-links">
+    <a href="/#open-agent">WHY&nbsp;FINCH</a>
+    <a href="/compare/" aria-current={current === 'compare' ? 'page' : undefined}>COMPARE</a>
+    <a href="/#brains">BRAINS</a>
+    <a href="/#usage">USAGE</a>
+    <a href="/#features">FEATURES</a>
+    <a href="/#how-it-works">HOW&nbsp;IT&nbsp;WORKS</a>
+    <a href="/models/" aria-current={current === 'models' ? 'page' : undefined}>MODELS</a>
+    <a href="/#setup">SETUP</a>
+    <a href="/#install">INSTALL</a>
+    <a href="/docs/">DOCS</a>
+    <a href="/#sponsor">SPONSOR</a>
+    <a href="https://github.com/darwin-finch/finch" target="_blank" rel="noopener">GITHUB</a>
+  </div>
+</nav>

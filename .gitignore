@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.astro/
+
+# Generated from the canonical darwin-finch/finch repository.
+src/content/docs/docs/architecture/
+src/content/docs/docs/development/
+src/content/docs/docs/features/
+src/content/docs/docs/getting-started/
+src/content/docs/docs/program-runtime/

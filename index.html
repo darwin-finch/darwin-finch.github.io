@@ -235,7 +235,7 @@
   <h2 class="sec-title">// HOW FINCH DIFFERS</h2>
 
   <div class="agent-headline">
-    <p class="agent-lede">Finch is marked ● on five of fifteen rows.<br>
+    <p class="agent-lede">Finch is marked ● on six of seventeen rows.<br>
     A comparison where the author wins everything is marketing, so this one is built to be checked — every cell traces to vendor documentation or source.</p>
     <p class="cmp-legend"><span class="m y">●</span> yes &nbsp;·&nbsp; <span class="m p">◐</span> partial &nbsp;·&nbsp; <span class="m n">○</span> no &nbsp;·&nbsp; <span class="m k">▣</span> planned, tracked &nbsp;·&nbsp; <span class="m u">?</span> not verifiable &nbsp;·&nbsp; verified September 2026</p>
   </div>
@@ -366,6 +366,30 @@
           <td class="m n">○</td>
         </tr>
         <tr>
+          <td class="feat">User-code lifecycle hooks</td>
+          <td class="m self p">◐<sup>47</sup></td>
+          <td class="m y">●</td>
+          <td class="m y">●</td>
+          <td class="m u">?<sup>48</sup></td>
+          <td class="m y">●</td>
+          <td class="m y">●</td>
+          <td class="m y">●<sup>49</sup></td>
+          <td class="m y">●<sup>50</sup></td>
+          <td class="m n">○<sup>51</sup></td>
+        </tr>
+        <tr>
+          <td class="feat">Automatic git commits</td>
+          <td class="m self p">◐<sup>52</sup></td>
+          <td class="m n">○<sup>53</sup></td>
+          <td class="m n">○<sup>54</sup></td>
+          <td class="m n">○</td>
+          <td class="m n">○<sup>53</sup></td>
+          <td class="m p">◐<sup>55</sup></td>
+          <td class="m n">○<sup>53</sup></td>
+          <td class="m n">○</td>
+          <td class="m y">●<sup>56</sup></td>
+        </tr>
+        <tr>
           <td class="feat">Persistent repository semantic map</td>
           <td class="m self k">▣<sup>32</sup></td>
           <td class="m n">○</td>
@@ -488,6 +512,16 @@
     <li><code>goose roam</code> exists in documentation but ships in no released binary — it requires building from source behind a feature flag, so a reader downloading Goose today does not get it.</li>
     <li>Not verifiable. <code>cline kanban</code> is a local task board; remote access to an already-running session is not documented.</li>
     <li>An open, unimplemented request to expose Goose itself over MCP; it is an MCP client today.</li>
+    <li>A single event — <code>~/.finch/hooks/post-save</code>, run after an edit or a write. No other events and no configuration.</li>
+    <li>Not verifiable. <code>hooks.json</code> is real and runs user code, but the documentation covers the editor and cloud agents; no CLI reference states that <code>cursor-agent</code> loads them.</li>
+    <li>Available in the CLI, SDK and Kanban, and explicitly not in the editor extensions.</li>
+    <li>An Open Plugins hooks specification. Its own documentation notes that <code>SubagentStart</code> and <code>Stop</code> are declared but never actually emitted.</li>
+    <li><code>--lint-cmd</code> and <code>--test-cmd</code> fire at two fixed points. There is no named-event hook API.</li>
+    <li>The autonomous agent stages and commits its own work; the interactive console does not.</li>
+    <li>Easily mistaken for this row: Checkpointing and Checkpoints are internal or shadow-repository snapshots, and their own documentation states they do not commit to your project's git history.</li>
+    <li>Forbidden in the base model instructions — do not commit unless explicitly requested.</li>
+    <li>Only the GitHub Actions bot integration commits by itself, from its own wrapper rather than the model. The ordinary CLI does not.</li>
+    <li>Default on, and the sharpest single difference in this table. Commits every edit with a generated message, and commits pre-existing dirty changes before editing.</li>
   </ol>
 
   <p class="table-note">These facts drift quickly; if you are reading this long after September 2026, re-check before relying on a row. Two naming notes: OpenCode&rsquo;s repository moved from the <code>sst</code> organisation to <code>anomalyco</code>, and Goose moved from Block to the Linux Foundation&rsquo;s Agentic AI Foundation in April 2026. Aider is included because it remains widely used, though its main branch has been untouched since May 2026.</p>

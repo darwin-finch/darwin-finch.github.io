@@ -237,7 +237,7 @@
   <div class="agent-headline">
     <p class="agent-lede">Finch is marked ● on five of fifteen rows.<br>
     A comparison where the author wins everything is marketing, so this one is built to be checked — every cell traces to vendor documentation or source.</p>
-    <p class="cmp-legend"><span class="m y">●</span> yes &nbsp;·&nbsp; <span class="m p">◐</span> partial &nbsp;·&nbsp; <span class="m n">○</span> no &nbsp;·&nbsp; <span class="m u">?</span> not verifiable &nbsp;·&nbsp; verified September 2026</p>
+    <p class="cmp-legend"><span class="m y">●</span> yes &nbsp;·&nbsp; <span class="m p">◐</span> partial &nbsp;·&nbsp; <span class="m n">○</span> no &nbsp;·&nbsp; <span class="m k">▣</span> planned, tracked &nbsp;·&nbsp; <span class="m u">?</span> not verifiable &nbsp;·&nbsp; verified September 2026</p>
   </div>
 
   <div class="table-wrap">
@@ -275,7 +275,7 @@
           <td class="m y">●</td>
           <td class="m n">○</td>
           <td class="m y">●<sup>2</sup></td>
-          <td class="m n">○<sup>3</sup></td>
+          <td class="m k">▣<sup>3</sup></td>
           <td class="m y">●</td>
           <td class="m y">●<sup>4</sup></td>
           <td class="m n">○</td>
@@ -362,12 +362,12 @@
           <td class="m n">○</td>
           <td class="m n">○</td>
           <td class="m n">○</td>
-          <td class="m n">○</td>
+          <td class="m k">▣<sup>46</sup></td>
           <td class="m n">○</td>
         </tr>
         <tr>
           <td class="feat">Persistent repository semantic map</td>
-          <td class="m self n">○<sup>32</sup></td>
+          <td class="m self k">▣<sup>32</sup></td>
           <td class="m n">○</td>
           <td class="m n">○</td>
           <td class="m u">?<sup>35</sup></td>
@@ -379,7 +379,7 @@
         </tr>
         <tr>
           <td class="feat">Image input</td>
-          <td class="m self n">○<sup>36</sup></td>
+          <td class="m self k">▣<sup>36</sup></td>
           <td class="m y">●</td>
           <td class="m y">●</td>
           <td class="m u">?<sup>39</sup></td>
@@ -415,7 +415,7 @@
         </tr>
         <tr>
           <td class="feat">OS-level execution sandbox</td>
-          <td class="m self n">○<sup>25</sup></td>
+          <td class="m self k">▣<sup>25</sup></td>
           <td class="m y">●</td>
           <td class="m y">●</td>
           <td class="m p">◐</td>
@@ -444,7 +444,7 @@
   <ol class="cmp-notes">
     <li>The verifier returns a checked module that gates execution; capability requirements and effect rows resolve first, and VM checkpoints are re-verified on restore rather than trusted. Nothing else here does this. Anthropic's code-execution-with-MCP, Cloudflare Code Mode, CodeAct/smolagents, E2B and WASM tool sandboxes all <em>isolate</em> execution instead of checking it; pre-execution effect verification exists only in research.</li>
     <li><code>agent persist</code> and <code>agent persist attach</code>.</li>
-    <li>A daemon mode exists only as an unmerged pull request; what ships is transcript resume.</li>
+    <li>A daemon mode with named-session reattach exists as an open, unmerged pull request; what ships today is transcript resume.</li>
     <li>The CLI's hub daemon owns session state; the IDE extension resumes transcripts instead.</li>
     <li>Event log plus typed VM checkpoint on disk, re-verified on restore; covered by restart regression tests in the Brain store.</li>
     <li>Survives supervisor self-restart, but falls back to reconstructing from disk on reboot and marks a session failed after 48 hours.</li>
@@ -462,7 +462,7 @@
     <li>A configured local profile does not yet guarantee a query is routed locally.</li>
     <li>Built-in <code>ollama</code> and <code>lmstudio</code> provider IDs, dedicated crates, an <code>--oss</code> picker, default ports 11434 and 1234.</li>
     <li>The community pull request was closed unmerged; a fork carries it.</li>
-    <li>Accessibility is stated as a project invariant in Finch and is not met: the only click path takes raw screen coordinates.</li>
+    <li>Accessibility is stated as a project invariant in Finch and is not met: the only click path takes raw screen coordinates. Adjacent work is tracked — <a href="https://github.com/darwin-finch/finch/issues/310" target="_blank" rel="noopener">#310</a> for accessible file-context selection and <a href="https://github.com/darwin-finch/finch/issues/453" target="_blank" rel="noopener">#453</a> for semantic GUI addressing — but no screen-reader mode is scoped, so this stays ○ rather than ▣.</li>
     <li><code>--ax-screen-reader</code>, labelled turn prefixes, numbered menus replacing arrow-key navigation, OSC 133 turn markers.</li>
     <li>A documented screen-reader setting, with open regressions against it.</li>
     <li>The screen-reader request was closed as “not planned”.</li>
@@ -487,6 +487,7 @@
     <li><code>opencode serve</code> exposes a local HTTP server another device can drive, optionally network-bound with basic auth. <code>/share</code> is a read-only transcript link instead.</li>
     <li><code>goose roam</code> exists in documentation but ships in no released binary — it requires building from source behind a feature flag, so a reader downloading Goose today does not get it.</li>
     <li>Not verifiable. <code>cline kanban</code> is a local task board; remote access to an already-running session is not documented.</li>
+    <li>An open, unimplemented request to expose Goose itself over MCP; it is an MCP client today.</li>
   </ol>
 
   <p class="table-note">These facts drift quickly; if you are reading this long after September 2026, re-check before relying on a row. Two naming notes: OpenCode&rsquo;s repository moved from the <code>sst</code> organisation to <code>anomalyco</code>, and Goose moved from Block to the Linux Foundation&rsquo;s Agentic AI Foundation in April 2026. Aider is included because it remains widely used, though its main branch has been untouched since May 2026.</p>

@@ -859,6 +859,9 @@ section {
 .matrix .m.p { color: var(--amber); }
 .matrix .m.n { color: #3d5a44; }
 .matrix .m.u { color: var(--text-muted); font-weight: 700; }
+/* Planned is deliberately grey, not green: it is not a capability yet, and
+   every ▣ on this table cites the issue or pull request tracking it. */
+.matrix .m.k { color: #6f7d72; }
 
 .matrix .self,
 .matrix th.self {

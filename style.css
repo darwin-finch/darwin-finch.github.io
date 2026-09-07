@@ -833,29 +833,78 @@ section {
   margin-bottom: 0.65rem;
 }
 
-/* Comparison table. The gap column is styled as legibly as the win column;
-   an honest table does not hide the rows where Finch loses. */
-.cmp-table td {
-  vertical-align: top;
+/* Comparison matrix. Marks carry a text label for screen readers via the
+   footnotes; the glyphs differ in shape as well as colour, so the table
+   does not rely on colour alone. */
+.matrix th,
+.matrix td {
+  text-align: center;
+  white-space: nowrap;
 }
 
-.cmp-table td:first-child {
-  color: var(--text-dim);
+.matrix .feat,
+.matrix thead th:first-child {
+  text-align: left;
   white-space: normal;
-  min-width: 11rem;
+  min-width: 15rem;
+  color: var(--text-dim);
 }
 
-.cmp-table .cmp-win {
+.matrix .m {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.matrix .m.y { color: var(--green); }
+.matrix .m.p { color: var(--amber); }
+.matrix .m.n { color: #3d5a44; }
+
+.matrix .self,
+.matrix th.self {
+  background: rgba(0, 255, 65, 0.05);
+  border-left: 1px solid var(--green-dim);
+  border-right: 1px solid var(--green-dim);
+}
+
+.matrix th.self {
   color: var(--green);
-  border-left: 2px solid var(--green-dim);
 }
 
-.cmp-table .cmp-gap {
-  color: var(--amber);
-  border-left: 2px solid var(--amber);
+.matrix sup {
+  font-size: 0.55rem;
+  color: var(--text-muted);
+  margin-left: 1px;
 }
 
-.cmp-table em {
+.cmp-legend {
+  margin-top: 1rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.cmp-legend .m {
+  font-size: 0.9rem;
+}
+
+.cmp-notes {
+  margin: 1.5rem auto 0;
+  max-width: 62rem;
+  padding-left: 2.5rem;
+  font-size: 0.78rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+.cmp-notes li {
+  margin-bottom: 0.45rem;
+}
+
+.cmp-notes code {
+  font-size: 0.72rem;
+}
+
+.cmp-notes em {
   font-style: normal;
   text-decoration: underline;
   text-underline-offset: 2px;

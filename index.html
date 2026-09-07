@@ -235,65 +235,194 @@
   <h2 class="sec-title">// HOW FINCH DIFFERS</h2>
 
   <div class="agent-headline">
-    <p class="agent-lede">Architectural axes, not a feature checklist.<br>
-    Finch wins two rows here and <strong>loses four</strong>. A comparison where the author wins everything is marketing, so this one is written to be checked.</p>
+    <p class="agent-lede">Finch is marked ● on four of eleven rows.<br>
+    A comparison where the author wins everything is marketing, so this one is built to be checked — every cell traces to vendor documentation or source.</p>
+    <p class="cmp-legend"><span class="m y">●</span> yes &nbsp;·&nbsp; <span class="m p">◐</span> partial &nbsp;·&nbsp; <span class="m n">○</span> no &nbsp;·&nbsp; verified September 2026</p>
   </div>
 
   <div class="table-wrap">
-    <table class="model-table cmp-table">
+    <table class="model-table matrix">
       <thead>
         <tr>
-          <th>AXIS</th>
-          <th>FINCH</th>
-          <th>THE FIELD</th>
+          <th>FEATURE</th>
+          <th class="self">FINCH</th>
+          <th>CLAUDE&nbsp;CODE</th>
+          <th>CODEX&nbsp;CLI</th>
+          <th>CURSOR</th>
+          <th>GEMINI&nbsp;CLI</th>
+          <th>OPENCODE</th>
+          <th>CLINE</th>
+          <th>GOOSE</th>
+          <th>AIDER</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>Typed programs verified before host effects</td>
-          <td class="cmp-win">Yes — the verifier returns a checked module that gates execution, capability requirements and effect rows are resolved first, and VM checkpoints are re-verified on restore rather than trusted</td>
-          <td class="bar">No shipping agent does this. Anthropic's code-execution-with-MCP, Cloudflare Code Mode, CodeAct/smolagents, E2B and WASM tool sandboxes all <em>isolate</em> execution; none type- or effect-check the program beforehand. Attempts exist only in research</td>
+          <td class="feat">Typed programs verified before host effects</td>
+          <td class="m self y">●<sup>1</sup></td>
+          <td class="m n">○</td>
+          <td class="m n">○</td>
+          <td class="m n">○</td>
+          <td class="m n">○</td>
+          <td class="m n">○</td>
+          <td class="m n">○</td>
+          <td class="m n">○</td>
+          <td class="m n">○</td>
         </tr>
         <tr>
-          <td>Multi-client attach with distinct roles</td>
-          <td class="cmp-win">Driver, Consultant, and Observer attach to one Brain</td>
-          <td class="bar">Rare, not unique. Claude Code is single-writer; OpenCode and Qwen Code share a live session with flat access and no roles; Warp has viewer/editor</td>
+          <td class="feat">Daemon-owned live session reattach</td>
+          <td class="m self y">●</td>
+          <td class="m y">●</td>
+          <td class="m n">○</td>
+          <td class="m y">●<sup>2</sup></td>
+          <td class="m n">○<sup>3</sup></td>
+          <td class="m y">●</td>
+          <td class="m y">●<sup>4</sup></td>
+          <td class="m n">○</td>
+          <td class="m n">○</td>
         </tr>
         <tr>
-          <td>Durable named session</td>
-          <td>Event log plus typed VM checkpoint, owned by a local daemon</td>
-          <td class="bar">Table stakes now. Live reattach ships in Claude Code, Cursor (<code>agent persist</code>), OpenCode (<code>serve</code>/<code>attach</code>) and Cline's hub daemon. Aider, Goose, Codex CLI and Gemini CLI replay a transcript into a new process</td>
+          <td class="feat">Named state survives a machine reboot</td>
+          <td class="m self y">●<sup>5</sup></td>
+          <td class="m n">○<sup>6</sup></td>
+          <td class="m n">○</td>
+          <td class="m p">◐<sup>7</sup></td>
+          <td class="m n">○</td>
+          <td class="m p">◐<sup>8</sup></td>
+          <td class="m p">◐<sup>7</sup></td>
+          <td class="m n">○</td>
+          <td class="m n">○</td>
         </tr>
         <tr>
-          <td>Vendor subscription login</td>
-          <td class="cmp-gap">ChatGPT only</td>
-          <td class="bar">OpenCode supports ChatGPT Plus, GitHub Copilot and GitLab Duo with zero setup; it unbundled the Claude Pro/Max plugins at 1.3.0, noting Anthropic prohibits that use. Claude Code, Codex CLI and Cursor each support their own subscription. Gemini CLI's consumer login ended 18 June 2026</td>
+          <td class="feat">Multi-client attach with distinct roles</td>
+          <td class="m self y">●<sup>9</sup></td>
+          <td class="m n">○<sup>10</sup></td>
+          <td class="m n">○</td>
+          <td class="m n">○</td>
+          <td class="m n">○</td>
+          <td class="m p">◐<sup>11</sup></td>
+          <td class="m p">◐<sup>11</sup></td>
+          <td class="m n">○</td>
+          <td class="m n">○</td>
         </tr>
         <tr>
-          <td>Local models</td>
-          <td class="cmp-gap">Experimental — a configured local profile does not yet guarantee local routing</td>
-          <td class="bar">Essentially universal. OpenCode documents llama.cpp, LM Studio, Ollama and Ollama Cloud; Aider and Goose treat Ollama as first-class; Cline supports Ollama and LM Studio. Codex CLI goes furthest, registering <code>ollama</code> and <code>lmstudio</code> as built-in provider IDs with dedicated crates and an <code>--oss</code> picker. This is the axis Finch's own website used to lead with, and it is the one where Finch is furthest behind</td>
+          <td class="feat">Vendor subscription login</td>
+          <td class="m self p">◐<sup>12</sup></td>
+          <td class="m y">●</td>
+          <td class="m y">●</td>
+          <td class="m y">●<sup>13</sup></td>
+          <td class="m n">○<sup>14</sup></td>
+          <td class="m y">●<sup>15</sup></td>
+          <td class="m n">○<sup>16</sup></td>
+          <td class="m p">◐<sup>17</sup></td>
+          <td class="m n">○</td>
         </tr>
         <tr>
-          <td>Screen-reader support</td>
-          <td class="cmp-gap">Stated as a project invariant and not yet met — the only click path takes raw screen coordinates</td>
-          <td class="bar">Claude Code ships a full screen-reader mode with labelled turns and numbered menus. Gemini CLI has a setting. OpenCode closed the request as “not planned”</td>
+          <td class="feat">Local models</td>
+          <td class="m self p">◐<sup>18</sup></td>
+          <td class="m n">○</td>
+          <td class="m y">●<sup>19</sup></td>
+          <td class="m n">○</td>
+          <td class="m n">○</td>
+          <td class="m y">●</td>
+          <td class="m y">●</td>
+          <td class="m y">●</td>
+          <td class="m y">●</td>
         </tr>
         <tr>
-          <td>Licence</td>
-          <td>PolyForm Noncommercial — source-available; business use needs a commercial licence</td>
-          <td class="bar">OpenCode is MIT. Codex CLI, Gemini CLI, Cline, Goose and Aider are Apache-2.0. Claude Code and Cursor are proprietary</td>
+          <td class="feat">MCP client</td>
+          <td class="m self y">●</td>
+          <td class="m y">●</td>
+          <td class="m y">●</td>
+          <td class="m y">●</td>
+          <td class="m y">●</td>
+          <td class="m y">●</td>
+          <td class="m y">●</td>
+          <td class="m y">●</td>
+          <td class="m n">○<sup>20</sup></td>
         </tr>
         <tr>
-          <td>Maturity</td>
-          <td class="cmp-gap">Experimental, one maintainer</td>
-          <td class="bar">OpenCode ~206k GitHub stars, Cline ~68k, Goose ~54k, Aider ~49k though its main branch has been untouched since May 2026</td>
+          <td class="feat">Exposes itself as an MCP server</td>
+          <td class="m self n">○</td>
+          <td class="m y">●</td>
+          <td class="m n">○</td>
+          <td class="m n">○</td>
+          <td class="m n">○</td>
+          <td class="m n">○</td>
+          <td class="m n">○</td>
+          <td class="m n">○</td>
+          <td class="m n">○</td>
+        </tr>
+        <tr>
+          <td class="feat">Screen-reader mode</td>
+          <td class="m self n">○<sup>21</sup></td>
+          <td class="m y">●<sup>22</sup></td>
+          <td class="m n">○</td>
+          <td class="m n">○</td>
+          <td class="m p">◐<sup>23</sup></td>
+          <td class="m n">○<sup>24</sup></td>
+          <td class="m n">○</td>
+          <td class="m n">○</td>
+          <td class="m n">○</td>
+        </tr>
+        <tr>
+          <td class="feat">OS-level execution sandbox</td>
+          <td class="m self n">○<sup>25</sup></td>
+          <td class="m y">●</td>
+          <td class="m y">●</td>
+          <td class="m p">◐</td>
+          <td class="m y">●</td>
+          <td class="m n">○</td>
+          <td class="m n">○</td>
+          <td class="m n">○</td>
+          <td class="m n">○</td>
+        </tr>
+        <tr>
+          <td class="feat">OSI open-source licence</td>
+          <td class="m self n">○<sup>26</sup></td>
+          <td class="m n">○</td>
+          <td class="m y">●</td>
+          <td class="m n">○</td>
+          <td class="m y">●</td>
+          <td class="m y">●</td>
+          <td class="m y">●</td>
+          <td class="m y">●</td>
+          <td class="m y">●</td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <p class="table-note"><strong>Verified September 2026</strong>, against vendor documentation and repositories rather than listicles. These facts drift quickly; if you are reading this much later, re-check before relying on any row. Two naming notes: OpenCode's repository moved from the <code>sst</code> organisation to <code>anomalyco</code>, and Goose moved from Block to the Linux Foundation's Agentic AI Foundation in April 2026.</p>
+  <ol class="cmp-notes">
+    <li>The verifier returns a checked module that gates execution; capability requirements and effect rows resolve first, and VM checkpoints are re-verified on restore rather than trusted. Nothing else here does this. Anthropic's code-execution-with-MCP, Cloudflare Code Mode, CodeAct/smolagents, E2B and WASM tool sandboxes all <em>isolate</em> execution instead of checking it; pre-execution effect verification exists only in research.</li>
+    <li><code>agent persist</code> and <code>agent persist attach</code>.</li>
+    <li>A daemon mode exists only as an unmerged pull request; what ships is transcript resume.</li>
+    <li>The CLI's hub daemon owns session state; the IDE extension resumes transcripts instead.</li>
+    <li>Event log plus typed VM checkpoint on disk, re-verified on restore; covered by restart regression tests in the Brain store.</li>
+    <li>Survives supervisor self-restart, but falls back to reconstructing from disk on reboot and marks a session failed after 48 hours.</li>
+    <li>Not documented either way.</li>
+    <li>Designed to, but in-flight tool calls are reported to freeze permanently on server restart.</li>
+    <li>Driver, Consultant and Observer.</li>
+    <li>Single-writer — “this session is running in another terminal”.</li>
+    <li>One live session shared by several clients, but flat access with no role distinction.</li>
+    <li>ChatGPT only.</li>
+    <li>A Cursor account is required regardless; bring-your-own-key changes only who pays for tokens.</li>
+    <li>Consumer login ended 18 June 2026; users were moved to a separate successor CLI.</li>
+    <li>ChatGPT Plus, GitHub Copilot and GitLab Duo with zero setup. The Claude Pro/Max plugins were unbundled at 1.3.0 — Anthropic prohibits that use.</li>
+    <li>Shells out to a separately installed Claude Code rather than implementing its own login.</li>
+    <li>Native for ChatGPT and Gemini; Claude only through a third-party passthrough.</li>
+    <li>A configured local profile does not yet guarantee a query is routed locally.</li>
+    <li>Built-in <code>ollama</code> and <code>lmstudio</code> provider IDs, dedicated crates, an <code>--oss</code> picker, default ports 11434 and 1234.</li>
+    <li>The community pull request was closed unmerged; a fork carries it.</li>
+    <li>Accessibility is stated as a project invariant in Finch and is not met: the only click path takes raw screen coordinates.</li>
+    <li><code>--ax-screen-reader</code>, labelled turn prefixes, numbered menus replacing arrow-key navigation, OSC 133 turn markers.</li>
+    <li>A documented screen-reader setting, with open regressions against it.</li>
+    <li>The screen-reader request was closed as “not planned”.</li>
+    <li>An approval boundary only — no Seatbelt, bubblewrap, Landlock or seccomp anywhere in the source today. The mechanism is scoped and tracked: <a href="https://github.com/darwin-finch/finch/issues/434" target="_blank" rel="noopener">#434</a> decides the per-platform sandbox for confining shell commands, and <a href="https://github.com/darwin-finch/finch/issues/89" target="_blank" rel="noopener">#89</a> runs model edits in isolated changeset overlays. The mark stays ○ because planned is not shipped.</li>
+    <li>PolyForm Noncommercial: source-available, and business use needs a commercial licence.</li>
+  </ol>
+
+  <p class="table-note">These facts drift quickly; if you are reading this long after September 2026, re-check before relying on a row. Two naming notes: OpenCode&rsquo;s repository moved from the <code>sst</code> organisation to <code>anomalyco</code>, and Goose moved from Block to the Linux Foundation&rsquo;s Agentic AI Foundation in April 2026. Aider is included because it remains widely used, though its main branch has been untouched since May 2026.</p>
 </section>
 
 <!-- ═══════════════════════════════════════════

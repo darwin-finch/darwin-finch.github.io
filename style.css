@@ -858,6 +858,7 @@ section {
 .matrix .m.y { color: var(--green); }
 .matrix .m.p { color: var(--amber); }
 .matrix .m.n { color: #3d5a44; }
+.matrix .m.u { color: var(--text-muted); font-weight: 700; }
 
 .matrix .self,
 .matrix th.self {

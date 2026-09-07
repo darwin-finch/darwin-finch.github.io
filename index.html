@@ -235,9 +235,9 @@
   <h2 class="sec-title">// HOW FINCH DIFFERS</h2>
 
   <div class="agent-headline">
-    <p class="agent-lede">Finch is marked ● on four of eleven rows.<br>
+    <p class="agent-lede">Finch is marked ● on five of fifteen rows.<br>
     A comparison where the author wins everything is marketing, so this one is built to be checked — every cell traces to vendor documentation or source.</p>
-    <p class="cmp-legend"><span class="m y">●</span> yes &nbsp;·&nbsp; <span class="m p">◐</span> partial &nbsp;·&nbsp; <span class="m n">○</span> no &nbsp;·&nbsp; verified September 2026</p>
+    <p class="cmp-legend"><span class="m y">●</span> yes &nbsp;·&nbsp; <span class="m p">◐</span> partial &nbsp;·&nbsp; <span class="m n">○</span> no &nbsp;·&nbsp; <span class="m u">?</span> not verifiable &nbsp;·&nbsp; verified September 2026</p>
   </div>
 
   <div class="table-wrap">
@@ -306,6 +306,18 @@
           <td class="m n">○</td>
         </tr>
         <tr>
+          <td class="feat">Vendor-neutral multi-provider support</td>
+          <td class="m self y">●<sup>27</sup></td>
+          <td class="m n">○<sup>30</sup></td>
+          <td class="m p">◐<sup>28</sup></td>
+          <td class="m p">◐<sup>29</sup></td>
+          <td class="m n">○<sup>31</sup></td>
+          <td class="m y">●</td>
+          <td class="m y">●</td>
+          <td class="m y">●</td>
+          <td class="m y">●</td>
+        </tr>
+        <tr>
           <td class="feat">Vendor subscription login</td>
           <td class="m self p">◐<sup>12</sup></td>
           <td class="m y">●</td>
@@ -351,6 +363,42 @@
           <td class="m n">○</td>
           <td class="m n">○</td>
           <td class="m n">○</td>
+          <td class="m n">○</td>
+        </tr>
+        <tr>
+          <td class="feat">Persistent repository semantic map</td>
+          <td class="m self n">○<sup>32</sup></td>
+          <td class="m n">○</td>
+          <td class="m n">○</td>
+          <td class="m u">?<sup>35</sup></td>
+          <td class="m n">○</td>
+          <td class="m n">○</td>
+          <td class="m n">○</td>
+          <td class="m p">◐<sup>34</sup></td>
+          <td class="m y">●<sup>33</sup></td>
+        </tr>
+        <tr>
+          <td class="feat">Image input</td>
+          <td class="m self n">○<sup>36</sup></td>
+          <td class="m y">●</td>
+          <td class="m y">●</td>
+          <td class="m u">?<sup>39</sup></td>
+          <td class="m y">●</td>
+          <td class="m y">●</td>
+          <td class="m y">●</td>
+          <td class="m y">●<sup>38</sup></td>
+          <td class="m y">●<sup>37</sup></td>
+        </tr>
+        <tr>
+          <td class="feat">Remote control of a session on your own machine</td>
+          <td class="m self p">◐<sup>40</sup></td>
+          <td class="m y">●<sup>41</sup></td>
+          <td class="m p">◐<sup>42</sup></td>
+          <td class="m n">○</td>
+          <td class="m n">○</td>
+          <td class="m y">●<sup>43</sup></td>
+          <td class="m u">?<sup>45</sup></td>
+          <td class="m p">◐<sup>44</sup></td>
           <td class="m n">○</td>
         </tr>
         <tr>
@@ -420,6 +468,25 @@
     <li>The screen-reader request was closed as “not planned”.</li>
     <li>An approval boundary only — no Seatbelt, bubblewrap, Landlock or seccomp anywhere in the source today. The mechanism is scoped and tracked: <a href="https://github.com/darwin-finch/finch/issues/434" target="_blank" rel="noopener">#434</a> decides the per-platform sandbox for confining shell commands, and <a href="https://github.com/darwin-finch/finch/issues/89" target="_blank" rel="noopener">#89</a> runs model edits in isolated changeset overlays. The mark stays ○ because planned is not shipped.</li>
     <li>PolyForm Noncommercial: source-available, and business use needs a commercial licence.</li>
+    <li>Seven provider families in <code>finch setup</code>, plus local and remote-daemon profile types. A subscription credential and an API key never cross-bind.</li>
+    <li>Any endpoint via <code>[model_providers.&lt;id&gt;]</code>, but it must speak OpenAI's Responses or Chat Completions wire shape, so a competing vendor's native API needs a shim in front of it.</li>
+    <li>Multi-vendor including your own key, but the documentation states all requests route through Cursor's servers for final prompt building.</li>
+    <li>Anthropic's gateway documentation states it does not support routing Claude Code to non-Claude models. Bedrock and Vertex are still Claude, on a different cloud.</li>
+    <li>Only <code>GOOGLE_GEMINI_BASE_URL</code> and <code>GOOGLE_VERTEX_BASE_URL</code> overrides, both Google. OpenAI-compatible support is an open, unshipped request.</li>
+    <li>Tracked in <a href="https://github.com/darwin-finch/finch/issues/320" target="_blank" rel="noopener">#320</a>, investigate Tree-sitter repository maps for context selection.</li>
+    <li>The canonical example. Tree-sitter extracts symbol definitions and references, then PageRank over the reference graph ranks them to fit the context budget — structural centrality, not vector similarity.</li>
+    <li>An <code>analyze</code> tool returns tree-sitter symbol listings and call graphs, computed fresh per call with no persistence, so it is a tool rather than an index.</li>
+    <li>Not verifiable. The CLI documents fast grep and an Explore subagent; whether the editor's separate embedding index applies to the CLI is not stated either way.</li>
+    <li>Tracked in <a href="https://github.com/darwin-finch/finch/issues/135" target="_blank" rel="noopener">#135</a>, finish end-to-end image paste and attachment support.</li>
+    <li><code>/add</code>, <code>/paste</code> or a filename argument; explicitly requires a vision-capable model.</li>
+    <li>Paste and drag-and-drop in the desktop app, capped at ten images per message, plus an <code>image_read</code> tool agent-side.</li>
+    <li>Not verifiable. The CLI documentation is silent on images; open community requests suggest it is unsupported, which is not a primary confirmation.</li>
+    <li>A restricted Brain TLS listener for collaboration, opened only when service advertisement is enabled. That is peer attachment, not mirroring a live console to a phone.</li>
+    <li>Remote Control connects claude.ai or the mobile apps to a session running on your machine; execution and filesystem access stay local. Distinct from the cloud-executed web product.</li>
+    <li>The mobile app pairs by QR code to the <em>desktop app</em> over a relay, with execution local. Not confirmed to reach a session started from a terminal.</li>
+    <li><code>opencode serve</code> exposes a local HTTP server another device can drive, optionally network-bound with basic auth. <code>/share</code> is a read-only transcript link instead.</li>
+    <li><code>goose roam</code> exists in documentation but ships in no released binary — it requires building from source behind a feature flag, so a reader downloading Goose today does not get it.</li>
+    <li>Not verifiable. <code>cline kanban</code> is a local task board; remote access to an already-running session is not documented.</li>
   </ol>
 
   <p class="table-note">These facts drift quickly; if you are reading this long after September 2026, re-check before relying on a row. Two naming notes: OpenCode&rsquo;s repository moved from the <code>sst</code> organisation to <code>anomalyco</code>, and Goose moved from Block to the Linux Foundation&rsquo;s Agentic AI Foundation in April 2026. Aider is included because it remains widely used, though its main branch has been untouched since May 2026.</p>

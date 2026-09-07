@@ -833,6 +833,28 @@ section {
   margin-bottom: 0.65rem;
 }
 
+/* Status tags on capability headings — an honest label, not decoration. */
+.tag-exp,
+.tag-off {
+  display: inline-block;
+  margin-left: 0.5em;
+  padding: 0.1rem 0.4rem;
+  border: 1px solid currentColor;
+  border-radius: var(--radius);
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.tag-exp {
+  color: var(--amber);
+}
+
+.tag-off {
+  color: var(--red);
+}
+
 .card p {
   font-size: 0.8rem;
   color: var(--text-dim);

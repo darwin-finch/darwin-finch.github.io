@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Finch — Local AI Coding Assistant</title>
-  <meta name="description" content="Local-first AI coding assistant with durable memory, typed Co-Lisp/Co-Forth programs, agentic tools, optional offline models, and a VS Code-ready OpenAI-compatible API.">
-  <meta property="og:title" content="Finch — Local AI Coding Assistant">
-  <meta property="og:description" content="Durable memory, typed Co-Lisp/Co-Forth programs, agentic tools, optional offline models, and a VS Code-ready OpenAI-compatible API.">
+  <title>Finch — Experimental Terminal Agent Runtime</title>
+  <meta name="description" content="Experimental terminal coding assistant with provider-backed chat, typed Lisp and Co-Forth programs, tools, and durable named Brains.">
+  <meta property="og:title" content="Finch — Experimental Terminal Agent Runtime">
+  <meta property="og:description" content="Provider-backed chat, typed programs, capability-checked tools, and durable named Brains in an experimental Rust terminal agent.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://darwin-finch.github.io">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Finch — Local AI Coding Assistant">
-  <meta name="twitter:description" content="Durable memory, typed Co-Lisp/Co-Forth programs, agentic tools, optional offline models, and a VS Code-ready OpenAI-compatible API.">
+  <meta name="twitter:title" content="Finch — Experimental Terminal Agent Runtime">
+  <meta name="twitter:description" content="Provider-backed chat, typed programs, capability-checked tools, and durable named Brains in an experimental Rust terminal agent.">
   <meta name="theme-color" content="#080808">
   <link rel="canonical" href="https://darwin-finch.github.io/">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -54,7 +54,7 @@
 <section id="hero">
   <div class="hero-inner">
 
-    <h1 class="sr-only">Finch — local-first AI coding assistant</h1>
+    <h1 class="sr-only">Finch — experimental terminal agent runtime and coding assistant</h1>
     <pre class="logo-art" role="img" aria-label="FINCH">██████╗ ██╗███╗   ██╗ ██████╗██╗  ██╗
 ██╔════╝██║████╗  ██║██╔════╝██║  ██║
 █████╗  ██║██╔██╗ ██║██║     ███████║
@@ -62,17 +62,17 @@
 ██║     ██║██║ ╚████║╚██████╗██║  ██║
 ╚═╝     ╚═╝╚═╝  ╚═══╝ ╚═════╝╚═╝  ╚═╝</pre>
 
-    <p class="hero-sub">Local-first AI coding assistant · Co-Lisp + Co-Forth vocabulary · MemTree memory</p>
+    <p class="hero-sub">Experimental terminal coding assistant · typed Lisp + Co-Forth · durable named Brains</p>
 
     <div class="badges">
       <span>WRITTEN IN RUST</span>
       <span>SINGLE BINARY</span>
-      <span>CO-LISP + CO-FORTH</span>
-      <span>MEMTREE MEMORY</span>
-      <span>WORKS OFFLINE</span>
-      <span>PRIVATE BY DEFAULT</span>
-      <span>OPENAI-COMPATIBLE API</span>
-      <span>VS CODE VERIFIED</span>
+      <span>TYPED LISP + CO-FORTH</span>
+      <span>DURABLE BRAINS</span>
+      <span>CAPABILITY-CHECKED TOOLS</span>
+      <span>MCP CLIENT</span>
+      <span>BOUNDED HTTP API</span>
+      <span>EXPERIMENTAL</span>
     </div>
 
     <!-- Animated terminal -->
@@ -105,22 +105,22 @@
     <div class="pitch-col">
       <h2 class="pitch-label">// THE PROBLEM</h2>
       <ul class="pitch-list bad">
-        <li>Constant internet connection required</li>
-        <li>Every query costs API money</li>
-        <li>Your code goes to the cloud</li>
-        <li>No learning from your patterns</li>
-        <li>Ongoing API costs for every single query</li>
+        <li>Opaque one-tool-at-a-time agent actions</li>
+        <li>Conversation state tied to one frontend process</li>
+        <li>Different workflows for every provider and tool</li>
+        <li>Implicit host access that is hard to audit</li>
+        <li>Configuration mistaken for tested integration support</li>
       </ul>
     </div>
     <div class="pitch-divider">VS</div>
     <div class="pitch-col">
       <h2 class="pitch-label">// WITH FINCH</h2>
       <ul class="pitch-list good">
-        <li>Fully offline after first model download</li>
-        <li>Zero marginal cost per query</li>
-        <li>Local models keep code on your machine</li>
-        <li>Build reusable typed Co-Lisp/Co-Forth vocabulary</li>
-        <li>Recall past context with MemTree semantic search</li>
+        <li>Typed programs validate before host effects run</li>
+        <li>Named Brains preserve conversation and VM state</li>
+        <li>Configured providers share one terminal workflow</li>
+        <li>Tool effects cross an explicit approval boundary</li>
+        <li>Experimental integrations are labeled honestly</li>
       </ul>
     </div>
   </div>
@@ -186,7 +186,7 @@
     <p class="agent-lede">Claude Code is great — if you're on Claude.<br>
     Finch gives configured cloud and local models one <strong>consistent terminal workflow</strong>.</p>
     <div class="provider-row">
-      <span>Grok</span><span>OpenAI&nbsp;API</span><span>Gemini</span><span>Mistral</span><span>Groq</span><span>Claude</span><span>Local&nbsp;ONNX</span>
+      <span>Claude</span><span>OpenAI&nbsp;API</span><span>ChatGPT&nbsp;sub.</span><span>Grok</span><span>Gemini</span><span>Mistral</span><span>Groq</span><span>Local&nbsp;ONNX</span>
     </div>
   </div>
 
@@ -209,7 +209,7 @@
     <div class="agent-card">
       <div class="agent-icon">◫</div>
       <h3>MEMTREE MEMORY</h3>
-      <p>Persistent hierarchical memory with local neural semantic search. A compact embedding model finds relevant past context even when the wording changes, and stable recall provenance shows where remembered context came from.</p>
+      <p>Persistent hierarchical memory in local SQLite, searched by embedding similarity so recall survives a change of wording, with provenance showing where remembered context came from. A compact neural embedding model is used when it is already in the Hugging Face cache; otherwise Finch falls back to TF-IDF over word and character n-grams.</p>
     </div>
 
     <div class="agent-card">
@@ -319,7 +319,7 @@
 
       ▄▄▄▄▄▄
     ▗▟█●██▙►  finch v0.7.30
-  ▐████████▌  Qwen-2.5-7B · ready
+  ▐████████▌  claude-sonnet-4-5 · work
   ▝▜██████▛▘  ~/repos/myproject
       ╥  ╥
      ╱    ╲
@@ -342,13 +342,13 @@
 
     <div class="use-card use-full">
       <div class="use-num">03</div>
-      <h3>OPENAI-COMPATIBLE API — VS CODE VERIFIED</h3>
-      <p>Finch starts a loopback-only daemon at <code>127.0.0.1:11435</code> with <code>GET /v1/models</code> and <code>POST /v1/chat/completions</code>. OpenAI-compatible clients send requests to Finch first; Finch then routes them through the selected local or cloud-backed profile.</p>
+      <h3>OPENAI-SHAPED API — A BOUNDED SUBSET</h3>
+      <p>Finch starts a loopback-only daemon at <code>127.0.0.1:11435</code> serving <code>GET /v1/models</code>, <code>POST /v1/chat/completions</code>, and <code>POST /v1/messages</code>, plus health, metrics, and Finch-specific feedback, node, and Brain routes. Clients send requests to Finch first; Finch routes them through the selected profile. This is <strong>not</strong> the full OpenAI API and does not implement <code>/v1/responses</code>; a client that needs a route outside this set will not work.</p>
       <div class="compat-row" role="group" aria-label="Client compatibility">
-        <span class="compat-chip verified">VS CODE · VERIFIED</span>
-        <span class="compat-chip verified">CURL · VERIFIED</span>
-        <span class="compat-chip">OPENAI SDKs · API-COMPATIBLE</span>
-        <span class="compat-chip">OTHER CLIENTS · API-COMPATIBLE</span>
+        <span class="compat-chip">VS CODE · SETUP BELOW</span>
+        <span class="compat-chip">CURL · TWO ROUTES</span>
+        <span class="compat-chip">OPENAI SDKs · SUBSET ONLY</span>
+        <span class="compat-chip">CONFORMANCE · IN PROGRESS</span>
       </div>
       <p><strong>VS Code setup:</strong> run <strong>Chat: Manage Language Models</strong>, choose <strong>Add Models → Custom Endpoint</strong>, name the group <strong>Finch</strong>, enter the client key from <code>finch setup</code> → <strong>Settings</strong>, and select <strong>Chat Completions</strong>. Use the provider configuration below so VS Code discovers your Finch profile IDs automatically.</p>
       <div class="use-code-row">
@@ -385,44 +385,44 @@ URL=http://127.0.0.1:11435/v1
 
     <div class="card">
       <div class="card-glyph">▣</div>
-      <h3>WORKS OFFLINE</h3>
-      <p>6 model families via ONNX Runtime — Qwen, Llama, Gemma, Mistral, Phi, DeepSeek. Candle backend available on Linux. No network round trip, subscriptions, or provider rate limits.</p>
+      <h3>LOCAL MODEL LOADERS <span class="tag-exp">EXPERIMENTAL</span></h3>
+      <p>ONNX Runtime and Candle loaders, plus local profiles for several model families, are in the source. A configured local profile does not yet guarantee a query is routed locally. Use <code>--cloud-only</code> to skip local loading entirely.</p>
     </div>
 
     <div class="card">
       <div class="card-glyph">◈</div>
-      <h3>NATIVE ACCELERATION</h3>
-      <p>ONNX Runtime's CoreML execution provider on Apple Silicon (M1–M4) — dispatches ops to ANE or GPU where CoreML's op set allows. Linux uses CUDA, ROCm, or CPU. Candle (Metal/CPU) is available as an alternative backend on Linux; Metal is not viable on macOS for current model families.</p>
+      <h3>EXECUTION PROVIDERS <span class="tag-exp">EXPERIMENTAL</span></h3>
+      <p>The loaders select CoreML on Apple Silicon and CUDA, ROCm, or CPU on Linux. Which operations actually reach a given accelerator depends on the model and the runtime's op coverage; Finch publishes no measured throughput.</p>
     </div>
 
     <div class="card">
       <div class="card-glyph">◉</div>
-      <h3>PRIVACY FIRST</h3>
-      <p>No telemetry or cloud sync. Use a local model to keep code on your machine, or explicitly configure a cloud provider when you want one.</p>
+      <h3>NO TELEMETRY</h3>
+      <p>Finch has no telemetry or cloud sync of its own. That is not the same as offline: prompts, selected context, and tool results sent to a configured cloud provider leave the machine and are governed by that provider.</p>
     </div>
 
     <div class="card">
       <div class="card-glyph">▶</div>
-      <h3>INSTANT STARTUP</h3>
-      <p>The REPL appears in under 100ms. When local inference is enabled, the model loads in the background; a configured cloud profile can remain available while it starts.</p>
+      <h3>MEASURED STARTUP</h3>
+      <p>Finch times its own path from <code>main</code> to the first keystroke it will act on. Set <code>FINCH_STARTUP_TIMINGS</code> to get the phase timeline, with anything over a 150&nbsp;ms budget flagged. The number excludes loader and Tokio runtime construction, so it is a proxy for process entry, not process entry.</p>
     </div>
 
     <div class="card">
       <div class="card-glyph">◆</div>
       <h3>AGENTIC TOOLS</h3>
-      <p>Read, Glob, Grep, Bash, WebFetch. A multi-turn agentic loop with permission checks; use local or explicitly configured cloud models.</p>
+      <p>Read, glob, grep, edit, patch, write, bash, web fetch, spreadsheets, plan, and todo. A multi-turn loop where known read-only operations can run unprompted and mutating ones are reviewed or denied by policy.</p>
     </div>
 
     <div class="card">
       <div class="card-glyph">◇</div>
-      <h3>LORA FINE-TUNING</h3>
-      <p>Weighted feedback collection infrastructure is in place. LoRA adapter training and loading is the next major milestone — contributions welcome.</p>
+      <h3>LORA TRAINING <span class="tag-off">DISABLED</span></h3>
+      <p>Automatic LoRA training is switched off. Weighted <code>Ctrl+G</code>/<code>Ctrl+B</code> feedback is stored privately and is never a training trigger. Preserved legacy queues and adapters are not processed.</p>
     </div>
 
     <div class="card">
       <div class="card-glyph">⬡</div>
       <h3>ITERATIVE PLANNING</h3>
-      <p><code>/plan &lt;task&gt;</code> runs an adversarial multi-persona critique loop. Seven roles review each draft; must-address issues block convergence. Compatible configured profiles can participate through normalised structured critique output.</p>
+      <p><code>/plan &lt;task&gt;</code> runs an adversarial multi-persona critique loop. Six critique personas activate by deterministic keyword rules and review each draft; must-address issues block convergence. Compatible configured profiles participate through normalised structured critique output.</p>
     </div>
 
   </div>
@@ -447,10 +447,11 @@ URL=http://127.0.0.1:11435/v1
                  ┌────────────┴─────────────────┐
                  ▼                              ▼
         ┌────────────────┐    ┌──────────────────────────────────┐
-        │ CLOUD PROFILE  │    │       LOCAL MODEL PROFILE        │
+        │ CLOUD PROFILE  │    │  LOCAL PROFILE  ·  EXPERIMENTAL  │
         │Claude · OpenAI │    │    Qwen · Llama · Gemma · Phi    │
         │ Gemini · Grok  │    │        Mistral · DeepSeek        │
-        │ Mistral · Groq │    │   ONNX Runtime / Candle backend  │
+        │ Mistral · Groq │    │   ONNX Runtime / Candle loaders  │
+        │  ChatGPT sub.  │    │  routing not yet guaranteed (#74)│
         └───────┬────────┘    └─────────────────┬────────────────┘
                 │                               │
                 └───────────────┬───────────────┘
@@ -466,28 +467,28 @@ URL=http://127.0.0.1:11435/v1
       <span class="step-n">01</span>
       <div>
         <h3>INSTALL &amp; RUN</h3>
-        <p>One curl command installs the binary. The REPL starts in under 100ms. Configure a provider profile or choose local inference in <code>finch setup</code>.</p>
+        <p>Build from a clean checkout, or install a release artifact. Configure a provider profile — API key, ChatGPT subscription device login, or local inference — in <code>finch setup</code>.</p>
       </div>
     </div>
     <div class="step">
       <span class="step-n">02</span>
       <div>
-        <h3>QUERY LOCALLY</h3>
-        <p>Choose a local profile to keep inference on your machine. On Apple Silicon, ONNX Runtime's CoreML execution provider dispatches supported ops to ANE or GPU. Linux supports CUDA and other execution providers. Cached local models work offline.</p>
+        <h3>OR TRY A LOCAL PROFILE</h3>
+        <p>Configure a local profile to attempt inference on your own hardware, via ONNX Runtime (CoreML on Apple Silicon, CUDA/ROCm/CPU on Linux) or Candle. Local bootstrap and selection are experimental; verify where a query actually ran before relying on it.</p>
       </div>
     </div>
     <div class="step">
       <span class="step-n">03</span>
       <div>
         <h3>USE AGENTIC TOOLS</h3>
-        <p>Finch can read files, search your codebase, run shell commands, and fetch web pages — all with your approval. Full multi-turn agentic loop, just like Claude Code.</p>
+        <p>Finch reads files, searches your codebase, proposes edits, runs shell commands, and fetches web pages. Mutating and otherwise sensitive operations cross an explicit approval boundary; treat generated diffs and commands as untrusted until you have reviewed them.</p>
       </div>
     </div>
     <div class="step">
       <span class="step-n">04</span>
       <div>
-        <h3>LORA COMING SOON</h3>
-        <p>Feedback collection infrastructure is ready (<code>Ctrl+G</code> / <code>Ctrl+B</code>). LoRA fine-tuning to adapt the model to your codebase is the next major milestone.</p>
+        <h3>KEEP WORK IN A BRAIN</h3>
+        <p>Give a long-running piece of work a named Brain so its conversation, committed Co-Lisp/Co-Forth definitions, and VM checkpoints survive closing the terminal or restarting the daemon.</p>
       </div>
     </div>
   </div>
@@ -499,7 +500,8 @@ URL=http://127.0.0.1:11435/v1
 <section id="models">
   <h2 class="sec-title">// SUPPORTED MODELS</h2>
 
-  <h3 class="subsec-title">Local (ONNX Runtime — runs on your hardware)</h3>
+  <h3 class="subsec-title">Local (ONNX Runtime) — profiles exist; routing is experimental</h3>
+  <p class="table-note">These families have local profiles and loader support in the source. That is a configuration surface, not a conformance claim: local bootstrap, selection, and provider parity are unfinished, so a configured local profile does not yet guarantee your query ran locally. Artifacts are large and may require Hugging Face access.</p>
   <div class="table-wrap">
     <table class="model-table">
       <thead>
@@ -515,7 +517,7 @@ URL=http://127.0.0.1:11435/v1
           <td>Qwen 2.5</td>
           <td>1.5B · 3B · 7B · 14B</td>
           <td>ONNX</td>
-          <td class="bar">Recommended · auto-selected by RAM</td>
+          <td class="bar">Default local family · size chosen by detected RAM</td>
         </tr>
         <tr>
           <td>Llama 3</td>
@@ -550,60 +552,63 @@ URL=http://127.0.0.1:11435/v1
       </tbody>
     </table>
   </div>
-  <p class="table-note">CoreML execution provider on Apple Silicon (M1–M4) · CUDA/ROCm/CPU on Linux via ONNX Runtime · Qwen auto-selected by RAM by default</p>
+  <p class="table-note">CoreML execution provider on Apple Silicon · CUDA/ROCm/CPU on Linux via ONNX Runtime · Candle is an alternative backend · see <a href="https://github.com/darwin-finch/finch/blob/main/docs/MODEL_BACKEND_STATUS.md" target="_blank" rel="noopener">MODEL_BACKEND_STATUS.md</a>, a dated backend investigation rather than routing evidence</p>
 
-  <h3 class="subsec-title">Cloud providers (bring your own API key)</h3>
+  <h3 class="subsec-title">Cloud providers — profiles offered by <code>finch setup</code></h3>
   <div class="table-wrap">
     <table class="model-table">
       <thead>
         <tr>
           <th>PROVIDER</th>
-          <th>COST TIER</th>
-          <th>BEST FOR</th>
+          <th>AUTHENTICATION</th>
           <th>NOTES</th>
         </tr>
       </thead>
       <tbody>
         <tr>
+          <td>Claude (Anthropic)</td>
+          <td>API key</td>
+          <td class="bar">Enter an explicit model ID, or refresh the authenticated catalogue</td>
+        </tr>
+        <tr>
+          <td>OpenAI Platform</td>
+          <td>API key</td>
+          <td class="bar">A model ID your Platform account can reach on Chat Completions</td>
+        </tr>
+        <tr>
+          <td>ChatGPT subscription</td>
+          <td>Device login — <code>finch auth login</code></td>
+          <td class="bar">Finch-owned transport, pinned to a recorded Codex compatibility commit; drift fails closed. Experimental. Subscription credentials are not API keys and never cross-bind with Platform ones</td>
+        </tr>
+        <tr>
           <td>Grok (xAI)</td>
-          <td class="bar-mid">Usage-based API</td>
-          <td>Daily use · coding · tool calls</td>
+          <td>API key</td>
           <td class="bar">API billing is separate from Grok/X subscriptions · <a href="https://console.x.ai" target="_blank" rel="noopener">console.x.ai</a></td>
         </tr>
         <tr>
-          <td>Groq</td>
-          <td class="bar-cheap">$</td>
-          <td>Speed · batch processing</td>
-          <td class="bar">Low-latency inference · runs open models on custom hardware</td>
-        </tr>
-        <tr>
           <td>Gemini (Google)</td>
-          <td class="bar-cheap">$ (Flash) · $$ (Pro)</td>
-          <td>Long context · multimodal</td>
-          <td class="bar">Gemini Flash is extremely cost-effective · 1M token context window</td>
+          <td>API key</td>
+          <td class="bar">AI Studio transport; custom endpoints and paths are rejected</td>
         </tr>
         <tr>
           <td>Mistral</td>
-          <td class="bar-cheap">$–$$</td>
-          <td>European data residency · open weights</td>
-          <td class="bar">Mistral Large for serious work · Codestral for code</td>
+          <td>API key</td>
+          <td class="bar">European provider with open-weight model families</td>
         </tr>
         <tr>
-          <td>Claude (Anthropic)</td>
-          <td class="bar-mid">$$–$$$</td>
-          <td>Complex reasoning · long tasks · plan mode</td>
-          <td class="bar">Haiku is budget · Sonnet is the sweet spot · best tool use quality</td>
+          <td>Groq</td>
+          <td>API key</td>
+          <td class="bar">Runs open models on the provider's own hardware</td>
         </tr>
         <tr>
-          <td>OpenAI API</td>
-          <td class="bar-mid">Varies by model</td>
-          <td>Configurable model ID · reasoning profiles</td>
-          <td class="bar">Choose an explicit model ID supported by OpenAI Chat Completions and available to your Platform account</td>
+          <td>Ollama · remote Finch daemon</td>
+          <td>Profile types in source</td>
+          <td class="bar">Configurable; not covered by conformance evidence</td>
         </tr>
       </tbody>
     </table>
   </div>
-  <p class="table-note">Switch between configured profiles with <code>/model &lt;name&gt;</code> (<code>/provider</code> remains a compatibility alias) · Conversation history is preserved · Streaming and tool support vary by provider and model · Conformance coverage is ongoing · OpenAI Platform API keys are supported; ChatGPT subscription login is not yet shipped</p>
+  <p class="table-note">Switch between configured profiles with <code>/model &lt;name&gt;</code> (<code>/provider</code> and <code>/teacher</code> remain compatibility aliases) · Conversation history is preserved across a switch · Streaming and tool support vary by provider and model, and cross-provider conformance coverage is still being published · Model availability changes independently of Finch, so pricing and model rankings are deliberately not listed here</p>
 </section>
 
 <!-- ═══════════════════════════════════════════
@@ -663,6 +668,7 @@ URL=http://127.0.0.1:11435/v1
       <a href="https://github.com/darwin-finch/finch/blob/main/scripts/install.sh" target="_blank" rel="noopener">view script ↗</a>
     </p>
     <p class="install-note">One self-contained binary — no Node, no Python, no Docker, no runtime dependencies.</p>
+    <p class="install-note"><strong>Release artifacts can lag behind <code>main</code>,</strong> and installer reliability is still being worked on. Building from a clean checkout is the most reliable way to try the current code.</p>
   </div>
 
   <ol class="install-steps">
@@ -672,7 +678,7 @@ URL=http://127.0.0.1:11435/v1
     </li>
     <li>
       <span class="step-n">02</span>
-      <div>Run <code>finch</code> — the REPL starts in under 100ms</div>
+      <div>Run <code>finch</code> — set <code>FINCH_STARTUP_TIMINGS</code> if you want its measured time-to-ready</div>
     </li>
     <li>
       <span class="step-n">03</span>
@@ -713,8 +719,8 @@ URL=http://127.0.0.1:11435/v1
     </a>
     <a class="contrib-card" href="https://github.com/darwin-finch/finch/issues" target="_blank" rel="noopener">
       <span class="issue-tag complex">big ticket</span>
-      <h3>LoRA Adapter Loading</h3>
-      <p>Load fine-tuned LoRA adapters into ONNX Runtime at inference time. The largest open milestone — would unlock continuous local learning.</p>
+      <h3>Local Routing Parity</h3>
+      <p>Make a configured local profile actually decide and serve a query, with explicit fallback, so local inference is a routing guarantee instead of a configuration surface. The largest open milestone.</p>
     </a>
   </div>
 
@@ -729,7 +735,7 @@ URL=http://127.0.0.1:11435/v1
 ═══════════════════════════════════════════ -->
 <section id="sponsor">
   <h2 class="sec-title">// SUPPORT THE PROJECT</h2>
-  <p class="sponsor-lede">Finch is source-available and free for noncommercial use. Sponsorships help cover API costs and fund the big open milestones.</p>
+  <p class="sponsor-lede">Finch is source-available under the <a href="https://github.com/darwin-finch/finch/blob/main/LICENSE" target="_blank" rel="noopener">PolyForm Noncommercial License 1.0.0</a> and free for personal use, research, teaching, and open-source work. Using it inside a business needs a commercial licence, available at <a href="https://polar.sh/darwin-finch" target="_blank" rel="noopener">polar.sh/darwin-finch</a> — enforcement is the honour system, so nothing is blocked if you do not buy one; noncommercial users see a weekly notice at startup. Activate a key with <code>finch license activate --key FINCH-…</code>; it is verified offline against a public key compiled into the binary. Sponsorships help cover API costs and fund the big open milestones.</p>
 
   <div class="sponsor-tiers">
 
@@ -775,7 +781,7 @@ URL=http://127.0.0.1:11435/v1
 ═══════════════════════════════════════════ -->
 <footer id="footer">
   <pre class="footer-bird">      ▄▄▄▄▄▄
-    ▗▟█●██▙►  finch — local AI coding assistant
+    ▗▟█●██▙►  finch — experimental terminal agent runtime
   ▐████████▌  PolyForm Noncommercial
   ▝▜██████▛▘  darwin-finch/finch
       ╥  ╥
@@ -799,7 +805,7 @@ URL=http://127.0.0.1:11435/v1
       <a href="https://github.com/darwin-finch/finch/issues" target="_blank" rel="noopener">open an issue</a> or reach out via GitHub
     </span>
   </div>
-  <p class="footer-copy">Local-first. No telemetry. Your model, your choice.</p>
+  <p class="footer-copy">No telemetry. Your model, your choice. Experimental — verify the profile you use.</p>
 </footer>
 
 <script src="app.js"></script>

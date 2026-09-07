@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Finch — Documentation</title>
-  <meta name="description" content="Documentation for Finch, the local-first AI coding assistant.">
+  <meta name="description" content="Documentation for Finch, an experimental terminal agent runtime and coding assistant written in Rust.">
   <meta name="theme-color" content="#080808">
   <link rel="canonical" href="https://darwin-finch.github.io/docs.html">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -34,7 +34,7 @@
 
 <div class="docs-header">
   <h1>// DOCUMENTATION</h1>
-  <p>All documentation is hosted on GitHub alongside the source code.</p>
+  <p>All documentation is hosted on GitHub alongside the source code. Finch changes quickly, so source and tests are authoritative where a document disagrees with them; the <a href="https://github.com/darwin-finch/finch/blob/main/docs/README.md" target="_blank" rel="noopener">documentation map</a> marks which documents are current.</p>
 </div>
 
 <div class="docs-body">
@@ -57,7 +57,7 @@
 
     <a class="doc-link" href="https://github.com/darwin-finch/finch/blob/main/docs/CONFIGURATION.md" target="_blank" rel="noopener">
       <span class="doc-name">Configuration</span>
-      <span class="doc-desc">~/.finch/config.toml reference — providers, LoRA, model settings</span>
+      <span class="doc-desc">~/.finch/config.toml reference — providers, credentials, model settings</span>
       <span class="doc-arrow">↗</span>
     </a>
 
@@ -103,7 +103,7 @@
 
     <a class="doc-link" href="https://github.com/darwin-finch/finch/blob/main/CLAUDE.md" target="_blank" rel="noopener">
       <span class="doc-name">CLAUDE.md</span>
-      <span class="doc-desc">Complete system architecture — models, TUI, tools, LoRA, providers</span>
+      <span class="doc-desc">Project orientation, behavioural invariants, and development guidelines</span>
       <span class="doc-arrow">↗</span>
     </a>
 
@@ -121,13 +121,13 @@
 
     <a class="doc-link" href="https://github.com/darwin-finch/finch/blob/main/docs/DAEMON_MODE.md" target="_blank" rel="noopener">
       <span class="doc-name">Daemon Mode</span>
-      <span class="doc-desc">HTTP server mode, OpenAI-compatible API, session management</span>
+      <span class="doc-desc">HTTP server mode, the bounded OpenAI-shaped route subset, session management</span>
       <span class="doc-arrow">↗</span>
     </a>
 
     <a class="doc-link" href="https://github.com/darwin-finch/finch/blob/main/docs/MODEL_BACKEND_STATUS.md" target="_blank" rel="noopener">
       <span class="doc-name">Model Backends</span>
-      <span class="doc-desc">ONNX vs Candle comparison, supported model families</span>
+      <span class="doc-desc">Dated backend investigation — not end-to-end routing or conformance evidence</span>
       <span class="doc-arrow">↗</span>
     </a>
   </div>
@@ -143,20 +143,44 @@
     </a>
 
     <a class="doc-link" href="https://github.com/darwin-finch/finch/blob/main/docs/AUTOMATIC_TRAINING.md" target="_blank" rel="noopener">
-      <span class="doc-name">LoRA Training</span>
-      <span class="doc-desc">Weighted feedback collection and background fine-tuning</span>
+      <span class="doc-name">Automatic Training</span>
+      <span class="doc-desc">Disabled — why, and what happens to preserved legacy queues and adapters</span>
+      <span class="doc-arrow">↗</span>
+    </a>
+
+    <a class="doc-link" href="https://github.com/darwin-finch/finch/blob/main/docs/MCP_USER_GUIDE.md" target="_blank" rel="noopener">
+      <span class="doc-name">MCP Client Guide</span>
+      <span class="doc-desc">Configuring stdio servers and troubleshooting them — Finch is a client, not a server</span>
       <span class="doc-arrow">↗</span>
     </a>
 
     <a class="doc-link" href="https://github.com/darwin-finch/finch/blob/main/docs/MCP_ARCHITECTURE.md" target="_blank" rel="noopener">
-      <span class="doc-name">MCP</span>
-      <span class="doc-desc">Model Context Protocol support — connecting external tools</span>
+      <span class="doc-name">MCP Architecture</span>
+      <span class="doc-desc">How discovered tools become typed, namespaced, capability-checked vocabulary</span>
+      <span class="doc-arrow">↗</span>
+    </a>
+
+    <a class="doc-link" href="https://github.com/darwin-finch/finch/blob/main/docs/CHATGPT_SUBSCRIPTION_TRANSPORT.md" target="_blank" rel="noopener">
+      <span class="doc-name">ChatGPT Subscription</span>
+      <span class="doc-desc">The Finch-owned transport behind <code>finch auth login</code>, and the compatibility commit it pins</span>
+      <span class="doc-arrow">↗</span>
+    </a>
+
+    <a class="doc-link" href="https://github.com/darwin-finch/finch/blob/main/src/tools/EXECUTION.md" target="_blank" rel="noopener">
+      <span class="doc-name">Tool Execution</span>
+      <span class="doc-desc">The approval boundary contract — what runs unprompted, what is reviewed, what is denied</span>
+      <span class="doc-arrow">↗</span>
+    </a>
+
+    <a class="doc-link" href="https://github.com/darwin-finch/finch/blob/main/docs/MACOS_GUI_AUTOMATION.md" target="_blank" rel="noopener">
+      <span class="doc-name">macOS GUI Automation</span>
+      <span class="doc-desc">Accessibility permissions, and semantic addressing instead of pixel coordinates</span>
       <span class="doc-arrow">↗</span>
     </a>
 
     <a class="doc-link" href="https://github.com/darwin-finch/finch/blob/main/docs/MULTI_PROVIDER_CONFIG.md" target="_blank" rel="noopener">
       <span class="doc-name">Multi-Provider</span>
-      <span class="doc-desc">Configuring Claude, GPT-4, Gemini, Grok, Mistral, Groq, and local</span>
+      <span class="doc-desc">Configuring Claude, OpenAI, Gemini, Grok, Mistral, Groq, and local profiles</span>
       <span class="doc-arrow">↗</span>
     </a>
   </div>
@@ -202,7 +226,7 @@
     <a href="https://github.com/darwin-finch/finch/issues">Issues</a>
     <a href="https://github.com/darwin-finch/finch/blob/main/CHANGELOG.md">Changelog</a>
   </nav>
-  <p class="footer-copy">Local-first. No telemetry. Your model, your choice.</p>
+  <p class="footer-copy">No telemetry. Your model, your choice. Experimental — verify the profile you use.</p>
 </footer>
 
 <script src="app.js"></script>

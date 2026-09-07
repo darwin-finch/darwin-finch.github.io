@@ -235,7 +235,7 @@
   <h2 class="sec-title">// HOW FINCH DIFFERS</h2>
 
   <div class="agent-headline">
-    <p class="agent-lede">Finch is marked ● on six of seventeen rows.<br>
+    <p class="agent-lede">Finch is marked ● on seven of eighteen rows.<br>
     A comparison where the author wins everything is marketing, so this one is built to be checked — every cell traces to vendor documentation or source.</p>
     <p class="cmp-legend"><span class="m y">●</span> yes &nbsp;·&nbsp; <span class="m p">◐</span> partial &nbsp;·&nbsp; <span class="m n">○</span> no &nbsp;·&nbsp; <span class="m k">▣</span> planned, tracked &nbsp;·&nbsp; <span class="m u">?</span> not verifiable &nbsp;·&nbsp; verified September 2026</p>
   </div>
@@ -268,6 +268,18 @@
           <td class="m n">○</td>
           <td class="m n">○</td>
           <td class="m n">○</td>
+        </tr>
+        <tr>
+          <td class="feat">Adversarial multi-persona critique loop with a convergence gate</td>
+          <td class="m self y">●<sup>58</sup></td>
+          <td class="m n">○</td>
+          <td class="m n">○</td>
+          <td class="m n">○</td>
+          <td class="m n">○</td>
+          <td class="m n">○</td>
+          <td class="m n">○</td>
+          <td class="m n">○</td>
+          <td class="m n">○<sup>59</sup></td>
         </tr>
         <tr>
           <td class="feat">Daemon-owned live session reattach</td>
@@ -517,12 +529,14 @@
     <li>Available in the CLI, SDK and Kanban, and explicitly not in the editor extensions.</li>
     <li>An Open Plugins hooks specification. Its own documentation notes that <code>SubagentStart</code> and <code>Stop</code> are declared but never actually emitted.</li>
     <li><code>--lint-cmd</code> and <code>--test-cmd</code> fire at two fixed points. There is no named-event hook API.</li>
-    <li>The autonomous agent stages and commits its own work; the interactive console does not.</li>
+    <li>Only the <code>finch agent</code> autonomous mode stages and commits, using a persona git identity, and only when the task names a repository. The interactive console never does. That mode is an early prototype rather than a supported path, so read this ◐ narrowly.</li>
     <li>Checkpointing and Checkpoints are internal or shadow-repository snapshots; their own documentation states they do not commit to your project's git history, which is why they do not score here.</li>
     <li>Forbidden in the base model instructions — do not commit unless explicitly requested.</li>
     <li>Only the GitHub Actions bot integration commits by itself, from its own wrapper rather than the model. The ordinary CLI does not.</li>
     <li>Default on. Commits every edit with a generated message, and commits pre-existing dirty changes before editing.</li>
     <li><strong>Read this row narrowly.</strong> Every harness here will commit when you tell it to, and instructing a commit after each discrete edit — through <code>CLAUDE.md</code>, <code>AGENTS.md</code> or a prompt — is the ordinary way people work, including on Finch itself. The row records only what a tool does with no instruction at all, which is a difference in default rather than in capability. Codex is ○ because its base instructions actively forbid an uninstructed commit, not because it cannot make one.</li>
+    <li>Six critique personas activate on deterministic keyword rules. An item at severity 8 and confidence 7 or above is must-address and blocks convergence, which additionally requires the plan to stabilise within a 15% character delta, over at most three iterations by default. The purpose is to let a cheaper model reach a better answer by constraining how it reasons and iterating before you ever see the result — paid for in tokens. User steering is still open in <a href="https://github.com/darwin-finch/finch/issues/22" target="_blank" rel="noopener">#22</a>.</li>
+    <li>The near neighbours, none of which iterate: plan modes in Claude Code, Cursor and Gemini CLI analyse and propose in a single pass; Codex's optional <code>auto_review</code> screens approval requests with a reviewer agent; Aider's architect mode splits proposing from editing across two models. No convergence criterion and nothing that blocks on unresolved critique.</li>
   </ol>
 
   <p class="table-note">These facts drift quickly; if you are reading this long after September 2026, re-check before relying on a row. Two naming notes: OpenCode&rsquo;s repository moved from the <code>sst</code> organisation to <code>anomalyco</code>, and Goose moved from Block to the Linux Foundation&rsquo;s Agentic AI Foundation in April 2026. Aider is included because it remains widely used, though its main branch has been untouched since May 2026.</p>

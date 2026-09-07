@@ -833,6 +833,34 @@ section {
   margin-bottom: 0.65rem;
 }
 
+/* Comparison table. The gap column is styled as legibly as the win column;
+   an honest table does not hide the rows where Finch loses. */
+.cmp-table td {
+  vertical-align: top;
+}
+
+.cmp-table td:first-child {
+  color: var(--text-dim);
+  white-space: normal;
+  min-width: 11rem;
+}
+
+.cmp-table .cmp-win {
+  color: var(--green);
+  border-left: 2px solid var(--green-dim);
+}
+
+.cmp-table .cmp-gap {
+  color: var(--amber);
+  border-left: 2px solid var(--amber);
+}
+
+.cmp-table em {
+  font-style: normal;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 /* Status tags on capability headings — an honest label, not decoration. */
 .tag-exp,
 .tag-off {

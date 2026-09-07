@@ -34,6 +34,7 @@
   <button class="nav-toggle" type="button" onclick="toggleNav()" aria-label="Toggle navigation" aria-controls="nav-links" aria-expanded="false">☰</button>
   <div class="nav-links" id="nav-links">
     <a href="#open-agent">WHY&nbsp;FINCH</a>
+    <a href="#compare">COMPARE</a>
     <a href="#brains">BRAINS</a>
     <a href="#usage">USAGE</a>
     <a href="#features">FEATURES</a>
@@ -225,6 +226,74 @@
     </div>
 
   </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     COMPARISON
+═══════════════════════════════════════════ -->
+<section id="compare">
+  <h2 class="sec-title">// HOW FINCH DIFFERS</h2>
+
+  <div class="agent-headline">
+    <p class="agent-lede">Architectural axes, not a feature checklist.<br>
+    Finch wins two rows here and <strong>loses four</strong>. A comparison where the author wins everything is marketing, so this one is written to be checked.</p>
+  </div>
+
+  <div class="table-wrap">
+    <table class="model-table cmp-table">
+      <thead>
+        <tr>
+          <th>AXIS</th>
+          <th>FINCH</th>
+          <th>THE FIELD</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Typed programs verified before host effects</td>
+          <td class="cmp-win">Yes — the verifier returns a checked module that gates execution, capability requirements and effect rows are resolved first, and VM checkpoints are re-verified on restore rather than trusted</td>
+          <td class="bar">No shipping agent does this. Anthropic's code-execution-with-MCP, Cloudflare Code Mode, CodeAct/smolagents, E2B and WASM tool sandboxes all <em>isolate</em> execution; none type- or effect-check the program beforehand. Attempts exist only in research</td>
+        </tr>
+        <tr>
+          <td>Multi-client attach with distinct roles</td>
+          <td class="cmp-win">Driver, Consultant, and Observer attach to one Brain</td>
+          <td class="bar">Rare, not unique. Claude Code is single-writer; OpenCode and Qwen Code share a live session with flat access and no roles; Warp has viewer/editor</td>
+        </tr>
+        <tr>
+          <td>Durable named session</td>
+          <td>Event log plus typed VM checkpoint, owned by a local daemon</td>
+          <td class="bar">Table stakes now. Live reattach ships in Claude Code, Cursor (<code>agent persist</code>), OpenCode (<code>serve</code>/<code>attach</code>) and Cline's hub daemon. Aider, Goose, Codex CLI and Gemini CLI replay a transcript into a new process</td>
+        </tr>
+        <tr>
+          <td>Vendor subscription login</td>
+          <td class="cmp-gap">ChatGPT only</td>
+          <td class="bar">OpenCode logs in to Claude Pro/Max <em>and</em> ChatGPT natively. Claude Code, Codex CLI and Cursor each support their own. Gemini CLI's consumer login ended 18 June 2026</td>
+        </tr>
+        <tr>
+          <td>Local models</td>
+          <td class="cmp-gap">Experimental — a configured local profile does not yet guarantee local routing</td>
+          <td class="bar">Codex CLI ships <code>ollama</code> and <code>lmstudio</code> as built-in providers. Aider and Goose treat Ollama as first-class</td>
+        </tr>
+        <tr>
+          <td>Screen-reader support</td>
+          <td class="cmp-gap">Stated as a project invariant and not yet met — the only click path takes raw screen coordinates</td>
+          <td class="bar">Claude Code ships a full screen-reader mode with labelled turns and numbered menus. Gemini CLI has a setting. OpenCode closed the request as “not planned”</td>
+        </tr>
+        <tr>
+          <td>Licence</td>
+          <td>PolyForm Noncommercial — source-available; business use needs a commercial licence</td>
+          <td class="bar">OpenCode is MIT. Codex CLI, Gemini CLI, Cline, Goose and Aider are Apache-2.0. Claude Code and Cursor are proprietary</td>
+        </tr>
+        <tr>
+          <td>Maturity</td>
+          <td class="cmp-gap">Experimental, one maintainer</td>
+          <td class="bar">OpenCode ~206k GitHub stars, Cline ~68k, Goose ~54k, Aider ~49k though its main branch has been untouched since May 2026</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="table-note"><strong>Verified September 2026</strong>, against vendor documentation and repositories rather than listicles. These facts drift quickly; if you are reading this much later, re-check before relying on any row. Two naming notes: OpenCode's repository moved from the <code>sst</code> organisation to <code>anomalyco</code>, and Goose moved from Block to the Linux Foundation's Agentic AI Foundation in April 2026.</p>
 </section>
 
 <!-- ═══════════════════════════════════════════

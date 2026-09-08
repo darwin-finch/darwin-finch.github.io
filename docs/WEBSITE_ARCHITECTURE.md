@@ -68,8 +68,13 @@ evidence harder to audit is not an improvement.
 ## JavaScript and styling
 
 `public/app.js` contains the small amount of browser behavior: the mobile menu,
-install-command copy button, terminal demonstration, and intersection-observer
-effects. It is deliberately framework-independent. Prefer Astro-rendered HTML
+install-command copy button, terminal demonstration, comparison-footnote
+tooltips, and intersection-observer effects. Comparison superscripts become
+links at runtime, use their numbered list items as accessible descriptions, and
+render one shared fixed-position tooltip outside the scrolling table. Keep the
+numbered list intact as the canonical mobile and no-JavaScript fallback.
+
+The script is deliberately framework-independent. Prefer Astro-rendered HTML
 and CSS; add a hydrated UI framework only when a feature truly needs persistent
 client state.
 

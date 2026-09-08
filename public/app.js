@@ -165,6 +165,107 @@ window.addEventListener('DOMContentLoaded', () => {
   if (outEl) setTimeout(runDemo, 900);
 });
 
+// ── Comparison footnote tooltips ────────────────────
+// Keep the numbered list as the canonical, no-JavaScript destination. This
+// enhancement turns each table superscript into a real link and previews the
+// corresponding note outside the table's overflow container.
+function setupComparisonNotes() {
+  const comparison = document.getElementById('compare');
+  if (!comparison) return;
+
+  const notes = [...comparison.querySelectorAll('.cmp-notes > li')];
+  const references = comparison.querySelectorAll('.matrix sup');
+  if (!notes.length || !references.length) return;
+
+  const tooltip = document.createElement('div');
+  tooltip.className = 'cmp-note-tooltip';
+  tooltip.setAttribute('role', 'tooltip');
+  tooltip.hidden = true;
+  document.body.appendChild(tooltip);
+
+  let activeReference = null;
+
+  function positionTooltip(reference) {
+    if (tooltip.hidden) return;
+
+    const referenceRect = reference.getBoundingClientRect();
+    if (referenceRect.bottom < 0 || referenceRect.top > window.innerHeight) {
+      tooltip.hidden = true;
+      activeReference = null;
+      return;
+    }
+
+    const gap = 10;
+    const viewportPadding = 12;
+    const tooltipRect = tooltip.getBoundingClientRect();
+    let left = referenceRect.left + referenceRect.width / 2 - tooltipRect.width / 2;
+    left = Math.max(viewportPadding, Math.min(left, window.innerWidth - tooltipRect.width - viewportPadding));
+
+    let top = referenceRect.bottom + gap;
+    if (top + tooltipRect.height > window.innerHeight - viewportPadding) {
+      top = referenceRect.top - tooltipRect.height - gap;
+    }
+    top = Math.max(viewportPadding, top);
+
+    tooltip.style.left = `${left}px`;
+    tooltip.style.top = `${top}px`;
+  }
+
+  function showTooltip(reference, note, number) {
+    activeReference = reference;
+    tooltip.textContent = `${number}. ${note.textContent.trim()}`;
+    tooltip.hidden = false;
+    positionTooltip(reference);
+  }
+
+  function hideTooltip(reference) {
+    if (activeReference !== reference) return;
+    tooltip.hidden = true;
+    activeReference = null;
+  }
+
+  references.forEach((superscript, index) => {
+    const number = Number.parseInt(superscript.textContent.trim(), 10);
+    const note = notes[number - 1];
+    if (!note) return;
+
+    const noteId = `comparison-note-${number}`;
+    note.id = noteId;
+
+    const link = document.createElement('a');
+    link.className = 'cmp-note-ref';
+    link.href = `#${noteId}`;
+    link.textContent = String(number);
+    link.setAttribute('aria-label', `Comparison note ${number}`);
+    link.setAttribute('aria-describedby', noteId);
+    link.dataset.referenceIndex = String(index + 1);
+
+    superscript.textContent = '';
+    superscript.appendChild(link);
+
+    link.addEventListener('pointerenter', () => showTooltip(link, note, number));
+    link.addEventListener('pointerleave', () => hideTooltip(link));
+    link.addEventListener('focus', () => showTooltip(link, note, number));
+    link.addEventListener('blur', () => hideTooltip(link));
+    link.addEventListener('click', () => hideTooltip(link));
+    link.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') hideTooltip(link);
+    });
+  });
+
+  window.addEventListener('resize', () => {
+    if (activeReference) positionTooltip(activeReference);
+  });
+  window.addEventListener('scroll', () => {
+    if (activeReference) positionTooltip(activeReference);
+  }, { passive: true });
+  comparison.querySelector('.table-wrap')?.addEventListener('scroll', () => {
+    if (activeReference) positionTooltip(activeReference);
+  }, { passive: true });
+}
+
+window.addEventListener('DOMContentLoaded', setupComparisonNotes);
+
 // ── Intersection Observer — animate cards on scroll ──
 if ('IntersectionObserver' in window) {
   const cards = document.querySelectorAll('.card, .contrib-card, .step');

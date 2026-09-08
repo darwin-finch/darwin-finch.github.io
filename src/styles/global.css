@@ -906,6 +906,42 @@ section {
   margin-left: 1px;
 }
 
+.cmp-note-ref {
+  color: inherit;
+  cursor: help;
+  padding: 0.2rem 0.12rem;
+  text-decoration: underline dotted;
+  text-underline-offset: 0.16rem;
+}
+
+.cmp-note-ref:hover,
+.cmp-note-ref:focus-visible {
+  color: var(--green);
+  text-decoration-style: solid;
+}
+
+.cmp-note-tooltip {
+  position: fixed;
+  z-index: 10001;
+  width: max-content;
+  max-width: min(34rem, calc(100vw - 1.5rem));
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--green-dim);
+  border-radius: var(--radius);
+  background: #101510;
+  box-shadow: 0 0 24px rgba(0, 255, 65, 0.16);
+  color: #b8d8c0;
+  font-size: 0.75rem;
+  line-height: 1.55;
+  letter-spacing: normal;
+  pointer-events: none;
+  white-space: normal;
+}
+
+.cmp-note-tooltip[hidden] {
+  display: none;
+}
+
 .cmp-legend {
   margin-top: 1rem;
   font-size: 0.75rem;
@@ -928,6 +964,11 @@ section {
 
 .cmp-notes li {
   margin-bottom: 0.45rem;
+  scroll-margin-top: 5rem;
+}
+
+.cmp-notes li:target {
+  color: var(--green);
 }
 
 .cmp-notes code {

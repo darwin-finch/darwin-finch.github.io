@@ -1,29 +1,15 @@
 [
   { "source": "README.md", "destination": "docs/getting-started/overview", "title": "Overview", "description": "Project overview, quick start, and installation", "order": 1 },
-  { "source": "docs/USER_GUIDE.md", "destination": "docs/getting-started/user-guide", "title": "User Guide", "description": "Setup, configuration, and day-to-day usage", "order": 2 },
-  { "source": "docs/CONFIGURATION.md", "destination": "docs/getting-started/configuration", "title": "Configuration", "description": "Provider, credential, and model settings", "order": 3 },
-  { "source": "CHANGELOG.md", "destination": "docs/getting-started/changelog", "title": "Changelog", "description": "Version history and release notes", "order": 4 },
+  { "source": "src/config/CONFIGURATION.md", "destination": "docs/getting-started/configuration", "title": "Configuration", "description": "Current provider, credential, and model settings", "order": 2 },
 
   { "source": "vocabulary/language/FINCH_VM.md", "destination": "docs/program-runtime/vm-contract", "title": "Finch VM Contract", "description": "Typed runtime, effects, capabilities, and provider wire contract", "order": 1 },
   { "source": "vocabulary/language/FINCH_FORTH.md", "destination": "docs/program-runtime/co-forth", "title": "Co-Forth", "description": "Concatenative syntax, definitions, stack effects, and examples", "order": 2 },
   { "source": "vocabulary/language/FINCH_LISP.md", "destination": "docs/program-runtime/co-lisp", "title": "Co-Lisp", "description": "Prefix syntax that lowers to the shared typed IR", "order": 3 },
-  { "source": "docs/SHARED_PROGRAM_RUNTIME_PLAN.md", "destination": "docs/program-runtime/shared-runtime-plan", "title": "Shared Program Runtime", "description": "Architecture, durable vocabulary, and remaining roadmap", "order": 4 },
 
-  { "source": "CLAUDE.md", "destination": "docs/architecture/project-orientation", "title": "Project Orientation", "description": "Behavioral invariants and development guidelines", "order": 1 },
-  { "source": "docs/ARCHITECTURE.md", "destination": "docs/architecture/system", "title": "Architecture", "description": "System design overview and component diagram", "order": 2 },
-  { "source": "docs/TUI_ARCHITECTURE.md", "destination": "docs/architecture/tui", "title": "TUI Architecture", "description": "Terminal rendering, scrollback, and diff-based blitting", "order": 3 },
-  { "source": "docs/DAEMON_MODE.md", "destination": "docs/architecture/daemon", "title": "Daemon Mode", "description": "HTTP routes, session management, and daemon operation", "order": 4 },
-  { "source": "docs/MODEL_BACKEND_STATUS.md", "destination": "docs/architecture/model-backends", "title": "Model Backends", "description": "Dated backend investigation and implementation status", "order": 5 },
+  { "source": "docs/MCP_USER_GUIDE.md", "destination": "docs/features/mcp-guide", "title": "MCP Client Guide", "description": "Configure and troubleshoot MCP servers", "order": 1 },
+  { "source": "docs/CHATGPT_SUBSCRIPTION_TRANSPORT.md", "destination": "docs/features/chatgpt-subscription", "title": "ChatGPT Subscription", "description": "Subscription transport and compatibility contract", "order": 2 },
+  { "source": "docs/MACOS_GUI_AUTOMATION.md", "destination": "docs/features/macos-automation", "title": "macOS GUI Automation", "description": "Accessibility permissions and semantic addressing", "order": 3 },
+  { "source": "docs/AUTOMATIC_TRAINING.md", "destination": "docs/features/automatic-training", "title": "Automatic Training and LoRA", "description": "Why training and adapter loading are deferred", "order": 4 },
 
-  { "source": "docs/TOOL_CONFIRMATION.md", "destination": "docs/features/tool-system", "title": "Tool System", "description": "Agentic tools, permissions, and approved patterns", "order": 1 },
-  { "source": "src/tools/EXECUTION.md", "destination": "docs/features/tool-execution", "title": "Tool Execution", "description": "Approval-boundary execution contract", "order": 2 },
-  { "source": "docs/MCP_USER_GUIDE.md", "destination": "docs/features/mcp-guide", "title": "MCP Client Guide", "description": "Configure and troubleshoot MCP servers", "order": 3 },
-  { "source": "docs/MCP_ARCHITECTURE.md", "destination": "docs/features/mcp-architecture", "title": "MCP Architecture", "description": "Typed, namespaced, capability-checked MCP vocabulary", "order": 4 },
-  { "source": "docs/CHATGPT_SUBSCRIPTION_TRANSPORT.md", "destination": "docs/features/chatgpt-subscription", "title": "ChatGPT Subscription", "description": "Subscription transport and compatibility contract", "order": 5 },
-  { "source": "docs/MULTI_PROVIDER_CONFIG.md", "destination": "docs/features/multi-provider", "title": "Multi-Provider Configuration", "description": "Configure cloud and local provider profiles", "order": 6 },
-  { "source": "docs/MACOS_GUI_AUTOMATION.md", "destination": "docs/features/macos-automation", "title": "macOS GUI Automation", "description": "Accessibility permissions and semantic addressing", "order": 7 },
-  { "source": "docs/AUTOMATIC_TRAINING.md", "destination": "docs/features/automatic-training", "title": "Automatic Training", "description": "Disabled training behavior and legacy artifacts", "order": 8 },
-
-  { "source": "docs/DEVELOPMENT.md", "destination": "docs/development/guide", "title": "Development Guide", "description": "Build, test, and contribute to Finch", "order": 1 },
-  { "source": "docs/ROADMAP.md", "destination": "docs/development/roadmap", "title": "Roadmap", "description": "Planned features and future direction", "order": 2 }
+  { "source": "CONTRIBUTING.md", "destination": "docs/development/guide", "title": "Contributing", "description": "Build and test on macOS or Linux, then contribute to Finch", "order": 1 }
 ]

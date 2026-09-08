@@ -19,8 +19,23 @@ export default defineConfig({
       ],
       sidebar: [
         {
-          label: 'Documentation',
-          items: [{ autogenerate: { directory: 'docs' } }],
+          label: 'Getting started',
+          items: [
+            { label: 'Documentation home', link: '/docs/' },
+            { autogenerate: { directory: 'docs/getting-started' } },
+          ],
+        },
+        {
+          label: 'Features',
+          items: [{ autogenerate: { directory: 'docs/features' } }],
+        },
+        {
+          label: 'Program runtime',
+          items: [{ autogenerate: { directory: 'docs/program-runtime' } }],
+        },
+        {
+          label: 'Development',
+          items: [{ autogenerate: { directory: 'docs/development' } }],
         },
       ],
     }),

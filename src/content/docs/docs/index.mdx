@@ -2,9 +2,11 @@
 title: Finch Documentation
 description: Install, configure, understand, and contribute to Finch.
 template: splash
+prev: false
+next: false
 hero:
   title: Finch Documentation
-  tagline: Canonical Finch guides, architecture, and runtime references—rendered from the source repository.
+  tagline: Current Finch guides and runtime references—rendered from the source repository.
   actions:
     - text: Get started
       link: /docs/getting-started/overview/
@@ -15,21 +17,29 @@ hero:
       icon: external
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
 
 <CardGrid>
-  <Card title="Getting started" icon="rocket">
-    Install Finch, configure a provider, and learn the everyday workflow.
-  </Card>
-  <Card title="Program runtime" icon="seti:config">
-    Understand Co-Lisp, Co-Forth, the typed VM, effects, and capabilities.
-  </Card>
-  <Card title="Architecture" icon="puzzle">
-    Explore the terminal UI, daemon, model backends, and system design.
-  </Card>
-  <Card title="Features" icon="document">
-    Configure tools, MCP, multiple providers, and platform integrations.
-  </Card>
+  <LinkCard
+    title="Getting started"
+    description="Install Finch and run the current quick start."
+    href="/docs/getting-started/overview/"
+  />
+  <LinkCard
+    title="Configure Finch"
+    description="Set up current providers, credentials, and models."
+    href="/docs/getting-started/configuration/"
+  />
+  <LinkCard
+    title="Use MCP"
+    description="Configure and troubleshoot MCP servers."
+    href="/docs/features/mcp-guide/"
+  />
+  <LinkCard
+    title="Contribute"
+    description="Build and test Finch on Apple Silicon macOS or x86-64 Linux."
+    href="/docs/development/guide/"
+  />
 </CardGrid>
 
 The prose displayed here remains canonical in [`darwin-finch/finch`](https://github.com/darwin-finch/finch). Each imported page links to its exact source path and is refreshed during the website build.

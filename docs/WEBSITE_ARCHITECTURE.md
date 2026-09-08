@@ -33,7 +33,10 @@ pages. Do not copy the complete tables back into the homepage.
 `config/docs-manifest.json` is the publication allowlist. Each item maps one
 canonical source path to a website route and supplies navigation metadata. A
 document is not public merely because it exists in the Finch repository; add it
-to the manifest deliberately.
+to the manifest deliberately. Follow the status classifications in Finch's
+`docs/README.md`: public pages should come from current user documentation or a
+deliberately selected current reference. Do not publish design plans or the
+historical/archive group as consumer documentation.
 
 `scripts/sync-docs.mjs` performs four transformations:
 
@@ -43,6 +46,8 @@ to the manifest deliberately.
 3. It rewrites links between selected documents to website routes.
 4. It sends other relative document and image links back to their canonical
    GitHub locations.
+5. It removes previously generated section directories before writing the
+   allowlist, so removing a manifest entry also removes its stale route.
 
 Generated pages are gitignored. Never edit them: a clean build recreates them.
 To preview an upstream documentation branch, check that branch out locally and

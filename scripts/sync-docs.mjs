@@ -1,4 +1,4 @@
-import { readFile, mkdir, writeFile } from 'node:fs/promises';
+import { readFile, mkdir, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import process from 'node:process';
 
@@ -11,6 +11,13 @@ const upstreamRoot = process.env.FINCH_DOCS_ROOT
 const checkOnly = process.argv.includes('--check');
 const manifest = JSON.parse(await readFile(manifestPath, 'utf8'));
 const routeBySource = new Map(manifest.map(({ source, destination }) => [source, `/${destination}/`]));
+const generatedSections = [
+  'architecture',
+  'development',
+  'features',
+  'getting-started',
+  'program-runtime',
+];
 
 function yamlString(value) {
   return JSON.stringify(value);
@@ -82,6 +89,12 @@ ${body}
 }
 
 const stale = [];
+if (!checkOnly) {
+  for (const section of generatedSections) {
+    await rm(path.join(outputRoot, 'docs', section), { recursive: true, force: true });
+  }
+}
+
 for (const entry of manifest) {
   const source = await readSource(entry.source);
   const rendered = renderDocument(entry, source);
